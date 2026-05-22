@@ -1,8 +1,5 @@
 # Референсы
 
-Внешние материалы, документация, ссылки.
+Внешние материалы, ссылки, документация.
 
-## LLM Memory Guide
-
-Извлечённый контент из LLM Memory Guide:
-- [application-text-content-structured.md](../references/application-text-content-structured.md)
+- [LLM Memory Guide — контент](https://github.com/stsgs1980/llm-memory-wiki) — оригинальный проект
