@@ -4,7 +4,8 @@
 
 ## LLM Memory Management
 
-- [LLM Memory Guide — контент](https://github.com/stsgs1980/llm-memory-wiki) — оригинальный проект-дашборд
+- [Llm-memory-techniques](https://github.com/stsgs1980/Llm-memory-techniques) — дашборд с визуализациями 6 техник управления контекстом LLM
+- [Rust-performance-optimization](https://github.com/stsgs1980/Rust-performance-optimization) — 5 задач оптимизации Rust-кода с бенчмарками
 - [Техники управления памятью LLM (гайд)](../guides/llm-memory-techniques.md) — структурированный справочник
 - [OpenAI Tokenizer](https://platform.openai.com/tokenizer) — подсчёт токенов
 - [Pinecone](https://www.pinecone.io/) — векторная БД для RAG

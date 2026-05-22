@@ -6,8 +6,8 @@
 
 | Проект | Описание | Ссылка |
 |--------|----------|--------|
-| LLM Memory Dashboard | Образовательный дашборд: 6 техник управления контекстом LLM — [подробный гайд](../guides/llm-memory-techniques.md) | [GitHub](https://github.com/stsgs1980/llm-memory-wiki) |
-| Performance Lab (Rust) | 5 задач по оптимизации Rust-кода с Big O анализом и бенчмарками времени/памяти | локально |
+| Llm-memory-techniques | Образовательный дашборд: 6 техник управления контекстом LLM — [подробный гайд](../guides/llm-memory-techniques.md) | [GitHub](https://github.com/stsgs1980/Llm-memory-techniques) |
+| Rust-performance-optimization | 5 задач по оптимизации Rust-кода с Big O анализом и бенчмарками времени/памяти — [подробный гайд](../guides/rust-performance-optimization.md) | [GitHub](https://github.com/stsgs1980/Rust-performance-optimization) |
 | Личный сайт | Станислав Граур — Sales Director / AI | локально |
 | StsDev-Wiki (текущий) | Эта база знаний | [GitHub](https://github.com/stsgs1980/StsDev-Wiki) |
 

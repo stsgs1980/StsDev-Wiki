@@ -372,6 +372,6 @@ const response = await llm.chat({
 ## Источник
 
 Полный интерактивный дашборд с визуализациями:  
-[https://github.com/stsgs1980/llm-memory-wiki](https://github.com/stsgs1980/llm-memory-wiki)
+[https://github.com/stsgs1980/Llm-memory-techniques](https://github.com/stsgs1980/Llm-memory-techniques)
 
 Включает 18 интерактивных модулей: Live чат, Проводник техник, Площадка памяти, Битва техник, Симулятор затрат, Калькулятор токенов, Бенчмарки, API Матрица, Дерево решений, Советник и другие.

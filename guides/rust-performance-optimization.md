@@ -271,4 +271,4 @@ struct LockFreeQueue<T> {
 
 ## Источник
 
-`Performance Lab` — интерактивный дашборд на Next.js 16 + TypeScript + Tailwind CSS 4.
+[Rust-performance-optimization](https://github.com/stsgs1980/Rust-performance-optimization) — интерактивный дашборд на Next.js 16 + TypeScript + Tailwind CSS 4.
