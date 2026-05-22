@@ -17,6 +17,7 @@
 ## Гайды
 * [Все гайды](guides/index.md)
 * [Техники управления памятью LLM](guides/llm-memory-techniques.md)
+* [Rust Performance Optimization](guides/rust-performance-optimization.md)
 
 ## Референсы
 * [Все референсы](references/index.md)
