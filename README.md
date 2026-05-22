@@ -30,7 +30,7 @@
 | `Ctrl+Shift+V` | Превью markdown — как будет выглядеть в GitBook |
 | `Ctrl+P` → имя файла | Быстрый поиск по всей wiki |
 | `.vscode/wiki.code-snippets` | Сниппеты — вставляй шаблоны в 2 клика |
-| Git Automator | Авто-commit при сохранении — push.bat не нужен |
+| Git Automator | Ручной коммит: `Ctrl+Shift+P` → Add & Commit All Files |
 | `---` | Горизонтальная линия в markdown |
 | `images/папка` | Картинки: `![](images/file.png)` |
 
