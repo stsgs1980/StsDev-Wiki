@@ -1,0 +1,83 @@
+{
+  "Wiki link": {
+    "prefix": "link",
+    "body": "* [$1]($2)",
+    "description": "Ссылка на страницу"
+  },
+  "Code block": {
+    "prefix": "code",
+    "body": [
+      "```${1:language}",
+      "$2",
+      "```"
+    ],
+    "description": "Блок кода"
+  },
+  "Image": {
+    "prefix": "img",
+    "body": "![]($1)",
+    "description": "Вставить картинку"
+  },
+  "Note": {
+    "prefix": "note",
+    "body": "> **Примечание:** $1",
+    "description": "Примечание"
+  },
+  "Warning": {
+    "prefix": "warn",
+    "body": "> **Важно:** $1",
+    "description": "Предупреждение"
+  },
+  "Section": {
+    "prefix": "sec",
+    "body": "## $1\n\n$2",
+    "description": "Раздел второго уровня"
+  },
+  "Subsection": {
+    "prefix": "sub",
+    "body": "### $1\n\n$2",
+    "description": "Раздел третьего уровня"
+  },
+  "Frontmatter": {
+    "prefix": "meta",
+    "body": [
+      "---",
+      "title: \"$1\"",
+      "description: \"$2\"",
+      "---"
+    ],
+    "description": "Мета-данные страницы"
+  },
+  "Table": {
+    "prefix": "table",
+    "body": [
+      "| $1 | $2 |",
+      "| --- | --- |",
+      "| $3 | $4 |"
+    ],
+    "description": "Таблица"
+  },
+  "Bullet list": {
+    "prefix": "list",
+    "body": [
+      "- $1",
+      "- $2",
+      "- $3"
+    ],
+    "description": "Маркированный список"
+  },
+  "Numbered list": {
+    "prefix": "num",
+    "body": [
+      "1. $1",
+      "2. $2",
+      "3. $3"
+    ],
+    "description": "Нумерованный список"
+  },
+  "Inline code": {
+    "prefix": "tic",
+    "body": "`$1`",
+    "description": "Код внутри строки"
+  }
+}
