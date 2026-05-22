@@ -5,8 +5,8 @@
 
 ## Проекты
 * [Все проекты](projects/index.md)
-* [LLM Memory Dashboard](projects/llm-memory-dashboard.md)
-* [Memory Dashboard (копия)](projects/memory-dashboard-copy.md)
+* [Llm-memory-techniques](https://github.com/stsgs1980/Llm-memory-techniques)
+* [Rust-performance-optimization](https://github.com/stsgs1980/Rust-performance-optimization)
 * [Личный сайт](projects/personal-site.md)
 
 ## Агенты
