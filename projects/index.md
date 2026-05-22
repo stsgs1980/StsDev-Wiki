@@ -6,7 +6,7 @@
 
 | Проект | Описание | Ссылка |
 |--------|----------|--------|
-| LLM Memory Dashboard | Дашборд управления памятью LLM | [GitHub](https://github.com/stsgs1980/llm-memory-wiki) |
+| LLM Memory Dashboard | Дашборд управления памятью LLM — [подробный гайд](../guides/llm-memory-techniques.md) | [GitHub](https://github.com/stsgs1980/llm-memory-wiki) |
 | Memory Dashboard (копия) | Ядро для агентов, ChromaDB, memory bridge | локально |
 | Личный сайт | Станислав Граур — Sales Director / AI | локально |
 | База знаний (текущий) | Эта база знаний | [GitHub](https://github.com/stsgs1980/KB) |

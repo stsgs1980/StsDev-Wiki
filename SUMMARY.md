@@ -16,6 +16,7 @@
 
 ## Гайды
 * [Все гайды](guides/index.md)
+* [Техники управления памятью LLM](guides/llm-memory-techniques.md)
 
 ## Референсы
 * [Все референсы](references/index.md)
