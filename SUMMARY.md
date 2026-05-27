@@ -3,10 +3,29 @@
 ## Старт
 * [О базе знаний](README.md)
 
+## 3A Studio -- Главный проект
+* [3A Studio -- обзор](projects/3a-studio.md)
+* [Master Plan (8 фаз, задачи, сроки)](projects/3a-studio-master-plan.md)
+* [Карта экранов (12 штук)](architecture/3a-studio-screens.md)
+
+## Решения
+* [Все решения](decisions/3a-studio-naming.md)
+* [Почему 3A Studio](decisions/3a-studio-naming.md)
+* [Языковая стратегия](decisions/language-strategy.md)
+* [Web, не Desktop](decisions/desktop-vs-web.md)
+* [Toolkit отдельно](decisions/toolkit-placement.md)
+* [Monorepo с пакетами](decisions/monorepo-vs-polyrepo.md)
+* [SQLite, не ChromaDB](decisions/sqlite-vs-chromadb.md)
+
+## Архитектура
+* [Карта экосистемы (все 7+ проектов)](architecture/ecosystem-map.md)
+* [Экраны 3A Studio (статус)](architecture/3a-studio-screens.md)
+
 ## Проекты
 * [Все проекты](projects/index.md)
-* [Llm-memory-techniques](https://github.com/stsgs1980/Llm-memory-techniques)
-* [Rust-performance-optimization](https://github.com/stsgs1980/Rust-performance-optimization)
+* [3A Studio](projects/3a-studio.md)
+* [P-mas-studio (источник)](projects/p-mas-studio.md)
+* [Zai-agent-toolkit](projects/agent-toolkit.md)
 * [Личный сайт](projects/personal-site.md)
 
 ## Агенты
