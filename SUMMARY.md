@@ -35,6 +35,7 @@
 
 ## Гайды
 * [Все гайды](guides/index.md)
+* [Как работать в песочнице с 3A Studio](guides/sandbox-workflow.md)
 * [Техники управления памятью LLM](guides/llm-memory-techniques.md)
 * [Rust Performance Optimization](guides/rust-performance-optimization.md)
 
