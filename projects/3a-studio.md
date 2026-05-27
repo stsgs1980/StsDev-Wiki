@@ -3,8 +3,8 @@
 **Artificial. Agentic. Architecture.**
 
 - **Домен:** 3a-studio.dev / 3a.studio
-- **GitHub:** https://github.com/stsgs1980/3a-studio (будет создан)
-- **Статус:** Подготовка (Phase 0)
+- **GitHub:** https://github.com/stsgs1980/3a-studio
+- **Статус:** Phase 0 завершена -- monorepo, 4 пакета, Prisma, 12 экранов
 - **Тип:** Web-приложение (Next.js 16), опционально desktop (Tauri)
 - **Лицензия:** TBD
 
