@@ -68,12 +68,53 @@
 
 Если исходный файл превышает лимит -- **сплитим**, не тянем целиком.
 
-## Исходные репо (клонировать при необходимости)
+## Все исходные репо (клонировать ВСЕ при старте сессии)
+
+**ВАЖНО:** Все репо-источники существуют на GitHub. Клонировать ВСЕ при начале каждой сессии -- не знать какие нужны -- значит писать с нуля вместо переиспользования.
 
 ```bash
-# Только чтение, shallow clone
+# === Wiki (контекст, решения, master plan) ===
+git clone https://github.com/stsgs1980/StsDev-Wiki.git /tmp/wiki
+
+# === Рабочий репо (куда пишем) ===
+git clone https://github.com/stsgs1980/3a-studio.git /tmp/3a-studio
+
+# === Источники кода (только чтение, shallow) ===
 git clone --depth 1 https://github.com/stsgs1980/P-mas-studio.git /tmp/p-mas-studio
-git clone --depth 1 https://github.com/stsgs1980/3a-studio.git /tmp/3a-studio
-# Zai-agent-toolkit -- только стандарты
+git clone --depth 1 https://github.com/stsgs1980/MVP-Flow-Studio-Pro.git /tmp/mvp-flow
+git clone --depth 1 https://github.com/stsgs1980/Flow-Studio-Pro.git /tmp/flow-pro
+git clone --depth 1 https://github.com/stsgs1980/prompting-v0.0.git /tmp/prompting-v0
+git clone --depth 1 https://github.com/stsgs1980/P-MAS-architector.git /tmp/architector
 git clone --depth 1 https://github.com/stsgs1980/Zai-agent-toolkit.git /tmp/toolkit
+```
+
+### Что внутри каждого репо
+
+| Репо | Папка в /tmp/ | Что содержимое | Для каких фаз
+|------|--------------|----------------|---------------|
+| **StsDev-Wiki** | `/tmp/wiki` | Решения, master plan, гайды | Все (контекст)
+| **3a-studio** | `/tmp/3a-studio` | Текущий код (рабочий проект) | Все (писать сюда)
+| **P-mas-studio** | `/tmp/p-mas-studio` | Dashboard, hierarchy, prompt-studio, workflows, packages/ui (276 файлов), eslint-plugin, API routes, Prisma | Phase 4, 5, 7
+| **MVP-Flow-Studio-Pro** | `/tmp/mvp-flow` | EventBus, NodeExecutor, LLMProvider, NodeFactory, FlowEditor, CustomNodes, TemplateGallery, VersionHistory | **Phase 3 (критично)**, 7A
+| **Flow-Studio-Pro** | `/tmp/flow-pro` | React Flow v12 паттерны, Zustand store, flow-canvas, node-config-panel, node-palette | **Phase 3**, 7A
+| **prompting-v0.0** | `/tmp/prompting-v0` | 20 когнитивных формул, 6 критериев оценки, blind comparison, intent detection | Phase 0 (prompting пакет)
+| **P-MAS-architector** | `/tmp/architector` | @stsgs/prompting (30+ файлов), skills, standards, docs | Phase 0, 7C
+| **Zai-agent-toolkit** | `/tmp/toolkit` | 19 стандартов, agent templates, dashboard-паттерны | Phase 7D, 8
+
+### Ключевые файлы для Phase 3 (Flow Editor)
+
+```
+/tmp/mvp-flow/src/lib/flow/EventBus.ts       (108 строк) -- pub/sub для node execution
+/tmp/mvp-flow/src/lib/flow/NodeExecutor.ts   (225 строк) -- топологическая сортировка, sequential execution [СПЛИТИТЬ]
+/tmp/mvp-flow/src/lib/flow/LLMProvider.ts    (121 строк) -- абстракция над z-ai-web-dev-sdk
+/tmp/mvp-flow/src/lib/flow/NodeFactory.ts    (134 строк) -- создание нод с дефолтными данными
+/tmp/mvp-flow/src/lib/flow/types.ts         (127 строк) -- типы для flow editor
+/tmp/mvp-flow/src/components/flow/FlowEditor.tsx   (359 строк) [СПЛИТИТЬ на 3 файла]
+/tmp/mvp-flow/src/components/flow/CustomNodes.tsx  (231 строк) [СПЛИТИТЬ по категориям]
+/tmp/mvp-flow/src/components/flow/NodeSidebar.tsx  (130 строк) -- drag & drop panel
+
+/tmp/flow-pro/src/store/flow-store.ts      -- Zustand store паттерн
+/tmp/flow-pro/src/components/flow/flow-canvas.tsx   -- ReactFlow обёртка
+/tmp/flow-pro/src/components/flow/node-config-panel.tsx -- конфиг панель
+/tmp/flow-pro/src/components/flow/node-palette.tsx     -- палитра нод
 ```

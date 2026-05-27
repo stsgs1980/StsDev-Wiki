@@ -164,32 +164,46 @@ git remote set-url origin https://<TOKEN>@github.com/<ORG>/<REPO>.git
 
 ## Стандарт начала сессии
 
-### Универсальный шаблон первого сообщения
-
-Для ЛЮБОГО проекта, не только 3A Studio:
+### Шаблон для 3A Studio (копируй и вставь)
 
 ```
-Работаю над проектом <Название>.
+Работаю над 3A Studio. Phase 3 — Flow Editor.
 
-Контекст и решения хранятся в StsDev-Wiki:
+Step 1 — Клонировать ВСЕ репо (wiki + рабочий + все источники):
 git clone https://github.com/stsgs1980/StsDev-Wiki.git /tmp/wiki
-Прочитай /tmp/wiki/projects/<project>.md и /tmp/wiki/decisions/
+git clone https://github.com/stsgs1980/3a-studio.git /tmp/3a-studio
+git clone --depth 1 https://github.com/stsgs1980/MVP-Flow-Studio-Pro.git /tmp/mvp-flow
+git clone --depth 1 https://github.com/stsgs1980/Flow-Studio-Pro.git /tmp/flow-pro
+git clone --depth 1 https://github.com/stsgs1980/P-mas-studio.git /tmp/p-mas-studio
+git clone --depth 1 https://github.com/stsgs1980/prompting-v0.0.git /tmp/prompting-v0
+git clone --depth 1 https://github.com/stsgs1980/P-MAS-architector.git /tmp/architector
+git clone --depth 1 https://github.com/stsgs1980/Zai-agent-toolkit.git /tmp/toolkit
 
-Рабочий репо (если есть код):
-git clone https://github.com/stsgs1980/<repo>.git /tmp/<repo>
-Скопируй в /home/z/my-project/ (с сохранением .zscripts/)
+Step 2 — Прочитать контекст:
+/tmp/wiki/decisions/synthesis-strategy.md
+/tmp/wiki/projects/3a-studio-master-plan.md
 
-Остановился на: [где закончил в прошлый раз]
+Step 3 — Рабочий проект в /home/z/my-project/:
+cd /home/z/my-project && ls -A | grep -v '.zscripts' | xargs rm -rf
+cp -r /tmp/3a-studio/. /home/z/my-project/
+bun install
+
+Step 4 — НЕ пиши код с нуля! Ищи в /tmp/mvp-flow/ и /tmp/flow-pro/.
+Переноси файлы в 3A Studio и сплити по anti-monolith (<=150 строк, <=3 useState).
+
+Остановился на: [описание]
 ```
 
 ### Чек-лист для агента (что сделать первым делом)
 
-1. `git clone` wiki в `/tmp/wiki/`
-2. Прочитать ключевые файлы (project overview, master plan, decisions)
-3. `git clone` рабочий репо в `/tmp/`
-4. Перенести код в `/home/z/my-project/` (с сохранением `.zscripts/`)
+1. **Клонировать ВСЕ репо** (wiki + рабочий + все 6 источников) -- НЕ пропусти ни одного!
+2. Прочитать `/tmp/wiki/decisions/synthesis-strategy.md` -- там карта файлов по фазам
+3. Прочитать `/tmp/wiki/projects/3a-studio-master-plan.md` -- текущая фаза и задачи
+4. Перенести рабочий код в `/home/z/my-project/` (с сохранением `.zscripts/`)
 5. `bun install`
-6. Сообщить пользователю: "Контекст загружен, готов работать. Понял следующее: ..."
+6. **Для каждой задачи:** найти файл в `/tmp/mvp-flow/` или `/tmp/p-mas-studio/`, перенести и сплитить
+7. Anti-monolith проверка: каждый файл <=150 строк, <=3 useState
+8. Сообщить пользователю: "Контекст загружен. Нашёл следующие файлы для текущей фазы: ..."
 
 ---
 
