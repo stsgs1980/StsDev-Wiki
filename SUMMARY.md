@@ -16,6 +16,7 @@
 * [Toolkit отдельно](decisions/toolkit-placement.md)
 * [Monorepo с пакетами](decisions/monorepo-vs-polyrepo.md)
 * [SQLite, не ChromaDB](decisions/sqlite-vs-chromadb.md)
+* [Стратегия синтеза (как переносим код)](decisions/synthesis-strategy.md)
 
 ## Архитектура
 * [Карта экосистемы (все 7+ проектов)](architecture/ecosystem-map.md)
