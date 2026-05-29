@@ -1,21 +1,19 @@
 # Ситуативный гайд: Preview & Dev Server в Z.ai Sandbox
 
-**Дата:** 2026-05-28 | **Статус:** активный
+**Дата:** 2026-05-28 | **Обновлено:** 2026-05-29 (v2.1)
 **Для кого:** любой AI-агент в сессии со сложным Next.js проектом (multi-route, >50 файлов)
+**Статус:** активный
+**Канонический документ:** см. `ZAI_SANDBOX_GUIDE.md` -- основной верифицированный гайд
 
 ---
 
 ## Проблема
 
-В песочнице есть 3 документа о preview/sandbox:
-1. `upload/ZAI_SANDBOX_INSTRUCTIONS.md` — общая инструкция
-2. `skills/dev-watchdog/SKILL.md` — протокол keepalive
-3. `skills/fullstack-dev/SKILL.md` — fullstack стек
-
-Все три написаны для **одностраничных демо** (1 файл page.tsx, 1 роут).
+Официальные документы о preview/sandbox написаны для **одностраничных демо** (1 файл page.tsx, 1 роут).
 Для 3A Studio (multi-route IDE, 100+ файлов) часть правил НЕВЕРНА.
 
-Этот документ — **ситуативная таблица**: что применять, когда, и что игнорировать.
+Этот документ -- **ситуативная таблица**: что применять, когда, и что игнорировать.
+Для базового workflow см. [sandbox-workflow.md](sandbox-workflow.md).
 
 ---
 
@@ -25,7 +23,7 @@
 Browser (Preview Panel / IM preview link)
     |
     v
-Caddy (:81) — reverse proxy
+Caddy (:81) -- reverse proxy
     |
     |-- ?XTransformPort=<port> --> localhost:<port>  (mini-services)
     |
@@ -37,89 +35,8 @@ Caddy (:81) — reverse proxy
                  prod: next start -p 3000 -H 0.0.0.0
 ```
 
-**Ключевой факт:** Caddy проксирует ВСЕ пути. `/dashboard`, `/editor`, `/api/*` — всё работает.
+**Ключевой факт:** Caddy проксирует ВСЕ пути. `/dashboard`, `/editor`, `/api/*` -- всё работает.
 Правило "User can only see the / route" из fullstack-dev SKILL.md = **ЛОЖЬ для multi-route проектов**.
-
----
-
-## Быстрое решение: что делать
-
-### При старте сессии
-
-```bash
-# 1. Проверить состояние
-ss -tlnp | grep -E ':3000|:81'
-curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:3000/
-
-# 2. Если сервер мёртв (000) — выбрать режим:
-# Для ПРОСТЫХ проектов (< 10 файлов, 1 роут):
-cd /home/z/my-project && npx next dev -p 3000 </dev/null >/tmp/zdev.log 2>&1 & disown
-sleep 6
-
-# Для СЛОЖНЫХ проектов (multi-route, heavy client components):
-cd /home/z/my-project && npx next build 2>&1 | tail -20
-# Если билд ок:
-NODE_OPTIONS="--max-old-space-size=4096" npx next start -p 3000 -H 0.0.0.0 </dev/null >/tmp/zdev.log 2>&1 & disown
-```
-
-### Если превью не показывает контент
-
-```bash
-# Проверяем что именно отдаётся
-curl -s -D - http://127.0.0.1:3000/ | head -15        # корневой путь
-curl -s -D - http://127.0.0.1:3000/dashboard | head -15  # конкретный роут
-
-# Ожидаемое:
-# 200 + HTML контент = сервер работает, проблема в Preview Panel / Caddy
-# 307 + location: /dashboard = редирект, нормальное поведение
-# 500 = ошибка компиляции, смотреть /tmp/zdev.log
-# 000 = сервер мёртв, перезапускать
-```
-
----
-
-## Ситуационная таблица правил
-
-### ZAI_SANDBOX_INSTRUCTIONS.md
-
-| Правило | Когда ВЕРНО | Когда НЕВЕРНО |
-|---------|-------------|---------------|
-| "Весь код в page.tsx" | Демо, лендинг, калькулятор | Multi-page app (3A Studio, CRM, IDE) |
-| "Не создавай другие роуты" | Одностраничное демо | У проекта > 1 экрана |
-| "Не запускай dev сервер вручную" | Init-скрипт уже запустил его | Сервер упал, нужен ручной перезапуск |
-| "Перезапускай через init-скрипт" | Начало работы с нуля | **НИКОГДА на рабочем проекте** — уничтожит код |
-| "Не используй bun run build" | Dev-only workflow | Нужен production mode для тяжёлых проектов |
-| "Preview Panel обновляется автоматически" | Dev mode (next dev) | Production mode (next start) — нужен rebuild |
-| "Aliasing @/" | Всегда | — |
-| "Не давай localhost URL" | Всегда | — |
-| "Логи в .zscripts/dev.log" | Init-скриптовый запуск | Ручной запуск — логи в /tmp/zdev.log |
-
-### dev-watchdog SKILL.md
-
-| Правило | Когда ВЕРНО | Когда НЕВЕРНО |
-|---------|-------------|---------------|
-| "npx next dev" | Простой проект, < 500MB RAM | Сложный проект — Turbopack жрёт 825MB+ и падает |
-| "127.0.0.1 не localhost" | Всегда | — |
-| "disown + </dev/null" | Всегда при ручном запуске | — |
-| "Ждать 6 сек" | Turbopack cold compile | Production mode — готов через 1 сек |
-| "Cron watchdog каждые 5 мин" | Всегда | — |
-| "Перезапуск при 000" | Всегда | — |
-| "При 500 — не рестартить, чинить код" | Всегда | — |
-| Production mode как альтернатива | **Не упоминается** | Рекомендуется для heavy проектов |
-
-### fullstack-dev SKILL.md
-
-| Правило | Когда ВЕРНО | Когда НЕВЕРНО |
-|---------|-------------|---------------|
-| "User can only see / route" | Одностраничное демо | Multi-route — Caddy форвардит все пути |
-| "Do NOT write any other route" | Одностраничное демо | Multi-page app |
-| "Never use bun run build" | Dev-only | Нужен production build |
-| "bun run dev runs automatically" | После init-скрипта | Сервер умирает через ~5 мин |
-| "XTransformPort для API" | Всегда | — |
-| "Relative paths для API" | Всегда | — |
-| "z-ai-web-dev-sdk backend only" | Всегда | — |
-| "shadcn/ui + responsive" | Всегда | — |
-| "Стартовый скрипт: curl init..." | Только ПЕРВЫЙ раз | На рабочем проекте — уничтожит всё |
 
 ---
 
@@ -129,7 +46,7 @@ curl -s -D - http://127.0.0.1:3000/dashboard | head -15  # конкретный 
 
 ```
 Плюсы:
-+ Hot reload (HMR) — изменения видны мгновенно
++ Hot reload (HMR) -- изменения видны мгновенно
 + Не нужен билд
 + Автоматический TypeScript check
 
@@ -150,7 +67,7 @@ curl -s -D - http://127.0.0.1:3000/dashboard | head -15  # конкретный 
 + Не умирает от таймаута (process stays alive)
 
 Минусы:
-- Нет HMR — каждый раз нужен rebuild
+- Нет HMR -- каждый раз нужен rebuild
 - rebuild занимает 8-15 сек
 - Нужно вручную перезапускать сервер после билда
 ```
@@ -159,10 +76,10 @@ curl -s -D - http://127.0.0.1:3000/dashboard | head -15  # конкретный 
 
 ```
 Проект простой (< 10 файлов, 1-2 роута, нет анимаций)
-  --> Dev mode (next dev)
+  --> Dev mode (next dev) -- через dev.sh
 
-Проект средний (10-50 файлов, несколько роутов, лёгкие компоненты)
-  --> Dev mode, но иметь production fallback
+Проект средний (10-50 файлов, несколько роутов)
+  --> Dev mode через dev.sh, production fallback при падении
 
 Проект сложный (50+ файлов, много client components, SVG анимации)
   --> Production mode по умолчанию
@@ -171,6 +88,88 @@ curl -s -D - http://127.0.0.1:3000/dashboard | head -15  # конкретный 
 3A Studio
   --> Production mode. Turbopack падал при компиляции dashboard.
 ```
+
+---
+
+## Стандартный запуск: dev.sh
+
+Для большинства проектов правильный способ запуска:
+
+```bash
+bash /home/z/my-project/.zscripts/dev.sh
+```
+
+dev.sh делает: bun install -> db:push -> next dev -> health check -> mini-services.
+Сервер стартует на порту 3000, watchdog мониторит.
+
+**НЕ запускай вручную** `npx next dev` / `bun run dev` -- процесс умрёт.
+
+---
+
+## Fallback: Production mode (для сложных проектов)
+
+Если dev.sh стартует но Turbopack падает (сложный проект, много client components):
+
+```bash
+# Production build + start
+cd /home/z/my-project
+npx next build 2>&1 | tail -20
+pkill -f 'next' 2>/dev/null; sleep 1
+NODE_OPTIONS="--max-old-space-size=4096" npx next start -p 3000 -H 0.0.0.0 </dev/null >/tmp/zdev.log 2>&1 & disown
+sleep 3
+curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/
+```
+
+После каждого изменения кода нужен rebuild:
+
+```bash
+npx next build 2>&1 | tail -5
+pkill -f 'next start'; sleep 1
+NODE_OPTIONS="--max-old-space-size=4096" npx next start -p 3000 -H 0.0.0.0 </dev/null >/tmp/zdev.log 2>&1 & disown
+sleep 3
+```
+
+**Минус:** нет HMR, каждый rebuild 8-15 сек. Но стабильно.
+
+---
+
+## Ситуативная таблица правил
+
+### ZAI_SANDBOX_INSTRUCTIONS.md
+
+| Правило | Когда ВЕРНО | Когда НЕВЕРНО |
+|---------|-------------|---------------|
+| "Весь код в page.tsx" | Демо, лендинг, калькулятор | Multi-page app (3A Studio, CRM, IDE) |
+| "Не создавай другие роуты" | Одностраничное демо | У проекта > 1 экрана |
+| "Не запускай dev сервер вручную" | Всегда -- используй dev.sh | -- |
+| "Перезапускай через init-скрипт" | Только первый раз, пустой проект | **НИКОГДА на рабочем проекте** -- уничтожит код |
+| "Preview Panel обновляется автоматически" | Dev mode (next dev) | Production mode -- нужен rebuild |
+| "Aliasing @/" | Всегда | -- |
+| "Не давай localhost URL юзеру" | Всегда | -- |
+| "Логи в .zscripts/dev.log" | Запуск через dev.sh | Ручной запуск -- логи в /tmp/zdev.log |
+
+### dev-watchdog SKILL.md
+
+| Правило | Когда ВЕРНО | Когда НЕВЕРНО |
+|---------|-------------|---------------|
+| "npx next dev" | Только если dev.sh недоступен | Сложный проект -- Turbopack жрёт 825MB+ и падает |
+| "127.0.0.1 не localhost" | Обычно оба работают | -- |
+| "disown + </dev/null" | При ручном запуске | Не нужен при dev.sh |
+| "Cron watchdog каждые 5 мин" | Всегда | -- |
+| "При 500 -- не рестартить, чинить код" | Всегда | -- |
+| Production mode как альтернатива | Не упоминается | Рекомендуется для heavy проектов |
+
+### fullstack-dev SKILL.md
+
+| Правило | Когда ВЕРНО | Когда НЕВЕРНО |
+|---------|-------------|---------------|
+| "User can only see / route" | Одностраничное демо | Multi-route -- Caddy форвардит все пути |
+| "Do NOT write any other route" | Одностраничное демо | Multi-page app |
+| "Never use bun run build" | Dev-only через dev.sh | Нужен production build для heavy проектов |
+| "bun run dev runs automatically" | После dev.sh | Сервер умирает при смене сессии |
+| "z-ai-web-dev-sdk backend only" | Всегда | -- |
+| "shadcn/ui + responsive" | Всегда | -- |
+| "Стартовый скрипт: curl init..." | Только ПЕРВЫЙ раз | На рабочем проекте -- уничтожит всё |
 
 ---
 
@@ -186,43 +185,71 @@ git clone --depth 1 https://github.com/stsgs1980/P-MAS-architector.git /tmp/arch
 # 2. Загрузить рабочий код
 cd /home/z/my-project && git pull origin main
 
-# 3. Проверить/запустить сервер
-ss -tlnp | grep -E ':3000|:81'
-STATUS=$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:3000/)
+# 3. Попробовать стандартный запуск через dev.sh
+bash /home/z/my-project/.zscripts/dev.sh
+sleep 5
+STATUS=$(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/)
 
-if [ "$STATUS" = "000" ]; then
-  # Сервер мёртв — production mode
+# 4. Если dev.sh не справился (Turbopack падает) -- production mode:
+if [ "$STATUS" = "000" ] || [ "$STATUS" = "500" ]; then
   cd /home/z/my-project
-  npx next build 2>&1 | tail -5
+  npx next build 2>&1 | tail -10
   pkill -f 'next' 2>/dev/null; sleep 1
   NODE_OPTIONS="--max-old-space-size=4096" npx next start -p 3000 -H 0.0.0.0 </dev/null >/tmp/zdev.log 2>&1 & disown
   sleep 3
-  curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:3000/
+  curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/
 fi
 
-# 4. Читать контекст
-/tmp/wiki/decisions/synthesis-strategy.md
-/tmp/wiki/projects/3a-studio-master-plan.md
+# 5. Читать контекст
+cat /tmp/wiki/decisions/synthesis-strategy.md
+cat /tmp/wiki/projects/3a-studio-master-plan.md
 ```
 
 ---
 
 ## Чек-лист: preview не работает
 
-1. Сервер жив? `curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:3000/`
-   - 000 → убит, перезапускать
-   - 200 → сервер ок, проблема ниже
-   - 307 → редирект, норма
-   - 500 → ошибка компиляции
+```
+1. Сервер жив?
+   curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/
+   000 -> убит, перезапускать (bash .zscripts/dev.sh)
+   200 -> сервер ок, проблема ниже
+   307 -> редирект, норма
+   500 -> ошибка компиляции
 
-2. Caddy жив? `curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:81/`
-   - 000 → Caddy упал
-   - 200 → Caddy ок
+2. Caddy жив?
+   curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:81/
+   000 -> Caddy упал
+   200 -> Caddy ок
 
-3. Что отдаётся? `curl -s http://127.0.0.1:3000/dashboard | wc -c`
-   - 0 байт → пустой ответ
-   - > 1000 байт → контент есть
+3. Что отдаётся?
+   curl -s http://localhost:3000/dashboard | wc -c
+   0 байт -> пустой ответ
+   > 1000 байт -> контент есть
 
-4. Логи: `cat /tmp/zdev.log | tail -20`
+4. Логи:
+   cat .zscripts/dev.log | tail -20          # если запускали через dev.sh
+   cat /tmp/zdev.log | tail -20              # если запускали вручную
+   cat .zscripts/mini-service-watchdog.log    # watchdog лог
 
-5. Если всё ок с сервером но preview пустой — проблема на стороне Preview Panel (вне контроля агента)
+5. Всё ок с сервером но preview пустой?
+   Проблема на стороне Preview Panel (вне контроля агента)
+```
+
+---
+
+## Proxy URL для IM пользователей
+
+```
+https://preview-<container-id>.space-z.ai/
+```
+
+Container ID:
+```bash
+echo $FC_CONTAINER_ID
+# или
+hostname
+```
+
+**НЕ давай пользователю** `http://localhost:3000` или `http://127.0.0.1:3000` --
+это внутренние адреса контейнера.

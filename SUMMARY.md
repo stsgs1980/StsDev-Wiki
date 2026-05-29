@@ -36,7 +36,9 @@
 
 ## Гайды
 * [Все гайды](guides/index.md)
-* [Как работать в песочнице с 3A Studio](guides/sandbox-workflow.md)
+* [Как работать в Z.ai песочнице](guides/sandbox-workflow.md)
+* [Preview & Dev Server в Z.ai Sandbox](guides/sandbox-preview-situational.md)
+* [Z.ai Sandbox -- Unified Guide (EN)](guides/ZAI_SANDBOX_GUIDE.md)
 * [Техники управления памятью LLM](guides/llm-memory-techniques.md)
 * [Rust Performance Optimization](guides/rust-performance-optimization.md)
 
