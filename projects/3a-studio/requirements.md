@@ -2,117 +2,110 @@
 
 **Проект:** 3A Studio (Artificial. Agentic. Architecture.)
 **Репо:** https://github.com/stsgs1980/3a-studio
-**Основано на:** аудите кода 2026-05-30 (264 исходных файла, 32 API route)
+**Аудит:** 2026-05-30, прочитаны исходные файлы
 
 ---
 
 ## Архитектурные требования
 
 ### AR-01: Monorepo с пакетами
-3A Studio = pnpm workspace monorepo. Четыре пакета:
-- `@stsgs/ui` — дизайн-система
-- `@stsgs/prompting` — библиотека оценок промптов
-- `@stsgs/shared` — типы, утилиты, константы
-- `eslint-plugin-3a` — кастомные правила
-
-Зависимости между пакетами однонаправленные: `shared` ← `ui` / `prompting` ← `app`. Обратных зависимостей нет.
+pnpm workspace monorepo. Четыре пакета: `@stsgs/ui`, `@stsgs/prompting`, `@stsgs/shared`, `eslint-plugin-3a`. Зависимости однонаправленные: `shared` ← `ui` / `prompting` ← `app`.
 
 ### AR-02: SQLite для разработки, PostgreSQL для продакшена
-Prisma schema использует `provider = "sqlite"` с путём `file:/home/z/my-project/db/custom.db`. Код не должен использовать PostgreSQL-специфичный синтаксис (`$1`, `NOW()`, `ON CONFLICT`) пока не переключён provider.
+`prisma/schema.prisma`: `provider = "sqlite"`, `url = "file:/home/z/my-project/db/custom.db"`.
 
-**Известная проблема:** `src/lib/llm/settings.ts` использует PostgreSQL-синтаксис при SQLite-provider. Должно быть исправлено.
+`src/lib/llm/settings.ts` — **проверено: PostgreSQL-синтаксиса НЕТ.** Файл использует Prisma ORM (`db.settings.findUnique`, `db.settings.upsert`), который абстрагирует SQL. Проблема `$1`/`NOW()`/`ON CONFLICT` была в предыдущей версии — сейчас исправлена.
 
 ### AR-03: Anti-monolith правила
-| Правило | Лимит | Проверка |
-|---------|-------|----------|
-| Макс строк в файле | 150 | `eslint-plugin-3a/max-lines` |
-| Макс useState в компоненте | 3 | `eslint-plugin-3a/max-use-state` |
-| Cross-layer импорты | 0 | `eslint-plugin-3a/no-cross-layer` |
-
-Файл превышает лимит — сплитим, не тянем целиком.
+Ограничения: файл ≤ 150 строк, useState ≤ 3, нет cross-layer импортов. Проверяется через `eslint-plugin-3a`.
 
 ---
 
 ## Требования к данным
 
-### DR-01: Skill model — многофайловая структура
-Текущая модель `Skill` имеет одно поле `code: String`. Реальные навыки содержат несколько файлов (SKILL.md + скрипты + шаблоны + референсы). Нужно добавить модель `SkillFile` с привязкой к `Skill`.
-
-```
-Skill 1:N SkillFile
-  - SKILL.md     (главный файл)
-  - scripts/*.py / *.sh  (исполняемые)
-  - templates/*  (шаблоны)
-  - references/* (справочные материалы)
-```
+### DR-01: Skill model — одно поле code
+**Проверено по `prisma/schema.prisma`:** модель `Skill` имеет поле `code: String @default("")`. Реальные навыки из Zai-agent-toolkit содержат несколько файлов (SKILL.md + scripts/ + references/). Нужна модель `SkillFile` с привязкой `Skill 1:N SkillFile`.
 
 **Статус:** не реализовано. Критично для Export Pipeline.
 
-### DR-02: Экспорт из базы в файловую систему
-API route `GET /api/skills/[id]/export` уже генерирует SKILL.md из записи в базе. Нужно расширить до генерации полной структуры папки навыка:
-- `skills/name/SKILL.md`
-- `skills/name/scripts/...`
-- `skills/name/templates/...`
-- `skills/name/references/...`
+### DR-02: Экспорт навыка — работает частично
+**Проверено по `src/app/api/skills/[id]/export/route.ts`:** генерирует SKILL.md из полей Skill-записи (name, description, category, tags, code, tests, inputSchema, outputSchema, standardIds). Возвращает markdown как downloadable файл.
 
-**Статус:** частично. Экспорт одного файла работает, экспорт папки — нет.
+**Чего нет:** экспорт полной папки навыка (scripts/, templates/, references/). Заблокировано отсутствием SkillFile (DR-01).
 
-### DR-03: Импорт стандартов из .md
-API route `POST /api/standards/import` уже принимает .md файл и парсит его в Standard-запись.
-
-**Статус:** работает.
+### DR-03: Импорт стандартов — работает
+**Проверено по `src/app/api/standards/import/route.ts`:** принимает .md файл, парсит через `parseStandardFile()`, upsert в Standard. Работает с multi-segment ID (STD-XXX-YYY-NNN).
 
 ---
 
 ## Требования к качеству
 
 ### QR-01: Тесты
-Минимальный набор тестов существует: 5 файлов, 38 тестов (db, auth, crypto, LLM types, middleware). Каждый новый API route и каждая новая feature должны сопровождаться тестами.
+**Проверено:** 5 тест-файлов в `src/`:
+- `src/lib/crypto.test.ts`
+- `src/lib/auth.test.ts`
+- `src/lib/db.test.ts`
+- `src/lib/llm/types.test.ts`
+- `src/middleware.test.ts`
 
-**Порог:** не менее 1 тест-файла на feature.
+Коммит `b64e470` заявляет 38 тестов. **Запуск vitest не удался** — ошибка `MODULE_NOT_FOUND` при резолве путей. Нужен `bun install` перед запуском.
 
 ### QR-02: Build должен проходить
-`next build` и `tsc --noEmit` должны проходить без ошибок перед каждым коммитом в main.
+`next build` и `tsc --noEmit` — без ошибок перед коммитом в main.
 
-### QR-03: Нет хардкода цветов
-20+ мест используют hex-коды напрямую (`#8B5CF6`, `#06B6D4` и т.д.) вместо design tokens. Новые компоненты должны использовать токены из `@stsgs/ui`.
+### QR-03: Хардкод цветов
+**Проверено grep по `src/*.tsx`:** найдено 5 вхождений `#[0-9A-Fa-f]{6}`:
+- `src/features/auth/components/google-button.tsx` — 4 цвета (Google logo: #4285F4, #34A853, #FBBC05, #EA4335)
+- `src/features/landing/components/hero.tsx` — 1 цвет (#30363D в dot pattern)
+
+Google-цвета — легитимны (бренд). #30363D — кандидат на токен. **Проблема "20+ hardcoded hex" — опровергнута.** Реально 1 не-брендовый хардкод.
 
 ---
 
 ## Требования к безопасности
 
-### SR-01: Auth guards
-`POST /api/dashboard/reset` и `POST /api/dashboard/seed` доступны без аутентификации. В продакшене должны быть защищены.
+### SR-01: Auth guards на reset/seed
+**Проверено по исходникам:**
+- `src/app/api/dashboard/reset/route.ts` — содержит `requireAdmin()`, проверяет JWT-токен на роль `admin` или `owner`. Возвращает 403 если не авторизован.
+- `src/app/api/dashboard/seed/route.ts` — аналогично, `requireAdmin()`.
+
+**Утверждение "без аутентификации" — опровергнуто.** Auth guards добавлены. Но: `requireAdmin()` использует `atob()` для декодирования JWT без верификации подписи — это уязвимость (можно подделать токен).
 
 ### SR-02: Дефолтные креды
-Seed-скрипт создаёт admin/admin. Для продакшена — обязательная смена при первом входе.
+Seed создаёт агентов, не пользователей. Логин/пароль — не в seed-скрипте, а в auth-логике. Нужно проверить отдельно.
 
 ---
 
 ## Требования к UI
 
 ### UI-01: 12 экранов
-Полный набор экранов описан в `architecture/3a-studio-screens.md`. Текущий статус:
-- Работают: Dashboard, Agents, Hierarchy, Flow Editor, Prompt Studio, Quality Analyzer, Skills, Standards, Knowledge, Settings
-- Частично: Templates, Pipelines, Audit, Wiki
+Перечислены в `architecture/3a-studio-screens.md`. Маршруты в `src/app/(dashboard)/`.
 
 ### UI-02: Design tokens
-Все цвета, отступы, размеры — через токены. Не через hex напрямую.
+@stsgs/ui предоставляет токены. Новый код — через токены, не через hex.
 
 ### UI-03: Язык интерфейса — English
-UI тексты, кнопки, лейблы — на английском. Русский — только в Wiki и чатах. См. `decisions/language-strategy.md`.
+См. `decisions/language-strategy.md`.
+
+---
+
+## z-ai-web-dev-sdk
+
+**Проверено:** SDK **используется** в `src/lib/llm/client.ts`:
+```typescript
+const mod = await import('z-ai-web-dev-sdk');
+_zaiSDK = await (mod.default ?? mod).create();
+```
+Используется как provider `zai` (по умолчанию активный). **Утверждение "никогда не используется" — опровергнуто.**
 
 ---
 
 ## Коммит-паттерн
 
-Текущий паттерн в репо: 58% fix, 22% feat, 20% мусор (UUID вместо сообщений). Целевой паттерн:
+**Проверено по `git log --oneline` (последние 40 коммитов):**
+- UUID-коммиты (без описания): 10 из 40 = 25%
+- fix: 17 из 40 = 42%
+- feat: 8 из 40 = 20%
+- docs/chore: 5 из 40 = 13%
 
-| Тип | Доля | Описание |
-|-----|------|----------|
-| feat | 50%+ | Новая функциональность |
-| fix | <30% | Исправления |
-| refactor | 10-15% | Реструктуризация |
-| chore/docs | 5-10% | Обслуживание |
-
-Если fix > 50% — мы тушим пожары, не строим. Это сигнал к остановке и анализу.
+UUID-коммиты — мусор. Нужно правило: коммит без осмысленного сообщения = не принимается.
