@@ -17,7 +17,7 @@
 | Правила | [rules.md](rules.md) | Обязательные для всех проектов |
 | Стандарты | [standards.md](standards.md) | Детальные стандарты кода |
 | Решения | [decisions/](decisions/language-strategy.md) | Кросс-проектные ADRы |
-| Протоколы | [protocols.md](protocols.md) | Что делать при старте проекта/сессии |
+| Протоколы | [session-protocol.md](session-protocol.md) / [new-project-protocol.md](new-project-protocol.md) | Что делать при старте |
 
 ---
 

@@ -2,15 +2,23 @@
 
 > Личная база знаний экосистемы из 54 репозиториев. Принципы, решения, карта связей, документация.
 
-## Входная точка
+## Ядро (устав)
 
-**[Карта экосистемы](ecosystem-map.md)** — все проекты, их статусы и связи между ними. Это первое, что нужно открыть.
+Это первое что читает любая новая AI-сессия:
+
+| Файл | Суть |
+|------|------|
+| [about.md](about.md) | Кто автор, стек, подход |
+| [ecosystem-map.md](ecosystem-map.md) | Все 54 проекта + связи + статусы |
+| [rules.md](rules.md) | 8 обязательных правил |
+| [standards.md](standards.md) | Стандарты кода |
+| [session-protocol.md](session-protocol.md) | Что делать при начале сессии |
+| [new-project-protocol.md](new-project-protocol.md) | Что делать при создании нового проекта |
 
 ## Разделы
 
 | Раздел | Что внутри |
 |--------|-----------|
-| [Карта экосистемы](ecosystem-map.md) | Все 54 проекта + связи + статусы |
 | [Принципы](principles/anti-hallucination.md) | Вечные правила для всех проектов |
 | [Решения](decisions/language-strategy.md) | Кросс-проектные ADRы |
 | [Пакеты](packages/ui.md) | Переиспользуемые пакеты (@stsgs/ui, @stsgs/prompting, @stsgs/shared) |
@@ -33,7 +41,7 @@
 | [ACTIVE] | Рабочий код, активно развивается |
 | [NEW] | Greenfield, начало разработки |
 | [REFERENCE] | Read-only, не модифицируем |
-| [LOCAL] | Локальный исходник, не на GitHub |
+| [LOCAL] | Локальный исходник |
 | [ARCHIVED] | Мёртвый, не развивается |
 | [PACKAGE] | Переиспользуемый пакет |
 
@@ -41,18 +49,23 @@
 
 ```
 StsDev-Wiki/
-├── SUMMARY.md          ← навигация для GitBook
-├── README.md           ← эта страница
-├── ecosystem-map.md    ← карта экосистемы (главная)
-├── principles/         ← вечные правила
-├── decisions/          ← кросс-проектные ADRы
-├── packages/           ← переиспользуемые пакеты
-├── projects/           ← все проекты по группам
-│   ├── _archived/      ← мёртвые проекты
-│   ├── 3a-studio/      ← [NEW] включая decisions/
-│   ├── p-mas-studio/   ← [ACTIVE]
+├── SUMMARY.md                ← навигация для GitBook
+├── README.md                 ← эта страница
+├── about.md                  ← об авторе
+├── ecosystem-map.md          ← карта экосистемы (главная)
+├── rules.md                  ← 8 обязательных правил
+├── standards.md              ← стандарты кода
+├── session-protocol.md       ← протокол начала сессии
+├── new-project-protocol.md   ← протокол нового проекта
+├── principles/               ← вечные правила
+├── decisions/                ← кросс-проектные ADRы
+├── packages/                 ← переиспользуемые пакеты
+├── projects/                 ← все проекты по группам
+│   ├── _archived/            ← мёртвые проекты
+│   ├── 3a-studio/            ← [NEW] включая decisions/
+│   ├── p-mas-studio/         ← [ACTIVE]
 │   └── ...
-├── agents/             ← кто работает
-├── guides/             ← инструкции
-└── references/         ← внешние материалы
+├── agents/                   ← кто работает
+├── guides/                   ← инструкции
+└── references/               ← внешние материалы
 ```
