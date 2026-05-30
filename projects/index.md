@@ -5,17 +5,32 @@
 
 ---
 
-## Ядро экосистемы (7)
+## Активные проекты (2)
 
-| Проект | Статус | Описание | Детали |
-|--------|--------|----------|--------|
-| 3A Studio | [NEW] | IDE для multi-agent систем (12 экранов) | [README](3a-studio/README.md) |
-| P-MAS-architector | [ARCHIVED] | Источник @stsgs/prompting | [README](_archived/p-mas-architector/README.md) |
-| P-MAS_init | [ARCHIVED] | Agent Hierarchy Dashboard v1 | [GitHub](https://github.com/stsgs1980/P-MAS_init) |
-| Stanislav-graur | [ACTIVE] | Личный сайт (приватный) | [GitHub](https://github.com/stsgs1980/Stanislav-graur) |
-| StsDev-Wiki | [ACTIVE] | База знаний (этот репо) | [GitHub](https://github.com/stsgs1980/StsDev-Wiki) |
-| Zai-agent-toolkit | [REFERENCE] | Стандарты, навыки, read-only | [README](zai-agent-toolkit/README.md) |
-| Zai-agent-toolkit-by-PMAS | [ARCHIVED] | Ранняя версия toolkit | [GitHub](https://github.com/stsgs1980/Zai-agent-toolkit-by-PMAS) |
+| Проект | Описание | Детали |
+|--------|----------|--------|
+| StsDev-Wiki | База знаний экосистемы | [GitHub](https://github.com/stsgs1980/StsDev-Wiki) |
+| Stanislav-graur 🔒 | Личный сайт | [GitHub](https://github.com/stsgs1980/Stanislav-graur) |
+
+## Новые проекты (1)
+
+| Проект | Описание | Детали |
+|--------|----------|--------|
+| 3A Studio | IDE для multi-agent систем (12 экранов) | [README](3a-studio/README.md) |
+
+## Reference (1)
+
+| Проект | Описание | Детали |
+|--------|----------|--------|
+| Zai-agent-toolkit | Стандарты, навыки, read-only | [README](zai-agent-toolkit/README.md) |
+
+## Архив (3)
+
+| Проект | Описание |
+|--------|----------|
+| [P-MAS-architector](https://github.com/stsgs1980/P-MAS-architector) | Источник @stsgs/prompting |
+| [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) | Agent Hierarchy Dashboard v1 |
+| [Zai-agent-toolkit-by-PMAS](https://github.com/stsgs1980/Zai-agent-toolkit-by-PMAS) | Ранняя версия toolkit |
 
 ## UI / Дизайн-системы (14)
 

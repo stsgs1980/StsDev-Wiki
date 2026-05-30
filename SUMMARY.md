@@ -1,6 +1,6 @@
 # SUMMARY
 
-## Ядро
+## Ядро (устав)
 * [Об авторе](about.md)
 * [Карта экосистемы](ecosystem-map.md)
 * [Правила](rules.md)
@@ -22,9 +22,9 @@
 * [@stsgs/shared](packages/shared.md)
 
 ## Проекты
-* [Все 54 проекта](projects/index.md)
+* [Все 54 проекта по группам](projects/index.md)
 
-### Ядро экосистемы
+### По статусам
 * [3A Studio [NEW]](projects/3a-studio/README.md)
   * [Master Plan](projects/3a-studio/master-plan.md)
   * [Экраны](projects/3a-studio/screens.md)
@@ -40,8 +40,6 @@
 * [P-mas-studio [ACTIVE]](projects/p-mas-studio/README.md)
 * [Zai-agent-toolkit [REFERENCE]](projects/zai-agent-toolkit/README.md)
 * [Личный сайт [ACTIVE]](projects/personal-site/README.md)
-
-### Локальные
 * [Flow-Studio-Pro [LOCAL]](projects/flow-studio-pro/README.md)
 * [Component-Browser [LOCAL]](projects/component-browser/README.md)
 
