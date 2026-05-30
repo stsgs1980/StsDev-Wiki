@@ -9,7 +9,6 @@
 * [Карта экранов (12 штук)](architecture/3a-studio-screens.md)
 
 ## Решения
-* [Все решения](decisions/3a-studio-naming.md)
 * [Почему 3A Studio](decisions/3a-studio-naming.md)
 * [Языковая стратегия](decisions/language-strategy.md)
 * [Web, не Desktop](decisions/desktop-vs-web.md)
@@ -17,6 +16,8 @@
 * [Monorepo с пакетами](decisions/monorepo-vs-polyrepo.md)
 * [SQLite, не ChromaDB](decisions/sqlite-vs-chromadb.md)
 * [Стратегия синтеза (как переносим код)](decisions/synthesis-strategy.md)
+* [Анти-галлюцинационный протокол](decisions/anti-hallucination-protocol.md)
+* [Протокол строительства 4D](decisions/construction-protocol.md)
 
 ## Архитектура
 * [Карта экосистемы (все 7+ проектов)](architecture/ecosystem-map.md)
@@ -30,9 +31,7 @@
 * [Личный сайт](projects/personal-site.md)
 
 ## Агенты
-* [Все агенты](agents/index.md)
-* [Fullstack Developer](agents/fullstack-developer.md)
-* [Code Reviewer](agents/code-reviewer.md)
+* [Все агенты (Станислав, Z.ai, 3A Studio)](agents/index.md)
 
 ## Гайды
 * [Все гайды](guides/index.md)
