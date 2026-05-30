@@ -3,10 +3,17 @@
 ## Старт
 * [О базе знаний](README.md)
 
-## 3A Studio -- Главный проект
-* [3A Studio -- обзор](projects/3a-studio.md)
-* [Master Plan (8 фаз, задачи, сроки)](projects/3a-studio-master-plan.md)
+## Принципы
+* [Анти-галлюцинация](principles/anti-hallucination.md)
+* [Строительство 4D](principles/construction-4d.md)
+* [Верификация](principles/verification.md)
+
+## 3A Studio
+* [Обзор](projects/3a-studio.md)
+* [Master Plan (8 фаз)](projects/3a-studio-master-plan.md)
 * [Карта экранов (12 штук)](architecture/3a-studio-screens.md)
+* [Требования](projects/3a-studio/requirements.md)
+* [Прогресс](projects/3a-studio/progress.md)
 
 ## Решения
 * [Почему 3A Studio](decisions/3a-studio-naming.md)
@@ -15,13 +22,11 @@
 * [Toolkit отдельно](decisions/toolkit-placement.md)
 * [Monorepo с пакетами](decisions/monorepo-vs-polyrepo.md)
 * [SQLite, не ChromaDB](decisions/sqlite-vs-chromadb.md)
-* [Стратегия синтеза (как переносим код)](decisions/synthesis-strategy.md)
-* [Анти-галлюцинационный протокол](decisions/anti-hallucination-protocol.md)
-* [Протокол строительства 4D](decisions/construction-protocol.md)
+* [Стратегия синтеза](decisions/synthesis-strategy.md)
 
 ## Архитектура
-* [Карта экосистемы (все 7+ проектов)](architecture/ecosystem-map.md)
-* [Экраны 3A Studio (статус)](architecture/3a-studio-screens.md)
+* [Карта экосистемы](architecture/ecosystem-map.md)
+* [Экраны 3A Studio](architecture/3a-studio-screens.md)
 
 ## Проекты
 * [Все проекты](projects/index.md)
@@ -31,15 +36,15 @@
 * [Личный сайт](projects/personal-site.md)
 
 ## Агенты
-* [Все агенты (Станислав, Z.ai, 3A Studio)](agents/index.md)
+* [Все агенты](agents/index.md)
 
 ## Гайды
 * [Все гайды](guides/index.md)
 * [Как работать в Z.ai песочнице](guides/sandbox-workflow.md)
-* [Preview & Dev Server в Z.ai Sandbox](guides/sandbox-preview-situational.md)
-* [Z.ai Sandbox -- Unified Guide (EN)](guides/ZAI_SANDBOX_GUIDE.md)
-* [Техники управления памятью LLM](guides/llm-memory-techniques.md)
-* [Rust Performance Optimization](guides/rust-performance-optimization.md)
+* [Preview & Dev Server](guides/sandbox-preview-situational.md)
+* [Z.ai Sandbox Guide (EN)](guides/ZAI_SANDBOX_GUIDE.md)
+* [Техники памяти LLM](guides/llm-memory-techniques.md)
+* [Rust Performance](guides/rust-performance-optimization.md)
 
 ## Референсы
 * [Все референсы](references/index.md)
