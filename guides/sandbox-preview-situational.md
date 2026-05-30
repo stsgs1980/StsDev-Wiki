@@ -1,9 +1,9 @@
 # Ситуативный гайд: Preview & Dev Server в Z.ai Sandbox
 
-**Дата:** 2026-05-28 | **Обновлено:** 2026-05-29 (v2.1)
+**Дата:** 2026-05-28 | **Обновлено:** 2026-05-30 (v2.2)
 **Для кого:** любой AI-агент в сессии со сложным Next.js проектом (multi-route, >50 файлов)
 **Статус:** активный
-**Канонический документ:** см. `ZAI_SANDBOX_GUIDE.md` -- основной верифицированный гайд
+**Полный workflow:** см. [sandbox-workflow.md](sandbox-workflow.md) — клонирование, стратегии, мины
 
 ---
 
@@ -84,9 +84,6 @@ Caddy (:81) -- reverse proxy
 Проект сложный (50+ файлов, много client components, SVG анимации)
   --> Production mode по умолчанию
   --> Dev mode ТОЛЬКО если нужно итеративно править 1-2 файла
-
-3A Studio
-  --> Production mode. Turbopack падал при компиляции dashboard.
 ```
 
 ---
@@ -173,17 +170,21 @@ sleep 3
 
 ---
 
-## Шаблон start-of-session для 3A Studio
+## Старт сессии
+
+Полный протокол начала сессии: [sandbox-workflow.md](sandbox-workflow.md) — стратегии A/B/C, клонирование, мины.
+
+Быстрая последовательность для запуска сложного проекта:
 
 ```bash
-# 1. Клонировать ВСЕ репо (см. sandbox-workflow.md)
+# 1. Клонировать wiki + проект + источники (по sandbox-workflow.md)
 git clone https://github.com/stsgs1980/StsDev-Wiki.git /tmp/wiki
-git clone --depth 1 https://github.com/stsgs1980/P-mas-studio.git /tmp/p-mas-studio
-git clone --depth 1 https://github.com/stsgs1980/P-MAS-architector.git /tmp/architector
-# ... остальные по списку из sandbox-workflow.md
+git clone --depth 1 <PROJECT_URL> /tmp/project
+# + источники по ecosystem-map.md
 
-# 2. Загрузить рабочий код
-cd /home/z/my-project && git pull origin main
+# 2. Развернуть проект
+cd /home/z/my-project && ls -A | grep -v '^.zscripts$' | grep -v '^upload$' | xargs rm -rf
+rsync -a --exclude='.zscripts/' --exclude='upload/' /tmp/project/ /home/z/my-project/
 
 # 3. Попробовать стандартный запуск через dev.sh
 bash /home/z/my-project/.zscripts/dev.sh
@@ -199,10 +200,6 @@ if [ "$STATUS" = "000" ] || [ "$STATUS" = "500" ]; then
   sleep 3
   curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/
 fi
-
-# 5. Читать контекст
-cat /tmp/wiki/decisions/synthesis-strategy.md
-cat /tmp/wiki/projects/3a-studio-master-plan.md
 ```
 
 ---

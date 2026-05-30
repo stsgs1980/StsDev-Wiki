@@ -4,6 +4,6 @@
 
 ## Песочница Z.ai
 
-* [Как работать в Z.ai песочнице](sandbox-workflow.md) — клонирование, dev.sh, rsync, PAT, мины-замедлители
-* [Preview & Dev Server в Z.ai Sandbox](sandbox-preview-situational.md) — Dev vs Production mode, ситуативная таблица, Caddy архитектура
-* [Z.ai Sandbox -- Unified Guide (EN)](ZAI_SANDBOX_GUIDE.md) — канонический английский гайд
+* [Как работать в Z.ai песочнице](sandbox-workflow.md) — полный цикл: wiki → clone → dev → push. Стратегии A/B/C, мины-замедлители, шпаргалка
+* [Preview & Dev Server](sandbox-preview-situational.md) — Dev vs Production mode, ситуативная таблица, Caddy архитектура
+* [Z.ai Sandbox Guide (EN)](ZAI_SANDBOX_GUIDE.md) — английская версия гайда по песочнице

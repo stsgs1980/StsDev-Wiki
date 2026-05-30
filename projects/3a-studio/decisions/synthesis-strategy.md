@@ -20,12 +20,12 @@
 
 | Файл/папка | Репо | Почему |
 |------------|------|--------|
-| `agent-hierarchy.tsx` | P-mas-studio | 3,455 строк мёртвого кода |
-| `layout/features/` | P-mas-studio | Мёртвый код |
-| `layout/app-shell.tsx` | P-mas-studio | Мёртвый код |
-| `layout/sections/` | P-mas-studio | Дубликаты |
-| `docs-pmas/` | P-mas-studio | Дубликаты wireframe |
-| Дубликаты утилит (hexToRgb x4, SectionLabel x4) | P-mas-studio | Уже есть в @stsgs/shared |
+| `agent-hierarchy.tsx` | P-MAS-architector | 3,455 строк мёртвого кода |
+| `layout/features/` | P-MAS-architector | Мёртвый код |
+| `layout/app-shell.tsx` | P-MAS-architector | Мёртвый код |
+| `layout/sections/` | P-MAS-architector | Дубликаты |
+| `docs-pmas/` | P-MAS-architector | Дубликаты wireframe |
+| Дубликаты утилит (hexToRgb x4, SectionLabel x4) | P-MAS-architector | Уже есть в @stsgs/shared |
 
 ## Процесс переноса (для каждой фазы)
 
@@ -48,14 +48,14 @@
 | Фаза | Что берём | Откуда | Anti-monolith риск |
 |------|-----------|--------|-------------------|
 | Phase 0 | Типы, prompting, eslint | Написано с нуля (стабы) | Низкий (2 файла 200 строк) |
-| Phase 1 | Root layout, sidebar | P-mas-studio/src/app/layout.tsx | Низкий |
+| Phase 1 | Root layout, sidebar | P-MAS-architector/src/app/layout.tsx | Низкий |
 | Phase 2 | (очистка -- удаляем, не переносим) | -- | -- |
 | Phase 3 | Flow Editor (Zustand store, NodeExecutor, EventBus, 18 node types) | MVP-Flow-Studio-Pro/src/lib/flow/ + Flow-Studio-Pro/src/components/flow/ | **Высокий** -- NodeFactory, FlowEditor, CustomNodes |
-| Phase 4 | Dashboard (KPI strip, charts, heatmap, timeline) | P-mas-studio/src/components/dashboard/ (20 файлов) | **Высокий** -- architecture-diagram.tsx, formula-flow-diagram.tsx |
-| Phase 5 | Agent CRUD, hierarchy graph | P-mas-studio/src/components/hierarchy/ (24 файла) | **Средний** -- agent-hierarchy-v2.tsx |
+| Phase 4 | Dashboard (KPI strip, charts, heatmap, timeline) | P-MAS-architector/src/components/dashboard/ (20 файлов) | **Высокий** -- architecture-diagram.tsx, formula-flow-diagram.tsx |
+| Phase 5 | Agent CRUD, hierarchy graph | P-MAS-architector/src/components/hierarchy/ (24 файла) | **Средний** -- agent-hierarchy-v2.tsx |
 | Phase 6 | Knowledge Base UI | Toolkit паттерны (MemoryBrowser.tsx 414 строк) | **Средний** |
 | Phase 7A | Template Gallery | MVP-Flow-Studio-Pro/src/components/flow/TemplateGallery.tsx | Низкий |
-| Phase 7C | Skill Forge | P-mas-studio/agents/ + toolkit patterns | Низкий |
+| Phase 7C | Skill Forge | P-MAS-architector/agents/ + toolkit patterns | Низкий |
 
 ## Anti-monolith правила
 
@@ -80,7 +80,6 @@ git clone https://github.com/stsgs1980/StsDev-Wiki.git /tmp/wiki
 git clone https://github.com/stsgs1980/3a-studio.git /tmp/3a-studio
 
 # === Источники кода (только чтение, shallow) ===
-git clone --depth 1 https://github.com/stsgs1980/P-mas-studio.git /tmp/p-mas-studio
 git clone --depth 1 https://github.com/stsgs1980/MVP-Flow-Studio-Pro.git /tmp/mvp-flow
 git clone --depth 1 https://github.com/stsgs1980/Flow-Studio-Pro.git /tmp/flow-pro
 git clone --depth 1 https://github.com/stsgs1980/prompting-v0.0.git /tmp/prompting-v0
@@ -88,17 +87,18 @@ git clone --depth 1 https://github.com/stsgs1980/P-MAS-architector.git /tmp/arch
 git clone --depth 1 https://github.com/stsgs1980/Zai-agent-toolkit.git /tmp/toolkit
 ```
 
+> **Примечание:** P-mas-studio удалён с GitHub (2026-05-30). Его функции перенесены в P-MAS-architector.
+
 ### Что внутри каждого репо
 
 | Репо | Папка в /tmp/ | Что содержимое | Для каких фаз
 |------|--------------|----------------|---------------|
 | **StsDev-Wiki** | `/tmp/wiki` | Решения, master plan, гайды | Все (контекст)
 | **3a-studio** | `/tmp/3a-studio` | Текущий код (рабочий проект) | Все (писать сюда)
-| **P-mas-studio** | `/tmp/p-mas-studio` | Dashboard, hierarchy, prompt-studio, workflows, packages/ui (276 файлов), eslint-plugin, API routes, Prisma | Phase 4, 5, 7
+| **P-MAS-architector** | `/tmp/architector` | Dashboard, hierarchy, prompt-studio, workflows, packages/ui, eslint-plugin, API routes, Prisma, @stsgs/prompting (30+ файлов), skills, standards, docs | Phase 0, 4, 5, 7
 | **MVP-Flow-Studio-Pro** | `/tmp/mvp-flow` | EventBus, NodeExecutor, LLMProvider, NodeFactory, FlowEditor, CustomNodes, TemplateGallery, VersionHistory | **Phase 3 (критично)**, 7A
 | **Flow-Studio-Pro** | `/tmp/flow-pro` | React Flow v12 паттерны, Zustand store, flow-canvas, node-config-panel, node-palette | **Phase 3**, 7A
 | **prompting-v0.0** | `/tmp/prompting-v0` | 20 когнитивных формул, 6 критериев оценки, blind comparison, intent detection | Phase 0 (prompting пакет)
-| **P-MAS-architector** | `/tmp/architector` | @stsgs/prompting (30+ файлов), skills, standards, docs | Phase 0, 7C
 | **Zai-agent-toolkit** | `/tmp/toolkit` | 19 стандартов, agent templates, dashboard-паттерны | Phase 7D, 8
 
 ### Ключевые файлы для Phase 3 (Flow Editor)

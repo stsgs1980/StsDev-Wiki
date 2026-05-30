@@ -1,8 +1,8 @@
 # Z.ai Sandbox -- Unified Workflow Guide
 
-**Version:** 2.1 | **Date:** 2026-05-29 | **Status:** Verified on P-MAS-architector + P-mas-studio (live sandbox)
-**Bug audit:** 5 issues found and fixed (v2.1). See changelog at end of document.
-**Supersedes:** ZAI_SANDBOX_INSTRUCTIONS.md, sandbox-workflow.md, sandbox-rules.md
+**Version:** 3.0 | **Date:** 2026-05-30 | **Status:** Universal (not project-specific)
+**Supersedes:** ZAI_SANDBOX_INSTRUCTIONS.md, sandbox-rules.md
+**Russian version:** sandbox-workflow.md
 
 ---
 
