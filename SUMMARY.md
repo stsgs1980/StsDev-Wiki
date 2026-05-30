@@ -18,37 +18,33 @@
 * [@stsgs/shared](packages/shared.md)
 
 ## Проекты
-* [Все проекты](projects/index.md)
+* [Все 54 проекта](projects/index.md)
 
-### Активные
-* [P-mas-studio [ACTIVE]](projects/p-mas-studio/README.md)
-* [Личный сайт [ACTIVE]](projects/personal-site/README.md)
-
-### Новые
+### Ядро экосистемы
 * [3A Studio [NEW]](projects/3a-studio/README.md)
   * [Master Plan](projects/3a-studio/master-plan.md)
   * [Экраны](projects/3a-studio/screens.md)
   * [Требования](projects/3a-studio/requirements.md)
   * [Прогресс](projects/3a-studio/progress.md)
-  * [Решения](projects/3a-studio/decisions/3a-studio-naming.md)
+  * Решения
     * [Название 3A Studio](projects/3a-studio/decisions/3a-studio-naming.md)
     * [Web, не Desktop](projects/3a-studio/decisions/desktop-vs-web.md)
     * [Toolkit отдельно](projects/3a-studio/decisions/toolkit-placement.md)
     * [Monorepo с пакетами](projects/3a-studio/decisions/monorepo-vs-polyrepo.md)
     * [SQLite, не ChromaDB](projects/3a-studio/decisions/sqlite-vs-chromadb.md)
     * [Стратегия синтеза](projects/3a-studio/decisions/synthesis-strategy.md)
-
-### Reference
+* [P-mas-studio [ACTIVE]](projects/p-mas-studio/README.md)
 * [Zai-agent-toolkit [REFERENCE]](projects/zai-agent-toolkit/README.md)
+* [Личный сайт [ACTIVE]](projects/personal-site/README.md)
 
 ### Локальные
 * [Flow-Studio-Pro [LOCAL]](projects/flow-studio-pro/README.md)
 * [Component-Browser [LOCAL]](projects/component-browser/README.md)
 
 ### Архив
-* [P-MAS-architector [ARCHIVED]](projects/_archived/p-mas-architector/README.md)
-* [prompting-v0.0 [ARCHIVED]](projects/_archived/prompting-v0/README.md)
-* [MVP-Flow-Studio-Pro [ARCHIVED]](projects/_archived/mvp-flow-studio-pro/README.md)
+* [P-MAS-architector](projects/_archived/p-mas-architector/README.md)
+* [prompting-v0.0](projects/_archived/prompting-v0/README.md)
+* [MVP-Flow-Studio-Pro](projects/_archived/mvp-flow-studio-pro/README.md)
 
 ## Агенты
 * [Все агенты](agents/index.md)
