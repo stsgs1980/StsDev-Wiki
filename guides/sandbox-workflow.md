@@ -80,10 +80,12 @@ rm -rf /home/z/my-project/skills 2>/dev/null
 rsync -a --exclude='.zscripts/' --exclude='upload/' /tmp/project/ /home/z/my-project/
 
 # Fallback если rsync нет:
-cp -r /home/z/my-project/.zscripts/ /tmp/zscripts-backup/
+mkdir -p /tmp/zscripts-backup
+cp -a /home/z/my-project/.zscripts/. /tmp/zscripts-backup/
 cp -r /tmp/project/. /home/z/my-project/
 rm -rf /home/z/my-project/.zscripts/
-cp -r /tmp/zscripts-backup/ /home/z/my-project/.zscripts/
+mkdir -p /home/z/my-project/.zscripts/
+cp -a /tmp/zscripts-backup/. /home/z/my-project/.zscripts/
 ```
 
 ### Шаг 3: Git + dev-сервер

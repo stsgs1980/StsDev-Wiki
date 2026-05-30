@@ -65,7 +65,6 @@
 * [Все гайды](guides/index.md)
 * [Работа в Z.ai песочнице](guides/sandbox-workflow.md)
 * [Preview & Dev Server](guides/sandbox-preview-situational.md)
-* [Z.ai Sandbox Guide (EN)](guides/ZAI_SANDBOX_GUIDE.md)
 
 ## Референсы
 * [Все референсы](references/index.md)
