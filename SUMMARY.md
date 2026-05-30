@@ -3,6 +3,8 @@
 ## Ядро
 * [Об авторе](about.md)
 * [Карта экосистемы](ecosystem-map.md)
+* [Правила](rules.md)
+* [Стандарты кода](standards.md)
 * [Протокол начала сессии](session-protocol.md)
 * [Протокол нового проекта](new-project-protocol.md)
 
