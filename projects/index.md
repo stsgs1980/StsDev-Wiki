@@ -1,33 +1,29 @@
 # Проекты
 
-Список всех репозиториев и проектов.
+Все проекты экосистемы — равноправные участники со связями между собой.
+Карта связей: [ecosystem-map.md](../ecosystem-map.md)
 
-## Главный проект
+## Активные проекты
 
-| Проект | Описание | Ссылка | Статус |
-|--------|----------|--------|--------|
-| **3A Studio** | AI IDE для визуального построения multi-agent систем (12 экранов) | [Подробнее](3a-studio/README.md) | Активная разработка |
+| Проект | Статус | Описание | Детали |
+|--------|--------|----------|--------|
+| P-mas-studio | [ACTIVE] | Рабочий код, 1066 файлов, источник компонентов | [README](p-mas-studio/README.md) |
+| 3A Studio | [NEW] | Greenfield, AI IDE для multi-agent систем | [README](3a-studio/README.md) |
+| Zai-agent-toolkit | [REFERENCE] | Стандарты, навыки, read-only | [README](zai-agent-toolkit/README.md) |
+| Личный сайт | [ACTIVE] | Sales Digital AI Transformation | [README](personal-site/README.md) |
+| StsDev-Wiki | [ACTIVE] | База знаний экосистемы | [GitHub](https://github.com/stsgs1980/StsDev-Wiki) |
 
-## Исходники для 3A Studio
+## Локальные проекты
 
-| Проект | Что даёт 3A Studio | Ссылка | Статус |
-|--------|-------------------|--------|--------|
-| P-mas-studio | Компоненты, API, пакеты, Prisma | [Подробнее](p-mas-studio.md) | Источник, потом архив |
-| Zai-agent-toolkit | Стандарты, паттерны | [Подробнее](agent-toolkit.md) | Read-only reference |
-| P-MAS-architector | Библиотека @stsgs/prompting | [GitHub](https://github.com/stsgs1980/P-MAS-architector) | Архив |
-| Flow-Studio-Pro | React Flow v12 паттерны, EventBus | Локально | Исходник |
-| MVP-Flow-Studio-Pro | NodeExecutor, LLMProvider | Локально | Исходник |
+| Проект | Статус | Описание | Детали |
+|--------|--------|----------|--------|
+| Flow-Studio-Pro | [LOCAL] | React Flow v12 паттерны | [README](flow-studio-pro/README.md) |
+| Component-Browser | [LOCAL] | UI компоненты для @stsgs/ui | [README](component-browser/README.md) |
 
-## Инфраструктура
+## Архив
 
-| Проект | Описание | Ссылка | Статус |
-|--------|----------|--------|--------|
-| StsDev-Wiki (текущий) | База знаний, решения, архитектура | [GitHub](https://github.com/stsgs1980/StsDev-Wiki) | Активный |
-| Личный сайт | Sales Digital AI Transformation | [GitHub](https://github.com/stsgs1980/Stanislav-graur) | Активный |
-
-## Учебные
-
-| Проект | Описание | Ссылка |
-|--------|----------|--------|
-| Llm-memory-techniques | 6 техник управления контекстом LLM | [GitHub](https://github.com/stsgs1980/Llm-memory-techniques) |
-| Rust-performance-optimization | Оптимизация Rust-кода с бенчмарками | [GitHub](https://github.com/stsgs1980/Rust-performance-optimization) |
+| Проект | Статус | Что дал экосистеме | Детали |
+|--------|--------|--------------------|--------|
+| P-MAS-architector | [ARCHIVED] | @stsgs/prompting, skills, standards | [README](_archived/p-mas-architector/README.md) |
+| prompting-v0.0 | [ARCHIVED] | 20 когнитивных формул | [README](_archived/prompting-v0/README.md) |
+| MVP-Flow-Studio-Pro | [ARCHIVED] | Flow Editor backend | [README](_archived/mvp-flow-studio-pro/README.md) |

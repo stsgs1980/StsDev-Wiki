@@ -2,34 +2,53 @@
 
 ## Старт
 * [О базе знаний](README.md)
+* [Карта экосистемы](ecosystem-map.md)
 
 ## Принципы
 * [Анти-галлюцинация](principles/anti-hallucination.md)
 * [Строительство 4D](principles/construction-4d.md)
 * [Верификация](principles/verification.md)
 
-## Архитектура
-* [Карта экосистемы](architecture/ecosystem-map.md)
-
-## Решения
-* [Почему 3A Studio](decisions/3a-studio-naming.md)
+## Решения (кросс-проектные)
 * [Языковая стратегия](decisions/language-strategy.md)
-* [Web, не Desktop](decisions/desktop-vs-web.md)
-* [Toolkit отдельно](decisions/toolkit-placement.md)
-* [Monorepo с пакетами](decisions/monorepo-vs-polyrepo.md)
-* [SQLite, не ChromaDB](decisions/sqlite-vs-chromadb.md)
-* [Стратегия синтеза](decisions/synthesis-strategy.md)
+
+## Пакеты
+* [@stsgs/ui](packages/ui.md)
+* [@stsgs/prompting](packages/prompting.md)
+* [@stsgs/shared](packages/shared.md)
 
 ## Проекты
 * [Все проекты](projects/index.md)
-* [3A Studio](projects/3a-studio/README.md)
+
+### Активные
+* [P-mas-studio [ACTIVE]](projects/p-mas-studio/README.md)
+* [Личный сайт [ACTIVE]](projects/personal-site/README.md)
+
+### Новые
+* [3A Studio [NEW]](projects/3a-studio/README.md)
   * [Master Plan](projects/3a-studio/master-plan.md)
   * [Экраны](projects/3a-studio/screens.md)
   * [Требования](projects/3a-studio/requirements.md)
   * [Прогресс](projects/3a-studio/progress.md)
-* [P-mas-studio (источник)](projects/p-mas-studio.md)
-* [Zai-agent-toolkit](projects/agent-toolkit.md)
-* [Личный сайт](projects/personal-site.md)
+  * [Решения](projects/3a-studio/decisions/3a-studio-naming.md)
+    * [Название 3A Studio](projects/3a-studio/decisions/3a-studio-naming.md)
+    * [Web, не Desktop](projects/3a-studio/decisions/desktop-vs-web.md)
+    * [Toolkit отдельно](projects/3a-studio/decisions/toolkit-placement.md)
+    * [Monorepo с пакетами](projects/3a-studio/decisions/monorepo-vs-polyrepo.md)
+    * [SQLite, не ChromaDB](projects/3a-studio/decisions/sqlite-vs-chromadb.md)
+    * [Стратегия синтеза](projects/3a-studio/decisions/synthesis-strategy.md)
+
+### Reference
+* [Zai-agent-toolkit [REFERENCE]](projects/zai-agent-toolkit/README.md)
+
+### Локальные
+* [Flow-Studio-Pro [LOCAL]](projects/flow-studio-pro/README.md)
+* [Component-Browser [LOCAL]](projects/component-browser/README.md)
+
+### Архив
+* [P-MAS-architector [ARCHIVED]](projects/_archived/p-mas-architector/README.md)
+* [prompting-v0.0 [ARCHIVED]](projects/_archived/prompting-v0/README.md)
+* [MVP-Flow-Studio-Pro [ARCHIVED]](projects/_archived/mvp-flow-studio-pro/README.md)
 
 ## Агенты
 * [Все агенты](agents/index.md)
