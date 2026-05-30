@@ -1,19 +1,43 @@
 # @stsgs/ui
 
-**Дизайн-система и компонентная библиотека**
+**Interface Studio: Context-aware interface builder**
 
 - **Статус:** [PACKAGE]
-- **Источник:** P-mas-studio/packages/ui/ (276 файлов)
-- **Судьба:** Переиспользуемый пакет в экосистеме
+- **GitHub:** https://github.com/stsgs1980/UI-Kit
+- **Коммиты:** 99
+- **Размер:** 18 MB
+- **Стек:** Next.js 16, React 19, TypeScript 5.7+ (strict), Tailwind CSS 4, shadcn/ui, Radix UI, Turborepo, tsup
 
 ---
 
-## Что содержит
+## Что это (из README)
 
-- 31 feature-модуль (gauge, sparkline, force-graph, IDE layout)
-- Design tokens (цвета, отступы, типографика)
-- Хуки и утилиты для UI
-- Wave 1-3 компонентов (пополнение из Component-Browser)
+Не просто компонентная библиотека — **контекстно-зависимый interface builder**: берёт context (goal, audience, style) → производит layout + theme + components + code.
+
+### Three Engines
+
+| Engine | Статус | Описание |
+|--------|--------|----------|
+| Layout Engine | **Done** | 51 рецепт, хук `useLayoutAdvice` |
+| Theme Engine | In progress | 5 пресетов, функция `recommendTheme()` |
+| Component Engine | Planned | — |
+
+### Ключевые возможности
+
+- **Anti-monolith ESLint** — принудительная модульность
+- **No-Unicode Policy** — чистый код без спецсимволов
+- **WCAG 2.1 AA** — доступность
+- **6-слойная архитектура** — строгие границы между слоями
+- **AI rules для 6 платформ** — Z.ai, Cursor, Windsurf, Claude Code, Cline, Aider
+
+### Источники компонентов
+
+| Источник | Что даёт |
+|----------|----------|
+| P-MAS-architector/packages/ui/ | 276 файлов, 31 feature-модуль (gauge, sparkline, force-graph, IDE layout) |
+| Component-Browser | 213 компонентов из 17 проектов, 23 категории |
+| zai-custom-skills | ui-kit-extract skill для извлечения |
+| Design-extractor-toolkit | Design tokens, CSS vars из URL/GitHub |
 
 ## Зависимости
 
@@ -24,5 +48,5 @@
 ## Кто использует
 
 - 3A Studio (основной потребитель)
-- P-mas-studio (источник)
+- P-MAS-architector (источник)
 - Component-Browser (источник пополнения)

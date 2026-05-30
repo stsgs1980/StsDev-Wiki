@@ -1,21 +1,26 @@
-# 3A Studio [NEW]
+# 3A Studio [ACTIVE]
 
-**Artificial. Agentic. Architecture.**
+**Artificial. Agentic. Architecture. — IDE для visual multi-agent systems**
 
-- **Домен:** 3a-studio.dev / 3a.studio
 - **GitHub:** https://github.com/stsgs1980/3a-studio
-- **Статус:** Phase 0 завершена — monorepo, 4 пакета, Prisma, 12 экранов
-- **Тип:** Web-приложение (Next.js 16), опционально desktop (Tauri)
+- **Коммиты:** 143
+- **Стек:** Bun, PostgreSQL, ReactFlow, Next.js
+- **Размер:** 699 KB
 
 ---
 
-## Что это
+## Что это (из README)
 
-3A Studio — IDE для визуального построения и управления multi-agent системами. Позволяет создавать потоки агентов (через визуальный редактор), управлять агентами, оценивать промпты, работать с базой знаний.
+IDE для визуального построения и управления multi-agent системами. Позволяет создавать потоки агентов через drag-and-drop редактор, оценивать промпты, работать с базой знаний и стандартами — всё на единой PostgreSQL базе.
 
-12 экранов:
+### Ключевой принцип
+
+Заменяет 3 репозитория x 110 навыков x ручная синхронизация → **одна база данных**.
+
+### 12 экранов
+
 1. Dashboard — обзор системы
-2. Flow Editor — визуальный редактор потоков (React Flow)
+2. Flow Editor — визуальный редактор потоков (React Flow, 18 node types)
 3. Template Gallery — шаблоны пайплайнов
 4. Agent Management — CRUD агентов
 5. Agent Hierarchy — граф иерархии агентов
@@ -27,23 +32,31 @@
 11. Audit Log — логи действий
 12. Settings — настройки системы
 
+### Модули
+
+- Standards Manager — управление стандартами кода
+- Skill Forge — создание/редактирование навыков
+- Prompt Studio — оценка и генерация промптов
+- Flow Editor — 18 node types, ReactFlow
+- Knowledge Base — загрузка и поиск документов
+- Audit Log — логирование действий
+
 ## Из чего собрано (синтез)
 
 | Источник | Что взяли | Статус источника |
 |----------|-----------|-----------------|
-| P-mas-studio | Компоненты, API routes, Prisma, packages/ui, CLI, ESLint | [ACTIVE] |
-| P-MAS-architector | @stsgs/prompting, skills, standards | [ARCHIVED] |
-| Flow-Studio-Pro | React Flow v12 паттерны, Zustand | [LOCAL] |
-| MVP-Flow-Studio-Pro | EventBus, LLMProvider, Template Gallery | [LOCAL → ARCHIVED] |
-| prompting-v0.0 | 20 когнитивных формул | [ARCHIVED] |
-| Zai-agent-toolkit | 19 стандартов, agent templates | [REFERENCE] |
+| P-MAS-architector | Компоненты, API routes, Prisma, packages/ui, CLI, ESLint, @stsgs/prompting | [ACTIVE] |
+| Flow-Studio-Pro | React Flow v12 паттерны, Zustand | [ACTIVE] |
+| MVP-Flow-Studio-Pro | EventBus, LLMProvider, Template Gallery | [ARCHIVED] |
+| prompting-v0.0 | 20 когнитивных формул | [PACKAGE] |
+| Zai-agent-toolkit | 24 стандарта, agent templates | [REFERENCE] |
 
 ## Принципы
 
 1. **Greenfield** — новое с нуля, не дорабатываем старое
 2. **Synthesis** — берём лучшее из каждого проекта
 3. **Monorepo** — пакетное разделение с первого дня
-4. **Sandbox-first** — SQLite + bun, потом PostgreSQL
+4. **PostgreSQL-first** — единая БД вместо SQLite
 5. **Desktop-ready** — Tauri обёртка как опцион
 
 ## Пакеты
@@ -58,32 +71,12 @@
 ## Документация проекта
 
 - [Master Plan](master-plan.md) — план разработки по фазам
-- [Экраны](screens.md) — 12 экранов
 - [Требования](requirements.md) — специфические требования
 - [Прогресс](progress.md) — текущий статус
 - [Решения](decisions/) — ADRы по 3A Studio
 
-## План разработки
-
-Подробный план: [3A Studio Master Plan](master-plan.md)
-
-| Phase | Описание | Срок |
-|-------|----------|------|
-| Phase 0 | Фундамент (monorepo, пакеты, Prisma) | 2-3 дня |
-| Phase 1 | Роутинг и навигация | 1-2 дня |
-| Phase 2 | Очистка (удаление мёртвого кода) | 1 день |
-| Phase 3 | Flow Editor (18 node types, drag&drop) | 2-3 недели |
-| Phase 4 | Dashboard (метрики, API) | 1 неделя |
-| Phase 5 | Agent Management (CRUD) | 1 неделя |
-| Phase 6 | Knowledge Base (upload, search) | 1-2 недели |
-| Phase 7 | Остальные экраны (6 штук) | по 3-5 дней |
-| Phase 8 | Инфраструктура (auth, i18n, тесты, deploy) | 1-2 недели |
-
-**MVP:** Phase 0-2 + Phase 4-5 = ~2-3 недели
-**Полный продукт:** ~8-12 недель
-
 ## Связанные проекты
 
-- [P-mas-studio](../p-mas-studio/README.md) — текущий код (источник компонентов)
+- [P-MAS-architector](../p-mas-architector/README.md) — текущий код (источник компонентов и пакетов)
 - [Zai-agent-toolkit](../zai-agent-toolkit/README.md) — стандарты и навыки (read-only reference)
 - [Карта экосистемы](../../ecosystem-map.md) — все связи между проектами

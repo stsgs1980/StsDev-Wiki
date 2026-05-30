@@ -1,8 +1,7 @@
 # Карта экосистемы
 
 **Все 54 репозитория — классификация по группам и связям**
-
-> Дата: 2026-05-30 (обновлено)
+> Данные получены из GitHub API + README каждого репозитория (2026-05-30)
 
 ---
 
@@ -21,131 +20,173 @@
 
 ---
 
-## Репозитории по группам
+## По статусам
 
-### Активные проекты (2)
+| Статус | Репо | Файлов | Коммитов | Описание (из README) |
+|--------|------|--------|----------|----------------------|
+| [ACTIVE] | [P-MAS-architector](https://github.com/stsgs1980/P-MAS-architector) | 942 | 164 | P-MAS v2: 26 AI-агентов, 8 ролей, 20 когнитивных формул, WebSocket, @stsgs/prompting |
+| [ACTIVE] | [3a-studio](https://github.com/stsgs1980/3a-studio) | ~50 | 143 | IDE для multi-agent систем, PostgreSQL, ReactFlow, 12 экранов |
+| [ACTIVE] | [StsDev-Wiki](https://github.com/stsgs1980/StsDev-Wiki) | — | — | Этот репозиторий — база знаний экосистемы |
+| [ACTIVE] | [UI-Kit](https://github.com/stsgs1980/UI-Kit) | ~500 | 99 | @stsgs/ui: Layout Engine (51 рецепт), Theme Engine, Anti-monolith ESLint, CLI |
+| [ACTIVE] | [Component-Browser](https://github.com/stsgs1980/Component-Browser) | ~400 | 13 | 213 компонентов из 17 проектов, 23 категории, живой предпросмотр, AI-описания |
+| [ACTIVE] | [Z.Code.Guide](https://github.com/stsgs1980/Z.Code.Guide) | ~1200 | 101 | Интерактивный справочник Z Code: 11 секций, 10 инструментов, MCP-серверы, прайсинг |
+| [REFERENCE] | [Zai-agent-toolkit](https://github.com/stsgs1980/Zai-agent-toolkit) | ~150 | — | Стандарты + навыки + правила для AI-driven dev (read-only, v2.0.4) |
+| [ACTIVE] | [Stanislav-graur](https://github.com/stsgs1980/Stanislav-graur) 🔒 | — | — | Личный сайт (приватный) |
+| [ARCHIVED] | [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) | ~600 | 70 | Agent Hierarchy Dashboard v1 (архив на GitHub) |
+| [EMPTY] | [Reverse-engineering](https://github.com/stsgs1980/Reverse-engineering) | 0 | 0 | Пустой репозиторий |
+| [EMPTY] | [Zai-agent-toolkit-by-PMAS](https://github.com/stsgs1980/Zai-agent-toolkit-by-PMAS) | 0 | 0 | Пустой репозиторий |
 
-| Репо | Описание |
-|------|----------|
-| [StsDev-Wiki](https://github.com/stsgs1980/StsDev-Wiki) | База знаний экосистемы |
-| [Stanislav-graur](https://github.com/stsgs1980/Stanislav-graur) 🔒 | Личный сайт |
+> **Примечание**: Репозиторий "P-mas-studio" не найден на GitHub. Возможно, P-MAS-architector (942 файла, 164 коммита) — это тот проект, который упоминался под этим названием.
 
-### Новые проекты (1)
+---
 
-| Репо | Описание |
-|------|----------|
-| [3a-studio](https://github.com/stsgs1980/3a-studio) | IDE для визуального построения multi-agent систем |
+## По группам (тематика)
+
+### Ядро / Multi-Agent (2)
+
+Репозитории, формирующие основу multi-agent системы — визуализация агентов, их оркестрация и IDE для управления.
+
+| Репо | Коммитов | Стек | Описание (из README) |
+|------|----------|------|----------------------|
+| [P-MAS-architector](https://github.com/stsgs1980/P-MAS-architector) | 164 | Next.js 16, Prisma/SQLite, WebSocket, Z.ai SDK | P-MAS v2: 26 AI-агентов в 8 ролевых группах (Strategy → Learning), 5 уровней иерархии (L0–L4), 6 типов связей, 20 когнитивных формул (@stsgs/prompting), 3 режима layout |
+| [3a-studio](https://github.com/stsgs1980/3a-studio) | 143 | Bun, PostgreSQL, ReactFlow, Next.js | "Artificial. Agentic. Architecture." — IDE: Flow Editor (18 node types), Prompt Studio, Knowledge Base, Standards Manager, Skill Forge, Audit Log. 12 экранов. Заменяет 3 репо x 110 навыков одной БД |
 
 ### UI / Дизайн-системы (14)
 
-| Репо | Описание |
-|------|----------|
-| [Component-Browser](https://github.com/stsgs1980/Component-Browser) | Интерактивный обозреватель UI-компонентов с живым предпросмотром |
-| [Component-Browser-Public-v1.0](https://github.com/stsgs1980/Component-Browser-Public-v1.0) | Публичная версия Component Browser |
-| [Hub](https://github.com/stsgs1980/Hub) | Command Center Hub для 40+ проектов |
-| [UI-Kit](https://github.com/stsgs1980/UI-Kit) | Foundation Component Library + ESLint + CLI |
-| [Zai-ui-kit](https://github.com/stsgs1980/Zai-ui-kit) | React UI для dark-themed dashboards |
-| [carbon-design-system-guide](https://github.com/stsgs1980/carbon-design-system-guide) | Справочник по Carbon Design System |
-| [DS-Reference](https://github.com/stsgs1980/DS-Reference) | Референс дизайн-систем |
-| [DesignSystems-Hub-industrial](https://github.com/stsgs1980/DesignSystems-Hub-industrial) | Хаб промышленных дизайн-систем |
-| [Radix-Template](https://github.com/stsgs1980/Radix-Template) | Next.js starter с Radix UI + Tailwind |
-| [UI-MATRIX](https://github.com/stsgs1980/UI-MATRIX) | UI матрица компонентов |
-| [UI-RADAR](https://github.com/stsgs1980/UI-RADAR) | UI радар — обзор экосистемы |
-| [Reverse-engineering](https://github.com/stsgs1980/Reverse-engineering) | Реверс-инжиниринг UI |
-| [Design-extractor-toolkit](https://github.com/stsgs1980/Design-extractor-toolkit) | AI-инструмент извлечения дизайна |
-| [UI-Library-Compare_V0app](https://github.com/stsgs1980/UI-Library-Compare_V0app) | Сравнение UI библиотек |
+| Репо | Размер | Стек | Описание (из README) |
+|------|--------|------|----------------------|
+| [UI-Kit](https://github.com/stsgs1980/UI-Kit) | 18MB | Next.js 16, React 19, TS 5.7+, Tailwind 4, Radix, Turborepo | @stsgs/ui: Layout Engine (51 рецепт, useLayoutAdvice), Theme Engine (5 пресетов), Anti-monolith ESLint, No-Unicode Policy, WCAG 2.1 AA, AI rules для 6 платформ |
+| [Zai-ui-kit](https://github.com/stsgs1980/Zai-ui-kit) | 20MB | React 18+, Tailwind 3+, TypeScript | @zai/ui-kit: StatusDot, Badge, MetricValue, StatCard, HUDCard, useToast. Dark theme с glow, tree-shakeable, zero deps |
+| [Component-Browser](https://github.com/stsgs1980/Component-Browser) | 14MB | Next.js 16, TS 5, Tailwind 4, shadcn/ui, Framer Motion, Sucrase | 213 компонентов из 17 проектов, 23 категории, живой предпросмотр, AI-описания (z-ai-sdk), граф зависимостей, дедупликация, экспорт JSON/CSV |
+| [Component-Browser-Public-v1.0](https://github.com/stsgs1980/Component-Browser-Public-v1.0) | 2MB | Next.js | Публичная версия Component Browser (README отсутствует) |
+| [Hub](https://github.com/stsgs1980/Hub) | 84KB | Next.js, Vercel | Command Center Hub для 40+ проектов (базовый scaffold) |
+| [carbon-design-system-guide](https://github.com/stsgs1980/carbon-design-system-guide) | 202KB | Z.ai scaffold | Справочник по Carbon Design System |
+| [DS-Reference](https://github.com/stsgs1980/DS-Reference) | 510KB | Z.ai scaffold | Референс дизайн-систем |
+| [DesignSystems-Hub-industrial](https://github.com/stsgs1980/DesignSystems-Hub-industrial) | 127KB | Next.js, Tailwind | Единый центр DS: Industrial Minimalism (бетон, сталь, монохром). API: /systems, /entities, /courses, /tech-radar |
+| [Radix-Template](https://github.com/stsgs1980/Radix-Template) | 170KB | Next.js 16, Radix UI, Tailwind 4 | Next.js starter с Radix UI primitives |
+| [UI-MATRIX](https://github.com/stsgs1980/UI-MATRIX) | 86KB | Z.ai scaffold | UI матрица компонентов |
+| [UI-RADAR](https://github.com/stsgs1980/UI-RADAR) | 2MB | Next.js 16, TS 5, Tailwind 4, Recharts | Интерактивный гид: 20+ инструментов в 6 категориях, Radar Chart, классификация ADOPT/TRIAL/ASSESS/HOLD, 5 стеков, 6-этапный learning path |
+| [Reverse-engineering](https://github.com/stsgs1980/Reverse-engineering) | 0 | — | Пустой репозиторий |
+| [Design-extractor-toolkit](https://github.com/stsgs1980/Design-extractor-toolkit) | 39KB | Svelte (референс), CSS parsing | Unified toolkit: Design Extractor (URL → tokens, stack, screenshots, CSS vars) + Library Extractor (GitHub → React components, hooks, utils). Output → UI-Kit Studio |
+| [UI-Library-Compare_V0app](https://github.com/stsgs1980/UI-Library-Compare_V0app) | 184KB | Next.js 16, Express.js, MongoDB, shadcn/ui | Сравнение Mantine, Shadcn, MUI, Radix, Chakra, React Bootstrap. AI-рекомендации, рейтинги, фильтрация |
 
 ### Flow / Агенты (3)
 
-| Репо | Описание |
-|------|----------|
-| [Flow-Studio-Pro](https://github.com/stsgs1980/Flow-Studio-Pro) | Visual workflow builder, React Flow v12 |
-| [MVP-Flow-Studio-Pro](https://github.com/stsgs1980/MVP-Flow-Studio-Pro) | Lightweight прототип Flow Studio |
-| [agent-logo](https://github.com/stsgs1980/agent-logo) | Логотипы для агентов |
+| Репо | Коммитов | Стек | Описание (из README) |
+|------|----------|------|----------------------|
+| [Flow-Studio-Pro](https://github.com/stsgs1980/Flow-Studio-Pro) | 2 | Next.js 16, ReactFlow, Zustand, Prisma, z-ai-sdk | Visual workflow builder: drag-and-drop flow editor, 18 node types (9 категорий), 10 промпт-шаблонов, execution engine, полная русская локализация |
+| [MVP-Flow-Studio-Pro](https://github.com/stsgs1980/MVP-Flow-Studio-Pro) | — | ReactFlow, LLM APIs (OpenAI/Claude), WebSocket | Lightweight прототип: 10 node types, real-time flow execution, 8 predefined frameworks, configurable LLM |
+| [agent-logo](https://github.com/stsgs1980/agent-logo) | — | Node.js, jq, git hooks, SVG | LOGO — NEURO Brand Identity Agent: авто-выбор логотипа по теме проекта (light/dark/mono/outline/inverted), setup.sh + git hook |
 
 ### Код-галереи / Эстетика (4)
 
-| Репо | Описание |
-|------|----------|
-| [Code-Aesthetic-Gallery-v2.0](https://github.com/stsgs1980/Code-Aesthetic-Gallery-v2.0) | 32 interactive code tools |
-| [Code-Aesthetic-Gallery-v3.0](https://github.com/stsgs1980/Code-Aesthetic-Gallery-v3.0) | v3.0 код-галерея |
-| [Code-Snippets-Gallery](https://github.com/stsgs1980/Code-Snippets-Gallery) | Галерея сниппетов |
-| [web-aesthetic-showcase](https://github.com/stsgs1980/web-aesthetic-showcase) | Веб-шоукейс |
+| Репо | Коммитов | Стек | Описание (из README) |
+|------|----------|------|----------------------|
+| [Code-Aesthetic-Gallery-v2.0](https://github.com/stsgs1980/Code-Aesthetic-Gallery-v2.0) | 27 | Next.js 16, TS 5, Tailwind 4, Framer Motion 12 | 21 секция dev-инструментов: Terminal, DevEx, Brutalism, Glitch, Code Art, Gradient Lab, Palette Studio, SVG Editor, Typography, 3D Transforms, Regex, JSON Studio и др. Cyberpunk aesthetic |
+| [Code-Aesthetic-Gallery-v3.0](https://github.com/stsgs1980/Code-Aesthetic-Gallery-v3.0) | — | Next.js 16, TS 5, Tailwind 4, Framer Motion 12 | v3.0: те же 21 секция, обновлённый дизайн |
+| [Code-Snippets-Gallery](https://github.com/stsgs1980/Code-Snippets-Gallery) | — | Next.js 16, Prisma/SQLite, TanStack Query 5, Zustand 5 | Галерея сниппетов с живыми превью: Canvas 2D, WebGL shaders, CSS анимации. i18n (EN/RU), CRUD, 7 языков, 7 категорий |
+| [web-aesthetic-showcase](https://github.com/stsgs1980/web-aesthetic-showcase) | — | Next.js 16, Prisma/SQLite | 6 визуальных стилей: Retro Terminal, Brutalist Shell, CLI/Command, Sci-Fi HUD, Code Art, Clean Modern. README на русском |
 
 ### Цвет / Визуальные инструменты (4)
 
-| Репо | Описание |
-|------|----------|
-| [Color-Picker-Panel](https://github.com/stsgs1980/Color-Picker-Panel) | Color Picker |
-| [Color-Picker-Panel-Figma](https://github.com/stsgs1980/Color-Picker-Panel-Figma) | Color Picker для Figma |
-| [Color-Picker-Panel-V2](https://github.com/stsgs1980/Color-Picker-Panel-V2) | Color Picker v2 |
-| [energy-helix-3d](https://github.com/stsgs1980/energy-helix-3d) | 3D визуализация |
+| Репо | Размер | Стек | Описание (из README) |
+|------|--------|------|----------------------|
+| [Color-Picker-Panel](https://github.com/stsgs1980/Color-Picker-Panel) | 495KB | Next.js scaffold | Color Picker (README отсутствует) |
+| [Color-Picker-Panel-Figma](https://github.com/stsgs1980/Color-Picker-Panel-Figma) | 101KB | Figma export | Color Picker — экспорт из Figma |
+| [Color-Picker-Panel-V2](https://github.com/stsgs1980/Color-Picker-Panel-V2) | 95KB | Figma export | Color Picker v2 — экспорт из Figma |
+| [energy-helix-3d](https://github.com/stsgs1980/energy-helix-3d) | 16KB | React Three Fiber, Three.js, npm | 3D DNA Helix для energy market (Crude Oil, NG, RBOB, Heating Oil). Компоненты: EnergyHelix, HelixCandle, HelixSymbol. OHLCV + Fibonacci + volume profile |
 
 ### CSS / Layout (3)
 
-| Репо | Описание |
-|------|----------|
-| [CSS-Grid](https://github.com/stsgs1980/CSS-Grid) | CSS Grid справочник |
-| [47-css-grids](https://github.com/stsgs1980/47-css-grids) | 47 CSS Grid шаблонов |
-| [Layout-Explorer](https://github.com/stsgs1980/Layout-Explorer) | AI layout designer + wireframe preview |
+| Репо | Размер | Стек | Описание (из README) |
+|------|--------|------|----------------------|
+| [CSS-Grid](https://github.com/stsgs1980/CSS-Grid) | 113KB | Next.js | Интерактивная шпаргалка CSS Grid, data-driven архитектура (config/cheatsheet.ts + theme.ts + layout.ts). ARCHITECTURE.md вместо README |
+| [47-css-grids](https://github.com/stsgs1980/47-css-grids) | 277KB | Next.js 16, TS 5, Tailwind 4, shadcn/ui, Zustand | "Layout & Stack Advisor": 47 Grid Layouts в 7 категориях (Basic, Classic, Bento, Fibonacci 13, Math 11, Advanced, Complex), визуальный конструктор, smart mentor tips |
+| [Layout-Explorer](https://github.com/stsgs1980/Layout-Explorer) | 94KB | Next.js, Tailwind | AI layout designer: парсинг промптов, скоринг рецептов layout, рекомендация тем, wireframe preview (README отсутствует, минимальный проект) |
 
 ### Обучение / Справочники (8)
 
-| Репо | Описание |
-|------|----------|
-| [Industrial-Style-Guide](https://github.com/stsgs1980/Industrial-Style-Guide) | Промышленный стайл-гайд |
-| [JavaScript-TypeScript](https://github.com/stsgs1980/JavaScript-TypeScript) | JS/TS справочник |
-| [Learning-Plan-Prompt-Generator](https://github.com/stsgs1980/Learning-Plan-Prompt-Generator) | Генератор учебных планов |
-| [Learning-Prompt-Standardizer](https://github.com/stsgs1980/Learning-Prompt-Standardizer) | Стандартизатор промптов |
-| [Llm-memory-techniques](https://github.com/stsgs1980/Llm-memory-techniques) | 6 техник памяти LLM |
-| [Rust-performance-optimization](https://github.com/stsgs1980/Rust-performance-optimization) | Оптимизация Rust |
-| [UI-Stack-Guide](https://github.com/stsgs1980/UI-Stack-Guide) | Гайд по UI-стеку |
-| [Z.Code.Guide](https://github.com/stsgs1980/Z.Code.Guide) | Справочник Z Code platform |
+| Репо | Коммитов | Стек | Описание (из README) |
+|------|----------|------|----------------------|
+| [Industrial-Style-Guide](https://github.com/stsgs1980/Industrial-Style-Guide) | — | Next.js 16, TS 5, Tailwind 4 | 31 стиль в 6 категориях (Technical, Pencil, Minimalist, Architectural, Vintage, Digital), TOP-5 для UI, рейтинг. README на русском |
+| [JavaScript-TypeScript](https://github.com/stsgs1980/JavaScript-TypeScript) | — | Z.ai scaffold | JS/TS справочник (README отсутствует) |
+| [Learning-Plan-Prompt-Generator](https://github.com/stsgs1980/Learning-Plan-Prompt-Generator) | — | Z.ai scaffold | Генератор учебных планов (README отсутствует) |
+| [Learning-Prompt-Standardizer](https://github.com/stsgs1980/Learning-Prompt-Standardizer) | — | Z.ai scaffold | Стандартизатор промптов |
+| [Llm-memory-techniques](https://github.com/stsgs1980/Llm-memory-techniques) | — | Next.js 16, Tailwind 4, Zustand | 6 техник LLM-памяти: Summarization, Hierarchical, RAG, Fact Extraction, Sliding Window, Semantic Cache. Cost Simulator, Token Calculator, 16+ провайдеров, Decision Tree, 18 промптов |
+| [Rust-performance-optimization](https://github.com/stsgs1980/Rust-performance-optimization) | 53 | Next.js 16, Prisma/SQLite, Framer Motion | "Performance Lab": 5 Rust-задач (naive vs optimized), Big O анализ, бенчмарки, heatmap, achievements, командная палитра (Ctrl+K). Industrial Minimalism |
+| [UI-Stack-Guide](https://github.com/stsgs1980/UI-Stack-Guide) | — | Next.js 16.1.1, React 19, Z.ai SDK | Полный справочник UI-стека: от Next.js до MDX Editor |
+| [Z.Code.Guide](https://github.com/stsgs1980/Z.Code.Guide) | 101 | Next.js 16, React 19, Framer Motion 12 | Интерактивный справочник Z Code: 11 секций, Coding Tool Helper (13 команд CLI), 10 инструментов, MCP-серверы, прайсинг (Lite/Pro/Max), модели GLM, 16 ошибок. README на русском. Самый большой репо (49MB) |
 
 ### Портфолио (2)
 
-| Репо | Описание |
-|------|----------|
-| [Portfolio-Conversion](https://github.com/stsgs1980/Portfolio-Conversion) | 42 компонента, 3D, анимации |
-| [dev.studio-2-portfolio](https://github.com/stsgs1980/dev.studio-2-portfolio) | Портфолио dev.studio |
+| Репо | Коммитов | Стек | Описание (из README) |
+|------|----------|------|----------------------|
+| [Portfolio-Conversion](https://github.com/stsgs1980/Portfolio-Conversion) | 7 | Next.js 16, TS, Tailwind, shadcn/ui | Портфолио с dark industrial дизайном, custom cursor, typing animation, 25+ эффектов (3D визуализация навыков, Timeline, Parallax, Particle System, Gradient Orbs) |
+| [dev.studio-2-portfolio](https://github.com/stsgs1980/dev.studio-2-portfolio) | — | Next.js 16, Prisma/SQLite, Zustand, NextAuth | Двухрежимная лендинг: Image Showcase (light) + Portfolio (dark). Gantt timeline, radar chart, оптимизация (memo, lazy) |
 
-### Пакеты (сырые) (2)
+### Пакеты (3)
 
-| Репо | Описание |
-|------|----------|
-| [prompting-v0.0](https://github.com/stsgs1980/prompting-v0.0) | 20 когнитивных формул (сырой пакет) |
-| [zai-custom-skills](https://github.com/stsgs1980/zai-custom-skills) | Custom skills для Z.ai (сырой пакет) |
+Опубликованные npm-пакеты и сырые пакеты-заготовки.
 
-### Утилиты / Тулкиты (3)
+| Репо | Пакет | Стек | Описание (из README) |
+|------|-------|------|----------------------|
+| [prompting-v0.0](https://github.com/stsgs1980/prompting-v0.0) | @stsgs/prompting v0.1.0 | TypeScript, npm | scorePrompt() (6 измерений, оценки S/A/B/C/D/F), matchIntent(), withRetry() (exponential backoff), getInstructionContent(). Core + техники + фреймворки + system prompt builder |
+| [zai-custom-skills](https://github.com/stsgs1980/zai-custom-skills) | — | Z.ai skills framework | Custom skills для Z.ai: ui-kit-extract v2.0 (извлечение React/Next.js компонентов в @stsgs/ui, 155+ компонентов, shadcn-compatible) |
+| [energy-helix-3d](https://github.com/stsgs1980/energy-helix-3d) | npm package | React Three Fiber, Three.js | 3D DNA Helix для energy market (см. Цвет / Визуальные инструменты) |
 
-| Репо | Описание |
-|------|----------|
-| [CodeMan](https://github.com/stsgs1980/CodeMan) | Code tools + terminal emulator, Next.js 16 |
-| [StsDev-Knowledge](https://github.com/stsgs1980/StsDev-Knowledge) | База знаний (ранняя версия) |
-| [Token-command-center](https://github.com/stsgs1980/Token-command-center) | Управление токенами |
+### Утилиты / Тулкиты (4)
+
+| Репо | Коммитов | Стек | Описание (из README) |
+|------|----------|------|----------------------|
+| [CodeMan](https://github.com/stsgs1980/CodeMan) | 2 | Next.js 16, Prisma/SQLite, Socket.io, z-ai-sdk | "OPEN CODE — AI Terminal Assistant": IDE-style 3-панель (Explorer, Chat, Output), Catppuccin Mocha, WebSocket streaming, drag & drop файлов, командная палитта (/), режимы Chat/Code/Terminal/Debug |
+| [StsDev-Knowledge](https://github.com/stsgs1980/StsDev-Knowledge) | 9 | React, Python | База знаний: 1238 файлов, 509 React компонентов, 74 hooks, 213 Python функций. Извлечено из StsDev-Core и dev-analysis |
+| [Token-command-center](https://github.com/stsgs1980/Token-command-center) | — | React 18+, TypeScript, npm | @zai/token-command-center: переиспользуемая Command Center панель. Zero business logic, zero CSS deps, SectionConfig-driven |
+| [Zai-agent-toolkit](https://github.com/stsgs1980/Zai-agent-toolkit) | — | Markdown/docs | Стандарты + навыки + правила для AI-driven dev (read-only, v2.0.4). Решает: Inconsistency, Unicode pollution, Reproducibility |
 
 ### Заготовки проектов (4)
 
-| Репо | Домен | Описание |
-|------|-------|----------|
-| [Code-Realm](https://github.com/stsgs1980/Code-Realm) | CLI | Заготовка CLI терминала |
-| [HH-Job-Copilot](https://github.com/stsgs1980/HH-Job-Copilot) | HR | Заготовка проекта для HR |
-| [CHROMEDNA](https://github.com/stsgs1980/CHROMEDNA) | Трейдинг | Заготовка проекта для трейдинга |
-| [Wiki-Codex-v2](https://github.com/stsgs1980/Wiki-Codex-v2) | Wiki | Мини web-версия wiki |
+Проекты в активной разработке с чётким доменом, но ещё не достигшие стабильного состояния.
 
-### Reference (1)
+| Репо | Домен | Коммитов | Стек | Описание (из README) |
+|------|-------|----------|------|----------------------|
+| [Code-Realm](https://github.com/stsgs1980/Code-Realm) | CLI/Галерея | 36 | Next.js 16, TS 5, Tailwind 4, Framer Motion 12 | "The Art of CODE REALM": 23 секции, 50+ инструментов. Retro Terminal v2, ASCII art. CLI-стиль |
+| [HH-Job-Copilot](https://github.com/stsgs1980/HH-Job-Copilot) | HR/SaaS | 37 | Next.js 16, Prisma, z-ai-sdk, Stripe, NextAuth | HR SaaS: HH.ru API + AI (chat, humanize, hr-reply, cover-letter, interview-hint), Stripe (Pro $19/ Ultra $49), NextAuth, ASR + TTS, onboarding wizard, glassmorphism. v0.4.0 |
+| [CHROMEDNA](https://github.com/stsgs1980/CHROMEDNA) | Трейдинг/3D | 23 | Next.js 16, Three.js 0.184, React Three Fiber, Zustand 5 | "CHROME DNA Energy Edition": Double DNA helix для energy commodities (CL, NG, RB, HO). 12+ 3D слоёв (GLSL shaders, holographic floor, volume heat map, Fibonacci, weather particles). Bloom + ChromaticAberration. 17+ панелей |
+| [Wiki-Codex-v2](https://github.com/stsgs1980/Wiki-Codex-v2) | Wiki | 61 | Next.js 16, PostgreSQL, Prisma, Zustand, z-ai-sdk | AI-powered knowledge base: Documents, Notes, Dictionary (AI term extraction), Instructions, AI-анализ, NEURO branding, Backups, горячие клавиши |
 
-| Репо | Описание |
-|------|----------|
-| [Zai-agent-toolkit](https://github.com/stsgs1980/Zai-agent-toolkit) | Стандарты, навыки, правила для AI-разработки (read-only) |
+### Архив (2)
 
-### Архив (3)
+| Репо | Стек | Описание (из README) |
+|------|------|----------------------|
+| [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) | Next.js 16, Prisma/SQLite | Agent Hierarchy Dashboard v1: 26 агентов, 8 ролей, 20 когнитивных формул, Dashboard + Hierarchy Visualization (SVG, zoom, minimap). Архивирован на GitHub |
+| [Zai-agent-toolkit-by-PMAS](https://github.com/stsgs1980/Zai-agent-toolkit-by-PMAS) | — | Пустой репозиторий |
 
-| Репо | Описание |
-|------|----------|
-| [P-MAS-architector](https://github.com/stsgs1980/P-MAS-architector) | Источник @stsgs/prompting |
-| [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) | Agent Hierarchy Dashboard v1 |
-| [Zai-agent-toolkit-by-PMAS](https://github.com/stsgs1980/Zai-agent-toolkit-by-PMAS) | Ранняя версия toolkit |
+---
+
+## Общий стек (паттерн)
+
+Подавляющее большинство проектов используют один и тот же технологический стек — **Z.ai Code Scaffold**:
+
+| Слой | Технология |
+|------|------------|
+| Framework | Next.js 16 (App Router, Turbopack) |
+| Language | TypeScript 5 (strict) |
+| Styling | Tailwind CSS 4 |
+| UI Library | shadcn/ui (Radix UI primitives) |
+| ORM | Prisma (SQLite для локальных, PostgreSQL для продакшена) |
+| State | Zustand |
+| Animations | Framer Motion 12 |
+| Icons | Lucide React |
+| AI | z-ai-web-dev-sdk |
+| Runtime | Bun |
+
+Исключения:
+- **energy-helix-3d** — React Three Fiber / Three.js (npm-пакет)
+- **Token-command-center** — чистый React 18+, zero CSS
+- **prompting-v0.0** — чистый TypeScript, npm-пакет
+- **UI-Library-Compare_V0app** — Express.js + MongoDB (полный бэкенд)
+- **agent-logo** — Node.js + jq + git hooks
+- **Zai-agent-toolkit** — Markdown/docs, нет runtime
 
 ---
 
@@ -153,15 +194,22 @@
 
 | Из | Что | В | Для чего |
 |----|-----|---|----------|
-| P-MAS-architector | @stsgs/prompting | 3A Studio | Prompt Studio |
-| P-MAS-architector | skills, standards | Zai-agent-toolkit | Governance |
-| UI-Kit | ESLint plugin, CLI | 3A Studio | Anti-monolith + инструменты |
-| Zai-ui-kit | Dark-themed components | @stsgs/ui | Dashboard компоненты |
-| Component-Browser | UI компоненты (~273) | @stsgs/ui | Wave 1-3 компонентов |
-| Flow-Studio-Pro | React Flow v12, Zustand | 3A Studio | Flow Editor |
-| MVP-Flow-Studio-Pro | EventBus, NodeExecutor | 3A Studio | Flow Editor backend |
-| prompting-v0.0 | 20 когнитивных формул | @stsgs/prompting | Prompt Studio |
-| Zai-agent-toolkit | 24 стандарта | 3A Studio (read-only) | Качество кода |
+| P-MAS-architector | @stsgs/prompting (20 когнитивных формул) | 3A Studio | Prompt Studio |
+| P-MAS-architector | skills, standards, 26 агентов | Zai-agent-toolkit | Governance |
+| UI-Kit | @stsgs/ui: ESLint plugin, CLI, Layout Engine | 3A Studio | Anti-monolith + инструменты |
+| Zai-ui-kit | Dark-themed dashboard components | @stsgs/ui | Dashboard компоненты |
+| Component-Browser | 213 компонентов из 17 проектов | @stsgs/ui | Каталог для Wave 1-3 |
+| Flow-Studio-Pro | ReactFlow + Zustand + 18 node types | 3A Studio | Flow Editor |
+| MVP-Flow-Studio-Pro | 10 node types, EventBus, NodeExecutor | 3A Studio | Flow Editor backend (прототип) |
+| prompting-v0.0 | @stsgs/prompting: scorePrompt, matchIntent | 3A Studio | Prompt Studio |
+| zai-custom-skills | ui-kit-extract skill | @stsgs/ui | Извлечение компонентов |
+| Design-extractor-toolkit | Design tokens, CSS vars, components | UI-Kit Studio | Feed для @stsgs/ui |
+| Zai-agent-toolkit | 24 стандарта | 3A Studio | Качество кода (read-only) |
+| HH-Job-Copilot | HH.ru API + AI | — | SaaS для HR |
+| CHROMEDNA | Three.js + React Three Fiber | energy-helix-3d | 3D визуализация рынка |
+| StsDev-Knowledge | 509 компонентов, 74 hooks | Component-Browser | Каталогизация |
+
+---
 
 ## Статусы
 
@@ -173,3 +221,20 @@
 | [LOCAL] | Локальный исходник |
 | [ARCHIVED] | Мёртвый, не развивается |
 | [PACKAGE] | Переиспользуемый пакет |
+| [EMPTY] | Пустой репозиторий |
+
+---
+
+## Без README (7 репозиториев)
+
+Следующие репозитории существуют на GitHub, но не содержат README.md. Описания основаны на структуре файлов и package.json.
+
+| Репо | Что известно |
+|------|-------------|
+| Color-Picker-Panel | Next.js scaffold, есть AUDIT_REPORT.md, EXPORT_OPTIONS.md |
+| CSS-Grid | ARCHITECTURE.md описывает data-driven конфигурируемую шпаргалку |
+| Layout-Explorer | Минимальный Next.js + Tailwind проект, AI layout designer |
+| JavaScript-TypeScript | Z.ai scaffold, JS/TS справочник |
+| Learning-Plan-Prompt-Generator | Z.ai scaffold, генератор учебных планов |
+| Component-Browser-Public-v1.0 | ROADMAP.md, _INDEX.json (57KB), browser-app/, reusable_components/ |
+| HH-Job-Copilot | TODO.md с детальным планом (v0.4.0, Stripe, NextAuth, AI), CHANGELOG.md |

@@ -22,12 +22,11 @@
 * [@stsgs/shared](packages/shared.md)
 
 ## Проекты
-* [Все 54 проекта по группам](projects/index.md)
 
-### По статусам
-* [3A Studio [NEW]](projects/3a-studio/README.md)
+### [ACTIVE] Рабочие проекты
+* [P-MAS-architector](projects/p-mas-architector/README.md) — 942 файла, 164 коммита, 26 AI-агентов
+* [3A Studio](projects/3a-studio/README.md) — 143 коммита, IDE для multi-agent систем
   * [Master Plan](projects/3a-studio/master-plan.md)
-  * [Экраны](projects/3a-studio/screens.md)
   * [Требования](projects/3a-studio/requirements.md)
   * [Прогресс](projects/3a-studio/progress.md)
   * Решения
@@ -37,14 +36,16 @@
     * [Monorepo с пакетами](projects/3a-studio/decisions/monorepo-vs-polyrepo.md)
     * [SQLite, не ChromaDB](projects/3a-studio/decisions/sqlite-vs-chromadb.md)
     * [Стратегия синтеза](projects/3a-studio/decisions/synthesis-strategy.md)
-* [P-mas-studio [ACTIVE]](projects/p-mas-studio/README.md)
-* [Zai-agent-toolkit [REFERENCE]](projects/zai-agent-toolkit/README.md)
-* [Личный сайт [ACTIVE]](projects/personal-site/README.md)
-* [Flow-Studio-Pro [LOCAL]](projects/flow-studio-pro/README.md)
-* [Component-Browser [LOCAL]](projects/component-browser/README.md)
+* [Component-Browser](projects/component-browser/README.md) — 213 компонентов, 17 проектов, 23 категории
+* [Flow-Studio-Pro](projects/flow-studio-pro/README.md) — 18 node types, drag-and-drop, Russian UI
 
-### Архив
-* [P-MAS-architector](projects/_archived/p-mas-architector/README.md)
+### [REFERENCE] Референсы
+* [Zai-agent-toolkit](projects/zai-agent-toolkit/README.md) — стандарты, навыки, read-only
+
+### [ACTIVE] Личное
+* [Stanislav-graur](projects/personal-site/README.md) — личный сайт (приватный)
+
+### [ARCHIVED] Архив
 * [prompting-v0.0](projects/_archived/prompting-v0/README.md)
 * [MVP-Flow-Studio-Pro](projects/_archived/mvp-flow-studio-pro/README.md)
 

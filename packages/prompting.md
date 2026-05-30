@@ -1,20 +1,40 @@
 # @stsgs/prompting
 
-**Библиотека оценки и генерации промптов**
+**Полная библиотека prompting для AI-assisted development**
 
 - **Статус:** [PACKAGE]
-- **Источник:** P-MAS-architector/ (30+ файлов) + prompting-v0.0 (20 формул)
-- **Судьба:** Переиспользуемый пакет в экосистеме
+- **GitHub:** https://github.com/stsgs1980/prompting-v0.0
+- **npm:** @stsgs/prompting v0.1.0
+- **Размер:** 173 KB
+- **Стек:** TypeScript, npm (без привязки к фреймворку)
 
 ---
 
-## Что содержит
+## Что это (из README)
 
-- Когнитивные формулы оценки промптов (20 из prompting-v0.0)
-- 6 критериев оценки
-- Blind comparison алгоритм
-- Intent detection
-- Фреймворки для Prompt Studio
+npm-пакет для оценки, классификации и генерации промптов. Не зависит от фронтенд-фреймворка.
+
+### API
+
+| Функция | Описание |
+|---------|----------|
+| `scorePrompt()` | 6 измерений, оценки S/A/B/C/D/F |
+| `matchIntent()` | Классификация намерений |
+| `withRetry()` | Exponential backoff для LLM-запросов |
+| `getInstructionContent()` | Поведенческие правила для injection в LLM-контекст |
+
+### Модули
+
+- **Core** — типы, техники, фреймворки, system prompt builder
+- **Techniques** — 20 когнитивных формул (CoT, ToT, GoT, CoVe, ReAct, Reflexion, ReWOO, MoA и др.)
+- **Frameworks** — фреймворки для Prompt Studio
+
+## Источники
+
+| Источник | Что даёт |
+|----------|----------|
+| P-MAS-architector | 30+ файлов, 20 когнитивных формул |
+| prompting-v0.0 | 20 когнитивных формул (сырой пакет) |
 
 ## Зависимости
 
