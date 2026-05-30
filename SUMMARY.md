@@ -1,8 +1,10 @@
 # SUMMARY
 
-## Старт
-* [О базе знаний](README.md)
+## Ядро
+* [Об авторе](about.md)
 * [Карта экосистемы](ecosystem-map.md)
+* [Протокол начала сессии](session-protocol.md)
+* [Протокол нового проекта](new-project-protocol.md)
 
 ## Принципы
 * [Анти-галлюцинация](principles/anti-hallucination.md)
