@@ -59,7 +59,7 @@
 
 ## План разработки
 
-Подробный план: [3A Studio Master Plan](3a-studio-master-plan.md)
+Подробный план: [3A Studio Master Plan](master-plan.md)
 
 | Phase | Описание | Срок |
 |-------|----------|------|
@@ -78,6 +78,6 @@
 
 ## Связанные проекты
 
-- [P-mas-studio](p-mas-studio.md) -- текущий код (источник компонентов)
-- [Zai-agent-toolkit](agent-toolkit.md) -- стандарты и навыки (read-only reference)
+- [P-mas-studio](../p-mas-studio.md) -- текущий код (источник компонентов)
+- [Zai-agent-toolkit](../agent-toolkit.md) -- стандарты и навыки (read-only reference)
 - StsDev-Wiki -- база знаний (этот репо)

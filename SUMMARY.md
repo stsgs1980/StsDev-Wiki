@@ -9,8 +9,8 @@
 * [Верификация](principles/verification.md)
 
 ## 3A Studio
-* [Обзор](projects/3a-studio.md)
-* [Master Plan (8 фаз)](projects/3a-studio-master-plan.md)
+* [Обзор](projects/3a-studio/README.md)
+* [Master Plan (8 фаз)](projects/3a-studio/master-plan.md)
 * [Карта экранов (12 штук)](architecture/3a-studio-screens.md)
 * [Требования](projects/3a-studio/requirements.md)
 * [Прогресс](projects/3a-studio/progress.md)
@@ -30,7 +30,7 @@
 
 ## Проекты
 * [Все проекты](projects/index.md)
-* [3A Studio](projects/3a-studio.md)
+* [3A Studio](projects/3a-studio/README.md)
 * [P-mas-studio (источник)](projects/p-mas-studio.md)
 * [Zai-agent-toolkit](projects/agent-toolkit.md)
 * [Личный сайт](projects/personal-site.md)
