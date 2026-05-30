@@ -1,22 +1,23 @@
 # Проекты
 
-Все 54 репозитория экосистемы.
+53 репозитория на GitHub + 1 удалённый (P-mas-studio).
 Карта связей: [ecosystem-map.md](../ecosystem-map.md)
 
 ---
 
-## Активные проекты (2)
+## Активные проекты (5)
 
 | Проект | Описание | Детали |
 |--------|----------|--------|
-| StsDev-Wiki | База знаний экосистемы | [GitHub](https://github.com/stsgs1980/StsDev-Wiki) |
-| Stanislav-graur 🔒 | Личный сайт | [GitHub](https://github.com/stsgs1980/Stanislav-graur) |
-
-## Новые проекты (1)
-
-| Проект | Описание | Детали |
-|--------|----------|--------|
+| P-MAS-architector | 26 AI-агентов, 8 ролей, 20 когнитивных формул | [README](p-mas-architector/README.md) |
 | 3A Studio | IDE для multi-agent систем (12 экранов) | [README](3a-studio/README.md) |
+| Component-Browser | 213 компонентов из 17 проектов | [README](component-browser/README.md) |
+| StsDev-Wiki | База знаний экосистемы | [GitHub](https://github.com/stsgs1980/StsDev-Wiki) |
+| Stanislav-graur 🔒 | Личный сайт (приватный) | [GitHub](https://github.com/stsgs1980/Stanislav-graur) |
+
+## Новые проекты
+
+(Пока проектов со статусом [NEW] с детальными страницами нет. Все NEW-репо перечислены в тематических группах ниже.)
 
 ## Reference (1)
 
@@ -24,13 +25,14 @@
 |--------|----------|--------|
 | Zai-agent-toolkit | Стандарты, навыки, read-only | [README](zai-agent-toolkit/README.md) |
 
-## Архив (3)
+## Архив (4)
 
-| Проект | Описание |
-|--------|----------|
-| [P-MAS-architector](https://github.com/stsgs1980/P-MAS-architector) | Источник @stsgs/prompting |
-| [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) | Agent Hierarchy Dashboard v1 |
-| [Zai-agent-toolkit-by-PMAS](https://github.com/stsgs1980/Zai-agent-toolkit-by-PMAS) | Ранняя версия toolkit |
+| Проект | Описание | Детали |
+|--------|----------|--------|
+| P-mas-studio | Удалён с GitHub (2026-05-30) | [README](_archived/p-mas-studio/README.md) |
+| MVP-Flow-Studio-Pro | Lightweight прототип Flow Editor | [README](_archived/mvp-flow-studio-pro/README.md) |
+| [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) | Agent Hierarchy Dashboard v1 | Архив на GitHub |
+| [Zai-agent-toolkit-by-PMAS](https://github.com/stsgs1980/Zai-agent-toolkit-by-PMAS) | Пустой репозиторий | — |
 
 ## UI / Дизайн-системы (14)
 
@@ -51,12 +53,11 @@
 | [Design-extractor-toolkit](https://github.com/stsgs1980/Design-extractor-toolkit) | AI-инструмент извлечения дизайна |
 | [UI-Library-Compare_V0app](https://github.com/stsgs1980/UI-Library-Compare_V0app) | Сравнение UI библиотек |
 
-## Flow / Агенты (3)
+## Flow / Агенты (2)
 
 | Проект | Статус | Описание |
 |--------|--------|----------|
 | [Flow-Studio-Pro](https://github.com/stsgs1980/Flow-Studio-Pro) | [LOCAL] | Visual workflow builder |
-| [MVP-Flow-Studio-Pro](https://github.com/stsgs1980/MVP-Flow-Studio-Pro) | [ARCHIVED] | Lightweight прототип |
 | [agent-logo](https://github.com/stsgs1980/agent-logo) | — | Логотипы для агентов |
 
 ## Код-галереи / Эстетика (4)
@@ -105,12 +106,13 @@
 | [Portfolio-Conversion](https://github.com/stsgs1980/Portfolio-Conversion) | 42 компонента, 3D, анимации |
 | [dev.studio-2-portfolio](https://github.com/stsgs1980/dev.studio-2-portfolio) | Портфолио dev.studio |
 
-## Пакеты (сырые) (2)
+## Пакеты (сырые) (1)
 
 | Проект | Описание |
 |--------|----------|
-| [prompting-v0.0](https://github.com/stsgs1980/prompting-v0.0) | 20 когнитивных формул (сырой пакет) |
 | [zai-custom-skills](https://github.com/stsgs1980/zai-custom-skills) | Custom skills для Z.ai (сырой пакет) |
+
+> prompting-v0.0 — перенесён в [архив](_archived/prompting-v0/README.md), код живёт в @stsgs/prompting
 
 ## Утилиты / Тулкиты (3)
 
@@ -128,3 +130,23 @@
 | [HH-Job-Copilot](https://github.com/stsgs1980/HH-Job-Copilot) | HR | Заготовка проекта для HR |
 | [CHROMEDNA](https://github.com/stsgs1980/CHROMEDNA) | Трейдинг | Заготовка проекта для трейдинга |
 | [Wiki-Codex-v2](https://github.com/stsgs1980/Wiki-Codex-v2) | Wiki | Мини web-версия wiki |
+
+---
+
+## Проекты без детальных страниц
+
+Следующие проекты перечислены только в тематических группах выше. Детальные страницы (с описанием, стеком, связями) пока не созданы — это нормально для scaffold/экспериментальных проектов. Если проект начинает активно развиваться — создай для него страницу по шаблону любого ACTIVE-проекта.
+
+**UI / Дизайн-системы без страниц:** Zai-ui-kit, Component-Browser-Public-v1.0, Hub, carbon-design-system-guide, DS-Reference, DesignSystems-Hub-industrial, Radix-Template, UI-MATRIX, UI-RADAR, Reverse-engineering, Design-extractor-toolkit, UI-Library-Compare_V0app
+
+**Код-галереи без страниц:** Code-Aesthetic-Gallery-v2.0, Code-Aesthetic-Gallery-v3.0, Code-Snippets-Gallery, web-aesthetic-showcase
+
+**Цвет / Визуальные инструменты без страниц:** Color-Picker-Panel, Color-Picker-Panel-Figma, Color-Picker-Panel-V2, energy-helix-3d
+
+**CSS / Layout без страниц:** CSS-Grid, 47-css-grids, Layout-Explorer
+
+**Обучение / Справочники без страниц:** Industrial-Style-Guide, JavaScript-TypeScript, Learning-Plan-Prompt-Generator, Learning-Prompt-Standardizer, Llm-memory-techniques, Rust-performance-optimization, UI-Stack-Guide
+
+**Портфолио без страниц:** Portfolio-Conversion, dev.studio-2-portfolio
+
+**Утилиты / Тулкиты без страниц:** CodeMan, StsDev-Knowledge, Token-command-center, agent-logo

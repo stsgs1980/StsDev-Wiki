@@ -20,7 +20,24 @@
 
 ---
 
-## По статусам
+## Сводка по статусам
+
+| Статус | Кол-во | Репозитории |
+|--------|--------|-------------|
+| [ACTIVE] | 7 | P-MAS-architector, 3A Studio, UI-Kit, Component-Browser, Z.Code.Guide, StsDev-Wiki, Stanislav-graur |
+| [NEW] | 4 | Code-Realm, HH-Job-Copilot, CHROMEDNA, Wiki-Codex-v2 |
+| [REFERENCE] | 1 | Zai-agent-toolkit |
+| [LOCAL] | 1 | Flow-Studio-Pro |
+| [ARCHIVED] | 3 | P-MAS_init, P-mas-studio (DELETED), MVP-Flow-Studio-Pro |
+| [EMPTY] | 2 | Reverse-engineering, Zai-agent-toolkit-by-PMAS |
+| [PACKAGE] | 3 | prompting-v0.0, zai-custom-skills, energy-helix-3d |
+| Без статуса | 33 | Остальные репозитории — scaffold/эксперименты, статус уточняется |
+
+> **Если нужно быстро понять что живо** — смотри [ACTIVE] и [NEW]. Это 11 проектов, где есть реальный код и развитие.
+
+---
+
+## По статусам (детально)
 
 | Статус | Репо | Файлов | Коммитов | Описание (из README) |
 |--------|------|--------|----------|----------------------|
@@ -33,10 +50,9 @@
 | [REFERENCE] | [Zai-agent-toolkit](https://github.com/stsgs1980/Zai-agent-toolkit) | ~150 | — | Стандарты + навыки + правила для AI-driven dev (read-only, v2.0.4) |
 | [ACTIVE] | [Stanislav-graur](https://github.com/stsgs1980/Stanislav-graur) 🔒 | — | — | Личный сайт (приватный) |
 | [ARCHIVED] | [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) | ~600 | 70 | Agent Hierarchy Dashboard v1 (архив на GitHub) |
+| [DELETED] | P-mas-studio | 1066 | 105 | Удалён автором (2026-05-30). См. [архив](projects/_archived/p-mas-studio/README.md) |
 | [EMPTY] | [Reverse-engineering](https://github.com/stsgs1980/Reverse-engineering) | 0 | 0 | Пустой репозиторий |
 | [EMPTY] | [Zai-agent-toolkit-by-PMAS](https://github.com/stsgs1980/Zai-agent-toolkit-by-PMAS) | 0 | 0 | Пустой репозиторий |
-
-> **Примечание**: Репозиторий "P-mas-studio" не найден на GitHub. Возможно, P-MAS-architector (942 файла, 164 коммита) — это тот проект, который упоминался под этим названием.
 
 ---
 
@@ -220,6 +236,7 @@
 | [REFERENCE] | Read-only, не модифицируем |
 | [LOCAL] | Локальный исходник |
 | [ARCHIVED] | Мёртвый, не развивается |
+| [DELETED] | Удалён с GitHub |
 | [PACKAGE] | Переиспользуемый пакет |
 | [EMPTY] | Пустой репозиторий |
 

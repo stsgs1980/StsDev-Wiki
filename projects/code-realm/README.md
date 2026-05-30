@@ -1,0 +1,18 @@
+# Code-Realm [NEW]
+
+**Заготовка CLI терминала**
+
+- **GitHub:** https://github.com/stsgs1980/Code-Realm
+- **Коммитов:** 36
+- **Стек:** Next.js 16, TS 5, Tailwind 4, Framer Motion 12
+- **Домен:** CLI / Галерея
+
+---
+
+## Что это (из README)
+
+"The Art of CODE REALM": 23 секции, 50+ инструментов. Retro Terminal v2, ASCII art. CLI-стиль визуализация.
+
+## Статус
+
+Заготовка проекта. Есть код, но не стабилизирован.

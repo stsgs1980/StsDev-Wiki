@@ -8,9 +8,10 @@
 
 ```
 1. git clone https://github.com/stsgs1980/StsDev-Wiki.git /tmp/wiki
-2. Прочитать /tmp/wiki/ecosystem-map.md — понять что существует
-3. Прочитать /tmp/wiki/principles/ — правила, которые нельзя нарушать
-4. Прочитать /tmp/wiki/decisions/ — принятые решения
+2. Прочитать /tmp/wiki/about.md — кто автор, стек, подход
+3. Прочитать /tmp/wiki/ecosystem-map.md — понять что существует
+4. Прочитать /tmp/wiki/principles/ — правила, которые нельзя нарушать
+5. Прочитать /tmp/wiki/decisions/ — принятые решения
 ```
 
 ## Шаг 2: Проект
@@ -41,7 +42,7 @@
 ## Чек-лист
 
 ```
-□ Wiki прочитана (ecosystem-map + principles + decisions)
+□ Wiki прочитана (about + ecosystem-map + principles + decisions)
 □ Проект определён
 □ Прогресс-файл прочитан
 □ Исходники склонированы
