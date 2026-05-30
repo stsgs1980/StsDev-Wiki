@@ -1,6 +1,6 @@
 # Стандарт работы в Z.ai песочнице
 
-**Дата:** 2026-05-30 | **Версия:** 3.0
+**Дата:** 2026-05-30 | **Версия:** 4.0
 **Для кого:** любой AI-агент в новой сессии
 **Статус:** универсальный стандарт (не привязан к конкретному проекту)
 
@@ -8,11 +8,43 @@
 
 ## Суть проблемы
 
-Песочница Z.ai = **ephemeral контейнер**. Каждая новая сессия = чистая машина.
+Песочница Z.ai = **ephemeral контейнер**. Все чат-сессии разделяют одну файловую систему, но имеют отдельные shell-процессы.
+
+```
+Жизненный цикл песочницы:
+
+  Начало сессии                  Конец сессии
+       |                              |
+  Файлы от прошлой сессии       Shell-процесс умирает
+  всё ещё на диске               Все дочерние процессы умирают
+       |                          (dev-сервер, вотчеры)
+       v                              |
+  Клонируем / проверяем проект       v
+  Устанавливаем зависимости     Файлы сохраняются на диске
+  Запускаем dev-сервер          (git-состояние сохраняется)
+  Работаем...                   Процессы нужно перезапускать
+       |                        в новой сессии
+       v
+  git push  <----- ЕДИНСТВЕННЫЙ способ сохранить работу навсегда
+```
+
 Ничего не сохраняется между сессиями. Всё что не запушено в GitHub — потеряно навсегда.
 
 Поэтому песочница = **не хранилище, а рабочая поверхность**.
 Хранилище = GitHub. Песочница = временная копия на пару часов.
+
+---
+
+## Жёсткие правила
+
+- Рабочая директория = **ТОЛЬКО** `/home/z/my-project/`
+- `.zscripts/` = инфраструктура песочницы. **НИКОГДА не удалять, НИКОГДА не перезаписывать**
+- `upload/` = точка монтирования песочницы. **Нельзя удалить** (Device or resource busy)
+- `download/` = обычная директория (НЕ точка монтирования). Переживает между сессиями, но не между сбросами контейнера. Удаляется при перезагрузке проекта.
+- git push = **ЕДИНСТВЕННЫЙ** надёжный способ сохранить работу между сбросами контейнера
+- SSH = **НЕ доступен** (нет `ssh` binary, нет `ssh-keygen`, нет `~/.ssh/`)
+- gh CLI = **НЕ доступен**
+- Единственный метод аутентификации = **PAT-токен в HTTPS URL**
 
 ---
 
@@ -44,68 +76,92 @@ Wiki прочитана
 
 **Когда:** автор сказал «продолжаем проект X», или в wiki есть прогресс-файл с незавершённым этапом.
 
-### Шаг 1: Клонировать wiki + рабочий проект + источники
+### Шаг 1: Клонировать в /tmp/
 
 ```bash
-# Wiki (всегда):
-git clone https://github.com/stsgs1980/StsDev-Wiki.git /tmp/wiki
+# Публичный репо:
+git clone --depth 1 https://github.com/<ORG>/<REPO>.git /tmp/<repo-name>
 
-# Рабочий проект (куда пишем):
-git clone --depth 1 https://github.com/stsgs1980/<PROJECT>.git /tmp/project
-
-# Источники кода (по ecosystem-map.md — только те, что связаны с проектом):
-git clone --depth 1 https://github.com/stsgs1980/<SOURCE>.git /tmp/<source-name>
+# Приватный репо (PAT в URL):
+git clone --depth 1 https://<TOKEN>@github.com/<ORG>/<REPO>.git /tmp/<repo-name>
 ```
 
-> **Какие источники клонировать?** Смотри в ecosystem-map.md раздел «Поток данных» — какие репо.feedят в твой проект. Клонируй только их. Если unsure — спроси автора.
+Всегда `--depth 1`. Полная история — трата времени и диска.
 
-> **Если clone висит** (большой репо / медленная сеть):
-> ```bash
-> git clone --depth 1 --no-checkout <URL> /tmp/<name>
-> cd /tmp/<name> && git checkout HEAD -- .
-> ```
+**Если clone висит** (большой репо, медленная сеть):
+```bash
+git clone --depth 1 --no-checkout <URL> /tmp/<name>
+cd /tmp/<name> && git checkout HEAD -- .
+```
 
-### Шаг 2: Развернуть рабочий проект в песочнице
+### Шаг 2: Очистить /home/z/my-project/
+
+**КРИТИЧЕСКИ: сохранить `.zscripts/` и `upload/`**
 
 ```bash
-# Очистить рабочую папку (ЗАЩИТИТЬ .zscripts/ и upload/!)
 cd /home/z/my-project
 ls -A | grep -v '^.zscripts$' | grep -v '^upload$' | xargs rm -rf
+```
 
-# Если есть root-owned директории:
+Некоторые директории могут быть root-owned (sandbox авто-создаёт пустые папки навыков):
+```bash
 sudo chown -R z:z /home/z/my-project/skills 2>/dev/null
 rm -rf /home/z/my-project/skills 2>/dev/null
+```
 
-# Перенести файлы (КРИТИЧЕСКИ: rsync, НЕ cp -r — cp затрёт .zscripts/)
-rsync -a --exclude='.zscripts/' --exclude='upload/' /tmp/project/ /home/z/my-project/
+### Шаг 3: Перенести файлы проекта (защищая .zscripts/)
 
-# Fallback если rsync нет:
+**ОПАСНОСТЬ:** Если репо содержит `.zscripts/` (даже пустой), обычный `cp -r` перезапишет sandbox-версию `dev.sh` репо-версией. Это ломает запуск dev-сервера. Проверено в живой песочнице.
+
+**Используй rsync с exclude:**
+
+```bash
+rsync -a --exclude='.zscripts/' --exclude='upload/' /tmp/<repo-name>/ /home/z/my-project/
+```
+
+Это копирует всё (`.git/`, `.gitignore`, `.env`, `src/` и т.д.), сохраняя оригинальные `.zscripts/` и `upload/` песочницы.
+
+**Если rsync недоступен** (маловероятно, но возможно):
+
+```bash
 mkdir -p /tmp/zscripts-backup
 cp -a /home/z/my-project/.zscripts/. /tmp/zscripts-backup/
-cp -r /tmp/project/. /home/z/my-project/
+cp -r /tmp/<repo-name>/. /home/z/my-project/
 rm -rf /home/z/my-project/.zscripts/
 mkdir -p /home/z/my-project/.zscripts/
 cp -a /tmp/zscripts-backup/. /home/z/my-project/.zscripts/
 ```
 
-### Шаг 3: Git + dev-сервер
+### Шаг 4: Git ownership + аутентификация
 
 ```bash
-# Git ownership
+# Предотвратить "fatal: detected dubious ownership":
 git config --global --add safe.directory /home/z/my-project
 
-# Аутентификация (PAT — единственный способ в песочнице)
-git remote set-url origin https://<TOKEN>@github.com/stsgs1980/<PROJECT>.git
+# PAT — единственный способ аутентификации в песочнице:
+git remote set-url origin https://<TOKEN>@github.com/<ORG>/<REPO>.git
+```
 
-# Запуск dev-сервера (ЕДИНСТВЕННЫЙ правильный способ)
+### Шаг 5: Запустить dev-сервер
+
+```bash
 bash /home/z/my-project/.zscripts/dev.sh
+```
 
-# Проверка
+### Шаг 6: Проверить
+
+```bash
 curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/
 # Ожидаем: 200
 ```
 
-### Шаг 4: Читать контекст проекта
+Оба варианта `localhost` и `127.0.0.1` работают. Если ни один не отвечает — сервер мёртв, смотри логи:
+
+```bash
+cat /home/z/my-project/.zscripts/dev.log | tail -30
+```
+
+### Шаг 7: Читать контекст проекта
 
 ```bash
 # Прогресс-файл (если есть — из wiki):
@@ -118,7 +174,7 @@ cat /home/z/my-project/worklog.md
 cd /home/z/my-project && git log --oneline -10
 ```
 
-### Шаг 5: Работать
+### Шаг 8: Работать
 
 Начинаем по протоколу 4D: Door → Do → Document → Double-check (см. [principles/construction-4d.md](../principles/construction-4d.md))
 
@@ -149,7 +205,7 @@ curl https://z-cdn.chatglm.cn/fullstack/init-fullstack_1775040338514.sh | bash
 ```
 
 Создаёт пустой Next.js 16 проект с shadcn/ui. Dev-сервер стартует автоматически.
-Ограничение: минимальный одностраничный проект. Не подходит для сложных приложений.
+Ограничение: минимальный одностраничный проект. Не подходит для сложных приложений с несколькими роутами, Prisma или кастомной структурой.
 
 **Вариант B2 — Ручная настройка (сложный проект):**
 
@@ -161,7 +217,7 @@ curl https://z-cdn.chatglm.cn/fullstack/init-fullstack_1775040338514.sh | bash
 cd /home/z/my-project
 git init
 git config --global --add safe.directory /home/z/my-project
-git remote add origin https://<TOKEN>@github.com/stsgs1980/<PROJECT>.git
+git remote add origin https://<TOKEN>@github.com/<ORG>/<REPO>.git
 git add -A
 git commit -m "init: project setup"
 git push -u origin main
@@ -183,9 +239,9 @@ git push -u origin main
 
 ```bash
 # Shallow clone
-git clone --depth 1 https://github.com/stsgs1980/<SOURCE>.git /tmp/<name>
+git clone --depth 1 <URL> /tmp/<name>
 
-# Sparse checkout (если нужен только пара файлов из огромного репо):
+# Sparse checkout (если нужна пара файлов из огромного репо):
 git clone --filter=blob:none --sparse <URL> /tmp/<name>
 cd /tmp/<name> && git sparse-checkout set path/to/folder
 
@@ -213,14 +269,14 @@ cp /tmp/<name>/path/to/file.tsx /home/z/my-project/src/components/
 
 Sandbox управляет dev-сервером через скрипты в `.zscripts/`:
 
-| Скрипт | Назначение |
-|--------|------------|
-| `dev.sh` | Установка зависимостей + DB + dev-сервер + mini-services |
-| `build.sh` | Production build |
-| `start.sh` | Production startup (Caddy + built app) |
-| `mini-services-*.sh` | Установка/запуск/watchdog для mini-services |
-| `dev.log` | Логи dev-сервера |
-| `dev.pid` | PID dev-сервера |
+| Скрипт/Файл | Назначение | Когда вызывается |
+|-------------|-----------|-----------------|
+| `dev.sh` | Запуск dev-среды (install + db + сервер + mini-services) | После загрузки проекта |
+| `build.sh` | Production build (Next.js + mini-services) | Перед деплоем |
+| `start.sh` | Production startup (Caddy + собранное приложение) | Production mode |
+| `mini-services-*.sh` | Установка/запуск/watchdog для mini-services | Автоматически из dev.sh |
+| `dev.log` | Логи dev-сервера | Пишется dev.sh |
+| `dev.pid` | PID dev-сервера | Пишется dev.sh |
 
 ### Что делает dev.sh (по порядку)
 
@@ -229,9 +285,22 @@ Sandbox управляет dev-сервером через скрипты в `.z
 2. bun run db:push                    — Prisma schema -> DB (если prisma/ есть)
 3. bun run dev &                      — Next.js dev server на порту 3000
 4. wait_for_service localhost:3000    — ждёт 200 OK
-5. Health check (curl)
-6. start_mini_services               — ws-service + watchdog
+5. Health check (curl)               — подтверждение: сервер жив
+6. start_mini_services               — запуск ws-service + watchdog
 ```
+
+### Watchdog
+
+После запуска dev.sh **mini-service watchdog** мониторит dev-сервер. Если процесс сервера умирает (краш, таймаут, OOM), watchdog может его перезапустить.
+Лог watchdog: `.zscripts/mini-service-watchdog.log`.
+
+Это НЕ гарантировано во всех случаях. Если сервер мёртв и не перезапустился автоматически за 30 секунд — запусти dev.sh вручную: `bash .zscripts/dev.sh`.
+
+### Что ожидает dev.sh
+
+- `package.json` со скриптом `"dev": "next dev -p 3000"`
+- `prisma/schema.prisma` (опционально — шаг 2 пропускается если нет prisma/)
+- `.env` с `DATABASE_URL` если используется PostgreSQL (опционально — SQLite работает без него)
 
 ### CRITICAL: Никогда не запускай dev-сервер вручную
 
@@ -240,10 +309,13 @@ Sandbox управляет dev-сервером через скрипты в `.z
 npm run dev          # НЕПРАВИЛЬНО — процесс умрёт
 bun run dev          # НЕПРАВИЛЬНО — процесс умрёт
 npx next dev         # НЕПРАВИЛЬНО — Turbopack крашится
+next dev             # НЕПРАВИЛЬНО — нет интеграции с песочницей
 
 # Единственный правильный способ:
 bash /home/z/my-project/.zscripts/dev.sh
 ```
+
+Ручной запуск обходит управление процессами песочницы. Сервер либо крашнется (конфликт Turbopack), либо умрёт тихо через несколько минут (нет watchdog). Всегда используй dev.sh.
 
 ### Сложный проект (50+ файлов): Production mode
 
@@ -264,8 +336,14 @@ curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/
 
 ## Аутентификация
 
-Песочница **НЕ имеет** gh CLI, SSH-ключей, credential manager.
-**SSH недоступен** (нет ssh binary, нет ssh-keygen, нет ~/.ssh/).
+Песочница **НЕ имеет** gh CLI, SSH-ключей, SSH binary, credential manager.
+
+| Метод | Доступен? | Примечание |
+|-------|----------|------------|
+| PAT через HTTPS URL | ДА | Единственный метод для приватных репо |
+| SSH clone | НЕТ | `ssh` binary не установлен |
+| gh CLI auth | НЕТ | `gh` не установлен |
+| Credential manager | НЕТ | Нет постоянного хранилища |
 
 ```bash
 # Один раз в начале сессии:
@@ -273,11 +351,143 @@ git remote set-url origin https://<TOKEN>@github.com/<ORG>/<REPO>.git
 # После этого работает обычный git push / git pull
 ```
 
-**Безопасность:** PAT живёт только в текущей сессии. Не коммить `.git/config` с токеном.
+**Безопасность:** PAT живёт только в текущей сессии. Контейнер ephemeral — когда сессия заканчивается, всё стирается. Не коммить `.git/config` с встроенным токеном в репо.
 
 ---
 
-## Завершение сессии
+## Разделяемая файловая система и жизненный цикл Shell
+
+### Разделяемая файловая система
+
+- Все чат-сессии разделяют один диск (`/home/z/my-project/`)
+- Файлы, созданные в одной сессии, видны во всех остальных
+- НЕТ изоляции файловой системы между сессиями
+- **Следствие:** Файлы переживают смерть shell-процесса. Проверяй существующие файлы перед пересозданием.
+
+### Жизненный цикл Shell-процесса
+
+- Каждая чат-сессия имеет свой shell-процесс
+- Когда чат-сессия заканчивается, shell умирает
+- Все дочерние процессы умирают вместе с shell (dev-сервер, вотчеры, cron)
+- Файлы на диске сохраняются — убиваются только процессы
+- Новый чат получает новый shell, но ту же файловую систему
+- **Следствие:** Dev-сервер, запущенный в одном чате, НЕ переживёт переход в новый чат. Всегда проверяй статус сервера при старте сессии.
+
+### Чек-лист запуска (новая сессия / перезапуск)
+
+```
+1. Проверить состояние файловой системы:
+   cd /home/z/my-project && ls src/app/page.tsx
+   git status && git log --oneline -3
+
+2. Если файлы на месте:
+   Переходи к шагу 4
+
+3. Если файлы отсутствуют или повреждены:
+   Стратегия A (clone из GitHub) или Стратегия B (создать новый)
+
+4. Проверить dev-сервер:
+   curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/
+   - 200 = жив, можно работать
+   - 000 = мёртв, перезапуск:
+
+   bash /home/z/my-project/.zscripts/dev.sh
+
+5. Проверка: 200 OK -> готов к работе
+```
+
+---
+
+## Git Lockup Recovery
+
+Если предыдущий чат оставил git в заблокированном состоянии (`needs merge`, `rebase in progress`, `you need to resolve your current index first`):
+
+**Из НОВОЙ чат-сессии** (старая сессия заблокирована):
+
+```bash
+rm -rf .git/rebase-merge .git/rebase-apply
+rm -f .git/MERGE_HEAD .git/MERGE_MSG .git/index.lock
+git reset --hard HEAD
+```
+
+**Предупреждения:**
+- НЕ пытайся `git rebase --continue` или `git merge --continue` при блокировке. Эти команды требуют разрешения конфликтов, что невозможно когда все инструменты заблокированы git hooks.
+- Это нужно делать из НОВОЙ чат-сессии. Shell-процесс старой сессии может держать git lock, предотвращающий выполнение любой команды.
+
+---
+
+## Preview
+
+### Web-интерфейс (chatglm.site)
+
+Preview отображается в Preview Panel (правая часть чат-интерфейса).
+Обновляется автоматически при изменении кода (hot reload).
+
+### IM-пользователи (Telegram и др.)
+
+```
+https://preview-<container-id>.space-z.ai/
+```
+
+Узнать container ID:
+
+```bash
+echo $FC_CONTAINER_ID
+# или
+hostname
+```
+
+**НЕ давай пользователю** `http://localhost:3000` или `http://127.0.0.1:3000` — это внутренние адреса контейнера, недоступные снаружи.
+
+---
+
+## База данных
+
+### SQLite (по умолчанию, без настройки)
+
+Работает из коробки. `prisma db push` (вызывается dev.sh) создаёт файл БД автоматически.
+Расположение зависит от конфигурации datasource в `schema.prisma`
+(обычно `db/custom.db` или `prisma/dev.db`).
+
+### PostgreSQL (Neon, Supabase и др.)
+
+Требует `.env` с `DATABASE_URL`:
+
+```env
+DATABASE_URL=postgresql://user:pass@host:5432/dbname?sslmode=require
+```
+
+Правила для `.env`:
+- НЕ коммитишься в git (в .gitignore)
+- ДОЛЖЕН существовать в репо для Vercel-деплоев (используй `.env.example` как референс)
+- КОПИРУЕТСЯ в `/home/z/my-project/` при клонировании проекта
+- Если отсутствует — шаг 2 dev.sh (`db:push`) упадёт
+
+---
+
+## Жизненный цикл сессии
+
+### Начало сессии
+
+```
+1. git clone wiki/context (если нужно)    -> /tmp/wiki
+2. Прочитать контекст проекта
+3. git clone рабочий репо                  -> /tmp/repo
+4. Очистить /home/z/my-project/            (сохранить .zscripts/ и upload/)
+5. Скопировать файлы репо                  -> /home/z/my-project/
+6. bash .zscripts/dev.sh                   (авто: install + db + сервер + mini-services)
+7. Проверить: curl localhost:3000          -> 200 OK
+8. Сообщить автору: готов
+```
+
+### Во время сессии
+
+- Коммить и пушить после каждого значимого изменения
+- НЕ запускать dev-сервер вручную (используй dev.sh)
+- Если сервер умер: `bash .zscripts/dev.sh` для перезапуска
+- Если билд падает: проверить `.zscripts/dev.log`
+
+### Конец сессии
 
 1. **Запушить ВСЕ изменения** (рабочий репо + wiki):
    ```bash
@@ -289,15 +499,13 @@ git remote set-url origin https://<TOKEN>@github.com/<ORG>/<REPO>.git
 
 3. **Если push не работает** — немедленно сообщить. Без push = код потерян.
 
----
+### Если сессия оборвалась
 
-## Если сессия оборвалась
-
-| Сценарий | Действие |
-|----------|---------|
-| Код был запушен | `git clone` wiki + рабочий репо, `git log --oneline -10`, продолжаем |
+| Сценарий | Восстановление |
+|----------|---------------|
+| Код был запушен | `git clone` из GitHub, продолжаем |
 | Код НЕ был запушен | Потерян. Пересоздать по wiki + истории чата |
-| Push не прошёл | Сообщить немедленно. Data loss. |
+| Push не прошёл | Сообщить немедленно. Нет push = нет сохранения = потеря данных |
 
 ---
 
@@ -306,43 +514,92 @@ git remote set-url origin https://<TOKEN>@github.com/<ORG>/<REPO>.git
 | Ошибка | Причина | Решение |
 |--------|---------|---------|
 | `fatal: destination already exists` | Clone в непустую папку | Клонировать в `/tmp/`, потом rsync |
-| `git push: Permission denied` | Нет PAT | `git remote set-url origin https://<TOKEN>@...` |
-| `.zscripts/dev.sh` падает | Затёр sandbox `dev.sh` репо-версией | `git checkout -- .zscripts/` затем `bash .zscripts/dev.sh` |
-| `Port 3000 already in use` | Порт занят | `pkill -f 'next dev'; sleep 1; bash .zscripts/dev.sh` |
-| При clone удалил `.zscripts/` | `rm -rf` без фильтра | Всегда фильтруй: `grep -v '^.zscripts$' \| grep -v '^upload$'` |
-| `fatal: detected dubious ownership` | Нет safe.directory | `git config --global --add safe.directory /home/z/my-project` |
-| Dev-сервер умер при смене сессии | Shell process умер | `bash .zscripts/dev.sh` |
-| Clone timeout | Большой репо | `--depth 1 --no-checkout` |
+| `Permission denied` на push | Нет PAT в URL | `git remote set-url origin https://<TOKEN>@...` |
+| Dev-сервер не отвечает (000) | Сервер крашнулся или не запущен | `bash .zscripts/dev.sh` |
+| Clone висит / timeout | Большой репо, медленная сеть | `git clone --depth 1 --no-checkout`, затем `git checkout HEAD -- .` |
+| `upload/` не удаляется | Точка монтирования песочницы | Норма. Игнорировать. Нельзя удалить. |
+| `skills/` permission denied | Root-owned пустые директории от sandbox | `sudo chown -R z:z skills && rm -rf skills` перед копированием |
+| `.zscripts/dev.sh` падает сразу | `dev.sh` перезаписан при копировании репо | Восстановить: `git checkout -- .zscripts/` затем перезапустить |
+| Turbopack краш при ручном запуске | Ручной старт конфликтует с sandbox | Использовать `.zscripts/dev.sh`, НЕ ручной `npx next dev` |
+| `fatal: detected dubious ownership` | Git safe.directory не установлен | `git config --global --add safe.directory /home/z/my-project` |
+| `EADDRINUSE :3000` | Порт уже занят | `pkill -f 'next dev'; sleep 1; bash .zscripts/dev.sh` |
+| Vercel deploy падает | Нет env vars | Добавить в Vercel Dashboard > Settings > Environment Variables |
+| dev.sh падает на db:push | Prisma требует PostgreSQL но нет .env | Добавить `.env` с DATABASE_URL |
+| Все git-команды заблокированы | Прошлая сессия оставила rebase/merge | Восстановление из новой сессии (см. Git Lockup Recovery) |
+| Сервер умирает при смене сессии | Shell-процесс умер со старым чатом | `bash .zscripts/dev.sh` |
+| `localhost` не отвечает в curl | Редкая проблема IPv6 resolution | Попробовать `127.0.0.1` (обычно оба работают) |
+| `bun run dev` быстро умирает | Нестабильность bun wrapper | Использовать `.zscripts/dev.sh` |
+| Сервер умирает через ~5 мин | Sandbox process timeout | Watchdog dev.sh обрабатывает это. Если нет — перезапустить вручную |
+
+---
+
+## Чего НЕ делать
+
+| Действие | Почему нельзя |
+|----------|-------------|
+| `npm run dev` / `bun run dev` / `npx next dev` | Ручной старт конфликтует с песочницей, процесс умирает |
+| `git clone <URL>` прямо в `/home/z/my-project/` | Ошибка на непустой директории; ломает `.zscripts/` |
+| `cp -r repo/. /home/z/my-project/` (когда в репо есть `.zscripts/`) | Перезаписывает sandbox `dev.sh`, ломает dev-сервер. Используй rsync |
+| `rm -rf .zscripts/` | Уничтожает инфраструктуру песочницы, восстановление невозможно |
+| `ssh git@github.com` | SSH binary не установлен в песочнице |
+| `npx create-next-app` | Не нужно; песочница предоставляет scaffold проекта |
+| Доверять что файлы сохраняются между сессиями | Контейнер может быть полностью сброшен; всегда git push |
+| Начинать работу без проверки git status | Прошлая сессия могла оставить git заблокированным |
+| Начинать работу без проверки dev-сервера | Процесс сервера умер вместе со старой сессией |
 
 ---
 
 ## Быстрая шпаргалка
 
 ```bash
-# === Продолжить проект (полная последовательность) ===
-git clone --depth 1 https://github.com/stsgs1980/<PROJECT>.git /tmp/project
+# === Загрузить существующий проект (полная последовательность) ===
+git clone --depth 1 <URL> /tmp/repo
 cd /home/z/my-project && ls -A | grep -v '^.zscripts$' | grep -v '^upload$' | xargs rm -rf
-rsync -a --exclude='.zscripts/' --exclude='upload/' /tmp/project/ /home/z/my-project/
+rsync -a --exclude='.zscripts/' --exclude='upload/' /tmp/repo/ /home/z/my-project/
 git config --global --add safe.directory /home/z/my-project
-git remote set-url origin https://<TOKEN>@github.com/stsgs1980/<PROJECT>.git
+git remote set-url origin https://<TOKEN>@github.com/<ORG>/<REPO>.git
 bash .zscripts/dev.sh
 
-# === Проверка сервера ===
+# === Проверить dev-сервер ===
 curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/
+
+# === Проверить логи dev-сервера ===
+cat .zscripts/dev.log | tail -30
+
+# === Проверить лог watchdog ===
+cat .zscripts/mini-service-watchdog.log | tail -10
 
 # === Перезапуск сервера ===
 pkill -f 'next dev'; sleep 1; bash .zscripts/dev.sh
 
-# === Push ===
+# === Push на GitHub ===
+git remote set-url origin https://<TOKEN>@github.com/org/repo.git
 git add -A && git commit -m "msg" && git push
 
-# === Восстановление .zscripts/ ===
-git checkout -- .zscripts/
+# === Container ID для preview URL ===
+echo $FC_CONTAINER_ID
+# или
+hostname
 
-# === Git lockup recovery ===
+# === Git lockup recovery (из новой сессии) ===
 rm -rf .git/rebase-merge .git/rebase-apply
 rm -f .git/MERGE_HEAD .git/MERGE_MSG .git/index.lock
 git reset --hard HEAD
+
+# === Исправить git ownership error ===
+git config --global --add safe.directory /home/z/my-project
+
+# === Восстановить .zscripts/ если случайно перезаписан ===
+git checkout -- .zscripts/
+
+# === Установить доп. пакеты ===
+cd /home/z/my-project && bun add <package>
+
+# === Lint check ===
+bun run lint
+
+# === Синхронизация БД (Prisma) ===
+bun run db:push
 
 # === Production mode (для сложных проектов) ===
 npx next build 2>&1 | tail -10
