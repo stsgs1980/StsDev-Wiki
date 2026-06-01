@@ -30,7 +30,7 @@
 | Актив | Донор | LOC | Путь | Почему P0 |
 |-------|-------|-----|------|-----------|
 | Flow Editor (20 нод, Zustand, execution) | 3a-studio-mas | 2,174 | `src/features/flow-editor/` | Ядро 3A Studio — визуальный редактор |
-| Prisma Schema (26 моделей) | 3a-studio-mas | 718 | `prisma/schema.prisma` | Полная модель данных проекта |
+| Prisma Schema (36 моделей) | 3a-studio-mas | 718 | `prisma/schema.prisma` | Полная модель данных проекта |
 | Flow Execution Engine | 3a-studio-mas | ~400 | `src/app/api/flows/[id]/execute/`, `src/features/flow-editor/lib/` | Topological sort + per-node handlers |
 | Prompting System (packages/) | 3a-studio-mas | 2,537 | `src/lib/prompting/` + `packages/prompting/` | Scoring, формулы, интенты. **Брать только из packages/ — src/lib/ содержит заглушки!** |
 | Shared Types | 3a-studio-mas | 481 | `packages/shared/` | Канонические типы для всех сущностей |

@@ -2,7 +2,7 @@
 
 **Artificial. Agentic. Architecture. — IDE для visual multi-agent systems**
 
-- **Активный репо:** https://github.com/stsgs1980/AAA-studio (214 коммитов)
+- **Активный репо:** https://github.com/stsgs1980/AAA-studio (218 коммитов)
 - **Канонический источник:** https://github.com/stsgs1980/3a-studio-mas (45K LOC, полный проект)
 - **Замороженный репо:** https://github.com/stsgs1980/3a-studio (143 коммита, остановлен 30.05.2026)
 - **Стек:** Next.js 15/16, SQLite (dev) / PostgreSQL Neon (Vercel), Prisma ORM, ReactFlow, Zustand, z-ai-web-dev-sdk
