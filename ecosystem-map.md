@@ -24,12 +24,11 @@
 
 | Статус | Кол-во | Репозитории |
 |--------|--------|-------------|
-| [ACTIVE] | 7 | P-MAS-architector, AAA-studio (3A Studio), UI-Kit, Component-Browser, Z.Code.Guide, StsDev-Wiki, Stanislav-graur |
+| [ACTIVE] | 8 | P-MAS-architector, AAA-studio (3A Studio), UI-Kit, Component-Browser, Z.Code.Guide, StsDev-Wiki, Stanislav-graur, Flow-Studio-Pro |
 | [FROZEN] | 1 | 3a-studio (остановлен 30.05.2026, активный — AAA-studio) |
 | [SOURCE] | 1 | 3a-studio-mas (канонический источник, 45K LOC) |
 | [NEW] | 4 | Code-Realm, HH-Job-Copilot, CHROMEDNA, Wiki-Codex-v2 |
 | [REFERENCE] | 1 | Zai-agent-toolkit |
-| [LOCAL] | 1 | Flow-Studio-Pro |
 | [ARCHIVED] | 3 | P-MAS_init, P-mas-studio (DELETED), MVP-Flow-Studio-Pro |
 | [EMPTY] | 2 | Reverse-engineering, Zai-agent-toolkit-by-PMAS |
 | [PACKAGE] | 3 | prompting-v0.0, zai-custom-skills, energy-helix-3d |
@@ -100,7 +99,7 @@
 | Репо | Коммитов | Стек | Описание (из README) |
 |------|----------|------|----------------------|
 | [Flow-Studio-Pro](https://github.com/stsgs1980/Flow-Studio-Pro) | 2 | Next.js 16, ReactFlow, Zustand, Prisma, z-ai-sdk | Visual workflow builder: drag-and-drop flow editor, 18 node types (9 категорий), 10 промпт-шаблонов, execution engine, полная русская локализация |
-| [MVP-Flow-Studio-Pro](https://github.com/stsgs1980/MVP-Flow-Studio-Pro) | — | ReactFlow, LLM APIs (OpenAI/Claude), WebSocket | Lightweight прототип: 10 node types, real-time flow execution, 8 predefined frameworks, configurable LLM |
+| [MVP-Flow-Studio-Pro](https://github.com/stsgs1980/MVP-Flow-Studio-Pro) | — | ReactFlow, LLM APIs (OpenAI/Claude), WebSocket | Расширенная MVP-2 версия: 10 node types, 26 multi-agent templates, Template Gallery, i18n EN/RU, topological sort |
 | [agent-logo](https://github.com/stsgs1980/agent-logo) | — | Node.js, jq, git hooks, SVG | LOGO — NEURO Brand Identity Agent: авто-выбор логотипа по теме проекта (light/dark/mono/outline/inverted), setup.sh + git hook |
 
 ### Код-галереи / Эстетика (4)
@@ -243,7 +242,6 @@
 | [SOURCE] | Канонический источник, загружен как есть |
 | [NEW] | Greenfield, начало разработки |
 | [REFERENCE] | Read-only, не модифицируем |
-| [LOCAL] | Локальный исходник |
 | [ARCHIVED] | Мёртвый, не развивается |
 | [DELETED] | Удалён с GitHub |
 | [PACKAGE] | Переиспользуемый пакет |

@@ -44,7 +44,7 @@
 | Orchestrator + Pipeline | P-MAS-architector | ~3,047 | `src/lib/orchestrate/`, `src/lib/pipeline-middleware/` | Backend orchestration + circuit breaker + context eviction |
 | Core Types + Orchestration Patterns | prompting-v0.0 | 1,149 | `core/types.ts`, `templates/flow-templates.ts`, `agents/orchestration.ts`, `core/system-prompt.ts`, `evaluation/scoring.ts` | Domain model + flow definitions + scoring engine |
 
-**Итого P0: ~19,364 LOC**
+**Итого P0: ~18,443 LOC**
 
 ---
 
@@ -86,7 +86,7 @@
 | Cognitive Formulas | prompting-v0.0 | 301 | `agents/cognitive-formulas.ts` | 20 reasoning patterns |
 | Resilience Utilities | prompting-v0.0 | 400 | `agents/resilience.ts` | Retry, circuit breaker, timeout, bulkhead |
 
-**Итого P1: ~21,489 LOC**
+**Итого P1: ~22,568 LOC**
 
 ---
 
@@ -113,7 +113,7 @@
 | Blind Compare | prompting-v0.0 | 121 | `evaluation/blind-compare.ts` |
 | Instructions Registry | prompting-v0.0 | 559 | `instructions.ts` |
 
-**Итого P2: ~47,847 LOC**
+**Итого P2: ~46,949 LOC**
 
 ---
 
@@ -121,10 +121,10 @@
 
 | Приоритет | LOC | % от общего |
 |-----------|-----|-------------|
-| P0 (Critical) | ~19,364 | 22% |
-| P1 (High Value) | ~21,489 | 24% |
-| P2 (Nice to Have) | ~47,847 | 54% |
-| **ВСЕГО** | **~88,700** | 100% |
+| P0 (Critical) | ~18,443 | 21% |
+| P1 (High Value) | ~22,568 | 26% |
+| P2 (Nice to Have) | ~46,949 | 53% |
+| **ВСЕГО** | **~87,960** | 100% |
 
 ---
 

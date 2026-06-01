@@ -59,10 +59,12 @@
 ### [FROZEN] Замороженные
 * [3a-studio](https://github.com/stsgs1980/3a-studio) — остановлен 30.05.2026 (143 коммита). Активная разработка продолжена в AAA-studio
 
+### [PACKAGE] Пакеты
+* [prompting-v0.0](projects/_archived/prompting-v0/README.md) — @stsgs/prompting v0.1.0, 20 techniques, 11 frameworks, 6-dim scoring
+
 ### [ARCHIVED] Архив
 * [P-mas-studio](projects/_archived/p-mas-studio/README.md) — удалён с GitHub (2026-05-30)
 * [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) — visual sibling P-MAS-architector: workflow execution + ReactFlow hierarchy
-* [prompting-v0.0](projects/_archived/prompting-v0/README.md)
 * [MVP-Flow-Studio-Pro](projects/_archived/mvp-flow-studio-pro/README.md)
 
 ## Агенты
