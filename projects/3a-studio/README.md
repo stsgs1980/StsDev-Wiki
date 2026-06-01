@@ -2,7 +2,7 @@
 
 **Artificial. Agentic. Architecture. — IDE для visual multi-agent systems**
 
-- **Активный репо:** https://github.com/stsgs1980/AAA-studio (210 коммитов)
+- **Активный репо:** https://github.com/stsgs1980/AAA-studio (214 коммитов)
 - **Канонический источник:** https://github.com/stsgs1980/3a-studio-mas (45K LOC, полный проект)
 - **Замороженный репо:** https://github.com/stsgs1980/3a-studio (143 коммита, остановлен 30.05.2026)
 - **Стек:** Next.js 15/16, SQLite (dev) / PostgreSQL Neon (Vercel), Prisma ORM, ReactFlow, Zustand, z-ai-web-dev-sdk
@@ -29,7 +29,7 @@ IDE для визуального построения и управления m
 | 6 | Hierarchy | /hierarchy | Visual parent/child agent graph, 7 edge types |
 | 7 | Pipelines | /pipelines | Real flow execution, node-level drill-down |
 | 8 | Workflows | /workflows | Workflow management and monitoring |
-| 9 | Prompt Studio | /prompt-studio | Write + Formulas (11) + Frameworks (11) + Techniques (14) + Compare + Intent |
+| 9 | Prompt Studio | /prompt-studio | Write + Formulas (10) + Frameworks (11) + Techniques (14) + Compare + Intent |
 | 10 | Knowledge Base | /knowledge | Upload, TF-IDF semantic search |
 | 11 | Skill Forge | /skills-page | CRUD, code/tests, StandardsPicker, SKILL.md export |
 | 12 | Standards Manager | /standards | CRUD, rules editor, cross-ref validation |
@@ -60,8 +60,8 @@ IDE для визуального построения и управления m
 
 | Репо | Статус | LOC | Коммитов | Суть |
 |------|--------|-----|----------|------|
-| [AAA-studio](https://github.com/stsgs1980/AAA-studio) | **ACTIVE** | ~26,700 | 210 | Активная разработка, 37 Prisma моделей, 62 API routes |
-| [3a-studio-mas](https://github.com/stsgs1980/3a-studio-mas) | SOURCE | 45,249 | 1 | Канонический полный проект (single commit), 26 моделей, 33 API routes |
+| [AAA-studio](https://github.com/stsgs1980/AAA-studio) | **ACTIVE** | ~26,700 | 214 | Активная разработка, 37 Prisma моделей, 62 API routes |
+| [3a-studio-mas](https://github.com/stsgs1980/3a-studio-mas) | SOURCE | ~45K | 1 | Канонический полный проект (single commit), 36 моделей, 33 API routes |
 | [3a-studio](https://github.com/stsgs1980/3a-studio) | **FROZEN** | — | 143 | Остановлен 30.05.2026, 12 моделей, 32 API routes |
 
 **AAA-studio** и **3a-studio** имеют общий первый коммит `954904f`. AAA-studio = 3a-studio + 65 дополнительных коммитов. **3a-studio-mas** — полный проект-источник, загружен одним коммитом.
@@ -70,7 +70,7 @@ IDE для визуального построения и управления m
 
 | Донор | LOC | Статус | Что взять |
 |-------|-----|--------|-----------|
-| [3a-studio-mas](https://github.com/stsgs1980/3a-studio-mas) | 45,249 | SOURCE | Flow Editor (20 нод), Prompting System, LLM Client, Diagnostics, Pipeline Middleware, Dashboard, Auth, Monorepo packages |
+| [3a-studio-mas](https://github.com/stsgs1980/3a-studio-mas) | ~45K | SOURCE | Flow Editor (20 нод), Prisma Schema (36 моделей), Prompting System, LLM Client, Diagnostics, Pipeline Middleware, Dashboard, Auth, Monorepo packages |
 | [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) | 54,798 | ARCHIVED | Workflow execution engine, ReactFlow hierarchy v2, Workflow Pipeline UI, 7 edge types, Resilience layer, WebSocket service |
 | [MVP-Flow-Studio-Pro](https://github.com/stsgs1980/MVP-Flow-Studio-Pro) | 18,193 | ARCHIVED | 6 advanced nodes (Switch/Merge/Loop/Webhook/Variable/DataSource), 26 multi-agent templates, Template Gallery, i18n, topological sort |
 | [P-MAS-architector](https://github.com/stsgs1980/P-MAS-architector) | ~81,000 | ACTIVE | Orchestrator, prompt versioning, citation system, executor pipeline, middleware, diagnostics, comparison, 67 skills |
@@ -92,7 +92,7 @@ IDE для визуального построения и управления m
 | Пакет | Назначение | Подробнее |
 |-------|-----------|-----------|
 | @stsgs/ui | Дизайн-система (Midnight palette, ThemeProvider, cn) | [packages/ui](../../packages/ui.md) |
-| @stsgs/prompting | 6-criteria scoring, 11 formulas, 11 frameworks, 14 techniques, intent detection, comparison | [packages/prompting](../../packages/prompting.md) |
+| @stsgs/prompting | 6-criteria scoring, 10 formulas, 11 frameworks, 14 techniques, intent detection, comparison | [packages/prompting](../../packages/prompting.md) |
 | @stsgs/shared | Core types: Agent, Skill, Standard, Flow, Knowledge, Prompt, Audit | [packages/shared](../../packages/shared.md) |
 | eslint-plugin-3a | 4 rules: max-lines(150), max-use-state(3), no-cross-layer, no-unicode-escapes | Часть 3A Studio |
 

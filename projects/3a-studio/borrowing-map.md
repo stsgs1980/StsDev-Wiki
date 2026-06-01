@@ -9,7 +9,7 @@
 
 | # | Донор | LOC | Роль | Уникальный вклад |
 |---|-------|-----|------|-------------------|
-| 1 | [3a-studio-mas](https://github.com/stsgs1980/3a-studio-mas) | 45,249 | Канонический источник | Flow Editor (20 нод), Prisma Schema (26 моделей), Prompting System, LLM Client, Diagnostics, Pipeline Middleware |
+| 1 | [3a-studio-mas](https://github.com/stsgs1980/3a-studio-mas) | ~45K | Канонический источник | Flow Editor (20 нод), Prisma Schema (36 моделей), Prompting System, LLM Client, Diagnostics, Pipeline Middleware |
 | 2 | [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) | 54,798 | Visual layer | Workflow execution engine, ReactFlow hierarchy v2, 7 edge types, Resilience layer, WebSocket service |
 | 3 | [MVP-Flow-Studio-Pro](https://github.com/stsgs1980/MVP-Flow-Studio-Pro) | 18,193 | Flow editor MVP-2 | 6 advanced nodes, 26 multi-agent templates, Template Gallery UI, i18n EN/RU, topological sort |
 | 4 | [P-MAS-architector](https://github.com/stsgs1980/P-MAS-architector) | ~81,000 | Backend orchestration | Orchestrator, prompt versioning, citation system, executor pipeline, 67 skills |
