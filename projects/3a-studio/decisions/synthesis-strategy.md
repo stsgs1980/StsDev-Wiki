@@ -101,7 +101,7 @@ git clone --depth 1 https://github.com/stsgs1980/Zai-agent-toolkit.git /tmp/tool
 | Репо | Папка в /tmp/ | Что содержимое | Для каких фаз
 |------|--------------|----------------|---------------|
 | **StsDev-Wiki** | `/tmp/wiki` | Решения, master plan, гайды | Все (контекст)
-| **AAA-studio** | `/tmp/aaa-studio` | Текущий код (активный рабочий проект, 209+ коммитов) | Все (писать сюда)
+| **AAA-studio** | `/tmp/aaa-studio` | Текущий код (активный рабочий проект, 210 коммитов) | Все (писать сюда)
 | **3a-studio-mas** | `/tmp/3a-studio-mas` | Канонический источник (45K LOC, полный проект) | P0, 3, 4, 5, 7
 | **3a-studio** | `/tmp/3a-studio` | Заморожен 30.05.2026 (только чтение) | Только сравнение
 | **P-MAS-architector** | `/tmp/architector` | Backend orchestration, packages/ui, eslint-plugin, @stsgs/prompting, skills, standards | Phase 0, 4, 5, 7

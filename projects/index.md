@@ -10,7 +10,7 @@
 | Проект | Описание | Детали |
 |--------|----------|--------|
 | P-MAS-architector | 26 AI-агентов, 8 ролей, 20 когнитивных формул | [README](p-mas-architector/README.md) |
-| 3A Studio (AAA-studio) | IDE для multi-agent систем (19 экранов, 37 Prisma моделей) | [README](3a-studio/README.md) |
+| 3A Studio (AAA-studio) | IDE для multi-agent систем (19 экранов, 37 Prisma моделей, 210 коммитов) | [README](3a-studio/README.md) |
 | Component-Browser | 213 компонентов из 17 проектов | [README](component-browser/README.md) |
 | StsDev-Wiki | База знаний экосистемы | [GitHub](https://github.com/stsgs1980/StsDev-Wiki) |
 | Stanislav-graur 🔒 | Личный сайт (приватный) | [GitHub](https://github.com/stsgs1980/Stanislav-graur) |

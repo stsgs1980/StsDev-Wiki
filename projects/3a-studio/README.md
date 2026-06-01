@@ -2,7 +2,7 @@
 
 **Artificial. Agentic. Architecture. — IDE для visual multi-agent systems**
 
-- **Активный репо:** https://github.com/stsgs1980/AAA-studio (209+ коммитов)
+- **Активный репо:** https://github.com/stsgs1980/AAA-studio (210 коммитов)
 - **Канонический источник:** https://github.com/stsgs1980/3a-studio-mas (45K LOC, полный проект)
 - **Замороженный репо:** https://github.com/stsgs1980/3a-studio (143 коммита, остановлен 30.05.2026)
 - **Стек:** Next.js 15/16, PostgreSQL (Neon), Prisma ORM, ReactFlow, Zustand, z-ai-web-dev-sdk
@@ -25,23 +25,25 @@ IDE для визуального построения и управления m
 | 2 | Flow Editor | /editor | 18 node types, ReactFlow, live execution |
 | 3 | Templates | /templates | 6 flow templates + prompt library |
 | 4 | Agents | /agents | CRUD, executions, Skills/Standards EntityPicker |
-| 5 | Hierarchy | /hierarchy | Visual parent/child agent graph |
-| 6 | Pipelines | /pipelines | Real flow execution, node-level drill-down |
-| 7 | Prompt Studio | /prompt-studio | Write + Formulas + Frameworks + Compare + Intent |
-| 8 | Knowledge Base | /knowledge | Upload, TF-IDF semantic search |
-| 9 | Skill Forge | /skills-page | CRUD, code/tests, StandardsPicker, SKILL.md export |
-| 10 | Standards Manager | /standards | CRUD, rules editor, cross-ref validation |
-| 11 | Audit Log | /audit | JSON-highlighted details, filter by entity |
-| 12 | Settings | /settings | Multi-provider LLM, theme/language, key masking |
-| 13 | Approvals | /approvals | HITL approval panel |
-| 14 | Testing | /testing | Test runner, judge scoring |
-| 15 | Cost Monitor | /cost | Token/cost tracking |
-| 16 | Self-Correction | /self-correction | Auto-revision loop |
-| 17 | Analysis | /analysis | Multi-agent analysis sessions |
-| 18 | Comparison | /comparison | Agent diff, version diff, regression |
+| 5 | Agent Creator | /agent-creator | Guided agent creation wizard |
+| 6 | Hierarchy | /hierarchy | Visual parent/child agent graph, 6 edge types |
+| 7 | Pipelines | /pipelines | Real flow execution, node-level drill-down |
+| 8 | Workflows | /workflows | Workflow management and monitoring |
+| 9 | Prompt Studio | /prompt-studio | Write + Formulas (11) + Frameworks (11) + Techniques (14) + Compare + Intent |
+| 10 | Knowledge Base | /knowledge | Upload, TF-IDF semantic search |
+| 11 | Skill Forge | /skills-page | CRUD, code/tests, StandardsPicker, SKILL.md export |
+| 12 | Standards Manager | /standards | CRUD, rules editor, cross-ref validation |
+| 13 | Audit Log | /audit | JSON-highlighted details, filter by entity |
+| 14 | Settings | /settings | Multi-provider LLM, theme/language, key masking |
+| 15 | Tasks | /tasks | Task tracking and management |
+| 16 | Testing | /testing | Test runner, judge scoring |
+| 17 | Quality Analyzer | /quality-analyzer | Quality analysis and scoring |
+| 18 | Self-Correction | /self-correction | Auto-revision loop |
 | 19 | Wiki | /wiki | 14 статей встроенной документации |
 
 Дополнительно: Landing page (/), Auth (login/signup/verify/reset/forgot), i18n (EN/RU).
+
+> **Note:** Approvals, Cost Monitor, Analysis, Comparison — запланированы, но пока без UI-страниц (у некоторых есть API routes).
 
 ### Модули
 
@@ -58,7 +60,7 @@ IDE для визуального построения и управления m
 
 | Репо | Статус | LOC | Коммитов | Суть |
 |------|--------|-----|----------|------|
-| [AAA-studio](https://github.com/stsgs1980/AAA-studio) | **ACTIVE** | ~26,700 | 209+ | Активная разработка, 37 Prisma моделей, 62 API routes |
+| [AAA-studio](https://github.com/stsgs1980/AAA-studio) | **ACTIVE** | ~26,700 | 210 | Активная разработка, 37 Prisma моделей, 62 API routes |
 | [3a-studio-mas](https://github.com/stsgs1980/3a-studio-mas) | SOURCE | 45,249 | 1 | Канонический полный проект (single commit), 26 моделей, 33 API routes |
 | [3a-studio](https://github.com/stsgs1980/3a-studio) | **FROZEN** | — | 143 | Остановлен 30.05.2026, 12 моделей, 32 API routes |
 
@@ -90,7 +92,7 @@ IDE для визуального построения и управления m
 | Пакет | Назначение | Подробнее |
 |-------|-----------|-----------|
 | @stsgs/ui | Дизайн-система (Midnight palette, ThemeProvider, cn) | [packages/ui](../../packages/ui.md) |
-| @stsgs/prompting | 6-criteria scoring, 10 formulas, 4 frameworks, intent detection | [packages/prompting](../../packages/prompting.md) |
+| @stsgs/prompting | 6-criteria scoring, 11 formulas, 11 frameworks, 14 techniques, intent detection, comparison | [packages/prompting](../../packages/prompting.md) |
 | @stsgs/shared | Core types: Agent, Skill, Standard, Flow, Knowledge, Prompt, Audit | [packages/shared](../../packages/shared.md) |
 | eslint-plugin-3a | 4 rules: max-lines(150), max-use-state(3), no-cross-layer, no-unicode-escapes | Часть 3A Studio |
 

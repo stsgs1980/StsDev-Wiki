@@ -30,7 +30,7 @@
 
 | Репо | Статус | Суть |
 |------|--------|------|
-| [AAA-studio](https://github.com/stsgs1980/AAA-studio) | **ACTIVE** | Активная разработка (209+ коммитов, 37 Prisma моделей, 62 API routes) |
+| [AAA-studio](https://github.com/stsgs1980/AAA-studio) | **ACTIVE** | Активная разработка (210 коммитов, 37 Prisma моделей, 62 API routes) |
 | [3a-studio-mas](https://github.com/stsgs1980/3a-studio-mas) | **SOURCE** | Канонический полный проект (45K LOC, загружен одним коммитом) |
 | [3a-studio](https://github.com/stsgs1980/3a-studio) | **FROZEN** | Заморожен 30.05.2026 (143 коммита). Активная разработка продолжена в AAA-studio |
 
