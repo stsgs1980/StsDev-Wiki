@@ -77,13 +77,20 @@
 git clone https://github.com/stsgs1980/StsDev-Wiki.git /tmp/wiki
 
 # === Рабочий репо (куда пишем) ===
-git clone https://github.com/stsgs1980/3a-studio.git /tmp/3a-studio
+git clone https://github.com/stsgs1980/AAA-studio.git /tmp/aaa-studio
+
+# === Канонический источник (полный проект) ===
+git clone --depth 1 https://github.com/stsgs1980/3a-studio-mas.git /tmp/3a-studio-mas
+
+# === Замороженный репо (только чтение) ===
+git clone --depth 1 https://github.com/stsgs1980/3a-studio.git /tmp/3a-studio
 
 # === Источники кода (только чтение, shallow) ===
 git clone --depth 1 https://github.com/stsgs1980/MVP-Flow-Studio-Pro.git /tmp/mvp-flow
 git clone --depth 1 https://github.com/stsgs1980/Flow-Studio-Pro.git /tmp/flow-pro
 git clone --depth 1 https://github.com/stsgs1980/prompting-v0.0.git /tmp/prompting-v0
 git clone --depth 1 https://github.com/stsgs1980/P-MAS-architector.git /tmp/architector
+git clone --depth 1 https://github.com/stsgs1980/P-MAS_init.git /tmp/pmas-init
 git clone --depth 1 https://github.com/stsgs1980/Zai-agent-toolkit.git /tmp/toolkit
 ```
 
@@ -94,12 +101,15 @@ git clone --depth 1 https://github.com/stsgs1980/Zai-agent-toolkit.git /tmp/tool
 | Репо | Папка в /tmp/ | Что содержимое | Для каких фаз
 |------|--------------|----------------|---------------|
 | **StsDev-Wiki** | `/tmp/wiki` | Решения, master plan, гайды | Все (контекст)
-| **3a-studio** | `/tmp/3a-studio` | Текущий код (рабочий проект) | Все (писать сюда)
-| **P-MAS-architector** | `/tmp/architector` | Dashboard, hierarchy, prompt-studio, workflows, packages/ui, eslint-plugin, API routes, Prisma, @stsgs/prompting (30+ файлов), skills, standards, docs | Phase 0, 4, 5, 7
-| **MVP-Flow-Studio-Pro** | `/tmp/mvp-flow` | EventBus, NodeExecutor, LLMProvider, NodeFactory, FlowEditor, CustomNodes, TemplateGallery, VersionHistory | **Phase 3 (критично)**, 7A
-| **Flow-Studio-Pro** | `/tmp/flow-pro` | React Flow v12 паттерны, Zustand store, flow-canvas, node-config-panel, node-palette | **Phase 3**, 7A
-| **prompting-v0.0** | `/tmp/prompting-v0` | 20 когнитивных формул, 6 критериев оценки, blind comparison, intent detection | Phase 0 (prompting пакет)
-| **Zai-agent-toolkit** | `/tmp/toolkit` | 19 стандартов, agent templates, dashboard-паттерны | Phase 7D, 8
+| **AAA-studio** | `/tmp/aaa-studio` | Текущий код (активный рабочий проект, 209+ коммитов) | Все (писать сюда)
+| **3a-studio-mas** | `/tmp/3a-studio-mas` | Канонический источник (45K LOC, полный проект) | P0, 3, 4, 5, 7
+| **3a-studio** | `/tmp/3a-studio` | Заморожен 30.05.2026 (только чтение) | Только сравнение
+| **P-MAS-architector** | `/tmp/architector` | Backend orchestration, packages/ui, eslint-plugin, @stsgs/prompting, skills, standards | Phase 0, 4, 5, 7
+| **P-MAS_init** | `/tmp/pmas-init` | Workflow execution, ReactFlow hierarchy v2, Resilience layer, 6 edge types | Phase 3, 4, 5
+| **MVP-Flow-Studio-Pro** | `/tmp/mvp-flow` | 6 advanced nodes, 26 multi-agent templates, TemplateGallery, i18n | **Phase 3 (критично)**, 7A
+| **Flow-Studio-Pro** | `/tmp/flow-pro` | 5 unique nodes (Loop, Delay, Merge, SubAgent, Search) | **Phase 3**, 7A
+| **prompting-v0.0** | `/tmp/prompting-v0` | Pure TS lib: 20 формул, 6-dim scoring, 12 orchestration patterns, resilience | Phase 0 (prompting пакет)
+| **Zai-agent-toolkit** | `/tmp/toolkit` | 24 стандарта, agent templates | Phase 7D, 8
 
 ### Ключевые файлы для Phase 3 (Flow Editor)
 

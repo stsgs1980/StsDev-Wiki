@@ -1,7 +1,9 @@
 # 3A Studio — Специфические требования
 
 **Проект:** 3A Studio (Artificial. Agentic. Architecture.)
-**Репо:** https://github.com/stsgs1980/3a-studio
+**Репо:** https://github.com/stsgs1980/AAA-studio (активный)
+**Канонический источник:** https://github.com/stsgs1980/3a-studio-mas (45K LOC)
+**Замороженный:** https://github.com/stsgs1980/3a-studio (остановлен 30.05.2026)
 **Аудит:** 2026-05-30, прочитаны исходные файлы
 
 ---
@@ -78,8 +80,8 @@ Seed создаёт агентов, не пользователей. Логин/
 
 ## Требования к UI
 
-### UI-01: 12 экранов
-Перечислены в `architecture/3a-studio-screens.md`. Маршруты в `src/app/(dashboard)/`.
+### UI-01: 19+ экранов
+Перечислены в [screens.md](screens.md). Маршруты в `src/app/(dashboard)/`.
 
 ### UI-02: Design tokens
 @stsgs/ui предоставляет токены. Новый код — через токены, не через hex.

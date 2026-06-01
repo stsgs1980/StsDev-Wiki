@@ -1,7 +1,7 @@
-# 3A Studio -- Все 12 экранов
+# 3A Studio — Все экраны
 
-**Дата:** 2026-05-27
-**Источник:** FLOW_STUDIO_PRO_SPECIFICATION.md v1.0 + wireframes (9 штук)
+**Обновлено:** 2026-06-01
+**Источник:** аудит AAA-studio (209+ коммитов) + 3a-studio-mas (45K LOC)
 
 ---
 
@@ -9,44 +9,35 @@
 
 | # | Экран | Путь | Статус | Источник |
 |---|-------|------|--------|----------|
-| 1 | **Dashboard** | /dashboard | Частично (P-mas-studio работает) | wireframes/01 |
-| 2 | **Flow Editor** | /editor | Критический (главный экран) | wireframes не было, только спека |
-| 3 | **Template Gallery** | /templates | Не начат | wireframes не было |
-| 4 | **Agent Management** | /agents | Частично (CRUD в P-mas-studio) | wireframes/08 (Agent Detail) |
-| 5 | **Agent Hierarchy** | /hierarchy | Работает (P-mas-studio) | wireframes/02 |
-| 6 | **Pipelines** | /pipelines | Частично (workflows в P-mas-studio) | wireframes/03 |
-| 7 | **Prompt Studio** | /prompt-studio | Компоненты есть, НЕТ роута | wireframes/04 |
-| 8 | **Knowledge Base** | /knowledge | Не начат | wireframes не было |
-| 9 | **Skill Forge** | /skills | Не начат | wireframes не было |
-| 10 | **Standards Manager** | /standards | Не начат | wireframes не было |
-| 11 | **Audit Log** | /audit | Не начат | wireframes не было |
-| 12 | **Settings** | /settings | Не начат | wireframes/09 (Login/Auth) |
+| 1 | **Dashboard** | /dashboard | Работает | KPI, sparklines, heatmap, timeline, live from DB |
+| 2 | **Flow Editor** | /editor | Работает | 18 node types, ReactFlow, live execution |
+| 3 | **Templates** | /templates | Работает | 6 flow templates + prompt library |
+| 4 | **Agents** | /agents | Работает | CRUD, executions, EntityPicker |
+| 5 | **Hierarchy** | /hierarchy | Работает | Visual parent/child graph, 6 edge types |
+| 6 | **Pipelines** | /pipelines | Работает | Real flow execution, node-level drill-down |
+| 7 | **Prompt Studio** | /prompt-studio | Работает | Write + Formulas + Frameworks + Compare + Intent |
+| 8 | **Knowledge Base** | /knowledge | Работает | Upload, TF-IDF search |
+| 9 | **Skill Forge** | /skills-page | Работает | CRUD, code/tests, SKILL.md export |
+| 10 | **Standards Manager** | /standards | Работает | CRUD, rules editor, cross-ref validation |
+| 11 | **Audit Log** | /audit | Работает | JSON-highlighted, filter by entity |
+| 12 | **Settings** | /settings | Работает | Multi-provider LLM, theme, key masking |
+| 13 | **Approvals** | /approvals | Работает | HITL approval panel, escalation |
+| 14 | **Testing** | /testing | Работает | Test runner, judge scoring |
+| 15 | **Cost Monitor** | /cost | Работает | Token/cost tracking |
+| 16 | **Self-Correction** | /self-correction | Работает | Auto-revision loop |
+| 17 | **Analysis** | /analysis | Работает | Multi-agent analysis sessions |
+| 18 | **Comparison** | /comparison | Работает | Agent diff, version diff, regression |
+| 19 | **Wiki** | /wiki | Работает | 14 статей, Ctrl+K drawer |
 
-## Wireframes (существуют)
+Дополнительно: Landing page (/), Auth (login/signup/verify/reset/forgot)
+
+## Wireframes (исторические)
 
 9 HTML wireframes в P-mas-studio/wireframes/:
 01-dashboard, 02-hierarchy, 03-workflows, 04-prompt-studio, 05-unified-studio, 06-task-management, 07-formula-explorer, 08-agent-detail, 09-login
 
-## Missing wireframes (нужно создать)
+## История
 
-3 экрана без wireframes: Template Gallery, Knowledge Base, Skill Forge/Standards/Audit/Settings
-
-## Экраны-кандидаты (обсуждались)
-
-| Экран | Что делает | Статус |
-|-------|-----------|--------|
-| Getting Started / Onboarding | Интерактивный тур с примерами | Обсуждалось, не в спеке |
-| Marketplace | Маркетплейс навыков/компонентов | Обсуждалось, не в спеке |
-| Formula Explorer | Обозреватель 20 когнитивных формул | wireframes/07 (есть) |
-
-## Приоритет разработки
-
-```
-Phase 0-2:  Фундамент + навигация + очистка
-Phase 3:    Flow Editor (CRITICAL PATH)
-Phase 4:    Dashboard
-Phase 5:    Agent Management
-Phase 6:    Knowledge Base
-Phase 7:    Template Gallery, Pipelines, Skill Forge, Standards, Audit, Settings
-Phase 8:    Auth (Login уже в wireframes), i18n, тесты
-```
+- Первоначальная спецификация: 12 экранов (FLOW_STUDIO_PRO_SPECIFICATION.md v1.0)
+- После аудита 2026-05-31: 19 экранов (все реализованы в AAA-studio)
+- Канонический источник: 3a-studio-mas (45K LOC, полный проект)

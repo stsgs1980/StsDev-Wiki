@@ -150,7 +150,7 @@
 ### Задачи
 
 - [ ] **1.1** Создать root layout с sidebar навигацией
-  - Sidebar: 12 экранов из спеки (иконки + названия)
+  - Sidebar: 19+ экранов из спеки (иконки + названия)
   - Активный экран подсвечивается
   - Collapsible sidebar (280px / 48px)
   - Источник: P-mas-studio/src/app/layout.tsx

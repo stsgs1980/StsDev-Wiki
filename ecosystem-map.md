@@ -183,7 +183,7 @@
 
 | Репо | Стек | Описание (из README) |
 |------|------|----------------------|
-| [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) | Next.js 16, Prisma/SQLite | Agent Hierarchy Dashboard v1: 26 агентов, 8 ролей, 20 когнитивных формул, Dashboard + Hierarchy Visualization (SVG, zoom, minimap). Архивирован на GitHub |
+| [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) | Next.js 16, Prisma/SQLite | Visual sibling P-MAS-architector: workflow execution engine, ReactFlow hierarchy v2, 6 edge types, Resilience layer. Архивирован на GitHub |
 | [Zai-agent-toolkit-by-PMAS](https://github.com/stsgs1980/Zai-agent-toolkit-by-PMAS) | — | Пустой репозиторий |
 
 ---
