@@ -50,7 +50,7 @@
 | Phase 0 | Типы, prompting, eslint | Написано с нуля (стабы) | Низкий (2 файла 200 строк) |
 | Phase 1 | Root layout, sidebar | P-MAS-architector/src/app/layout.tsx | Низкий |
 | Phase 2 | (очистка -- удаляем, не переносим) | -- | -- |
-| Phase 3 | Flow Editor (Zustand store, NodeExecutor, EventBus, 18 node types) | MVP-Flow-Studio-Pro/src/lib/flow/ + Flow-Studio-Pro/src/components/flow/ | **Высокий** -- NodeFactory, FlowEditor, CustomNodes |
+| Phase 3 | Flow Editor (Zustand store, NodeExecutor, EventBus, 20 node types) | MVP-Flow-Studio-Pro/src/lib/flow/ + Flow-Studio-Pro/src/components/flow/ | **Высокий** -- NodeFactory, FlowEditor, CustomNodes |
 | Phase 4 | Dashboard (KPI strip, charts, heatmap, timeline) | P-MAS-architector/src/components/dashboard/ (20 файлов) | **Высокий** -- architecture-diagram.tsx, formula-flow-diagram.tsx |
 | Phase 5 | Agent CRUD, hierarchy graph | P-MAS-architector/src/components/hierarchy/ (24 файла) | **Средний** -- agent-hierarchy-v2.tsx |
 | Phase 6 | Knowledge Base UI | Toolkit паттерны (MemoryBrowser.tsx 414 строк) | **Средний** |
@@ -105,7 +105,7 @@ git clone --depth 1 https://github.com/stsgs1980/Zai-agent-toolkit.git /tmp/tool
 | **3a-studio-mas** | `/tmp/3a-studio-mas` | Канонический источник (45K LOC, полный проект) | P0, 3, 4, 5, 7
 | **3a-studio** | `/tmp/3a-studio` | Заморожен 30.05.2026 (только чтение) | Только сравнение
 | **P-MAS-architector** | `/tmp/architector` | Backend orchestration, packages/ui, eslint-plugin, @stsgs/prompting, skills, standards | Phase 0, 4, 5, 7
-| **P-MAS_init** | `/tmp/pmas-init` | Workflow execution, ReactFlow hierarchy v2, Resilience layer, 6 edge types | Phase 3, 4, 5
+| **P-MAS_init** | `/tmp/pmas-init` | Workflow execution, ReactFlow hierarchy v2, Resilience layer, 7 edge types | Phase 3, 4, 5
 | **MVP-Flow-Studio-Pro** | `/tmp/mvp-flow` | 6 advanced nodes, 26 multi-agent templates, TemplateGallery, i18n | **Phase 3 (критично)**, 7A
 | **Flow-Studio-Pro** | `/tmp/flow-pro` | 5 unique nodes (Loop, Delay, Merge, SubAgent, Search) | **Phase 3**, 7A
 | **prompting-v0.0** | `/tmp/prompting-v0` | Pure TS lib: 20 формул, 6-dim scoring, 12 orchestration patterns, resilience | Phase 0 (prompting пакет)

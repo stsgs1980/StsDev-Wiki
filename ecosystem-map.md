@@ -182,7 +182,7 @@
 
 | Репо | Стек | Описание (из README) |
 |------|------|----------------------|
-| [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) | Next.js 16, Prisma/SQLite | Visual sibling P-MAS-architector: workflow execution engine, ReactFlow hierarchy v2, 6 edge types, Resilience layer. Архивирован на GitHub |
+| [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) | Next.js 16, Prisma/SQLite | Visual sibling P-MAS-architector: workflow execution engine, ReactFlow hierarchy v2, 7 edge types, Resilience layer. Архивирован на GitHub |
 | [Zai-agent-toolkit-by-PMAS](https://github.com/stsgs1980/Zai-agent-toolkit-by-PMAS) | — | Пустой репозиторий |
 
 ---
@@ -218,9 +218,9 @@
 
 | Из | Что | В | Для чего |
 |----|-----|---|----------|
-| 3a-studio-mas | Flow Editor (18 нод), Prompting System, LLM Client, Prisma Schema (26 моделей), Diagnostics, Pipeline Middleware | AAA-studio | Канонический источник — основной код 3A Studio |
+| 3a-studio-mas | Flow Editor (20 нод), Prompting System, LLM Client, Prisma Schema (26 моделей), Diagnostics, Pipeline Middleware | AAA-studio | Канонический источник — основной код 3A Studio |
 | P-MAS-architector | @stsgs/prompting, orchestrator, prompt versioning, citation, executor pipeline, 67 skills | AAA-studio | Backend orchestration layer |
-| P-MAS_init | Workflow execution engine, ReactFlow hierarchy v2, Workflow Pipeline UI, 6 edge types, Resilience layer | AAA-studio | Visual layer (sibling, не предок P-MAS-architector) |
+| P-MAS_init | Workflow execution engine, ReactFlow hierarchy v2, Workflow Pipeline UI, 7 edge types, Resilience layer | AAA-studio | Visual layer (sibling, не предок P-MAS-architector) |
 | MVP-Flow-Studio-Pro | 6 advanced nodes (Switch/Merge/Loop/Webhook/Variable/DataSource), 26 multi-agent templates, Template Gallery, i18n | AAA-studio | Расширенные ноды + шаблоны |
 | prompting-v0.0 | @stsgs/prompting: scorePrompt (6 dim), matchIntent, 20 techniques, 11 frameworks, resilience | AAA-studio | Pure TS prompting lib |
 | Flow-Studio-Pro | 5 unique nodes (Loop, Delay, Merge, SubAgent, Search), Execution Panel | AAA-studio | Дополнительные ноды flow editor |

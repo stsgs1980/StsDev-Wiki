@@ -9,8 +9,8 @@
 
 | # | Донор | LOC | Роль | Уникальный вклад |
 |---|-------|-----|------|-------------------|
-| 1 | [3a-studio-mas](https://github.com/stsgs1980/3a-studio-mas) | 45,249 | Канонический источник | Flow Editor (18 нод), Prisma Schema (26 моделей), Prompting System, LLM Client, Diagnostics, Pipeline Middleware |
-| 2 | [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) | 54,798 | Visual layer | Workflow execution engine, ReactFlow hierarchy v2, 6 edge types, Resilience layer, WebSocket service |
+| 1 | [3a-studio-mas](https://github.com/stsgs1980/3a-studio-mas) | 45,249 | Канонический источник | Flow Editor (20 нод), Prisma Schema (26 моделей), Prompting System, LLM Client, Diagnostics, Pipeline Middleware |
+| 2 | [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) | 54,798 | Visual layer | Workflow execution engine, ReactFlow hierarchy v2, 7 edge types, Resilience layer, WebSocket service |
 | 3 | [MVP-Flow-Studio-Pro](https://github.com/stsgs1980/MVP-Flow-Studio-Pro) | 18,193 | Flow editor MVP-2 | 6 advanced nodes, 26 multi-agent templates, Template Gallery UI, i18n EN/RU, topological sort |
 | 4 | [P-MAS-architector](https://github.com/stsgs1980/P-MAS-architector) | ~81,000 | Backend orchestration | Orchestrator, prompt versioning, citation system, executor pipeline, 67 skills |
 | 5 | [prompting-v0.0](https://github.com/stsgs1980/prompting-v0.0) | 4,304 | Pure TS lib | 20 techniques, 11 frameworks, 6-dim scoring, 20 formulas, 12 orchestration patterns |
@@ -29,7 +29,7 @@
 
 | Актив | Донор | LOC | Путь | Почему P0 |
 |-------|-------|-----|------|-----------|
-| Flow Editor (18 нод, Zustand, execution) | 3a-studio-mas | 2,174 | `src/features/flow-editor/` | Ядро 3A Studio — визуальный редактор |
+| Flow Editor (20 нод, Zustand, execution) | 3a-studio-mas | 2,174 | `src/features/flow-editor/` | Ядро 3A Studio — визуальный редактор |
 | Prisma Schema (26 моделей) | 3a-studio-mas | 718 | `prisma/schema.prisma` | Полная модель данных проекта |
 | Flow Execution Engine | 3a-studio-mas | ~400 | `src/app/api/flows/[id]/execute/`, `src/features/flow-editor/lib/` | Topological sort + per-node handlers |
 | Prompting System (packages/) | 3a-studio-mas | 2,537 | `src/lib/prompting/` + `packages/prompting/` | Scoring, формулы, интенты. **Брать только из packages/ — src/lib/ содержит заглушки!** |
@@ -63,7 +63,7 @@
 | Approval System (HITL) | 3a-studio-mas | 238 | `src/lib/approval/` | Stats, escalation |
 | Auth System | 3a-studio-mas | 414 + 451 | `src/features/auth/`, `src/app/(auth)/` | Login/Signup/Verify/Forgot/Reset |
 | Resilience Layer | P-MAS_init | 611 | `src/lib/` | Retry, circuit breaker, health check, fallback manager |
-| Hierarchy API (6 edge types) | P-MAS_init | 173 | `src/app/api/hierarchy/route.ts` | Typed connections (command, sync, twin, delegate, supervise, broadcast) |
+| Hierarchy API (7 edge types) | P-MAS_init | 173 | `src/app/api/hierarchy/route.ts` | Typed connections (command, sync, twin, delegate, feedback, supervise, broadcast) |
 | Stats API | P-MAS_init | 389 | `src/app/api/stats/route.ts` | Dashboard aggregation (8 sections) |
 | WebSocket Service | P-MAS_init | 193 | `mini-services/ws-service/` | Real-time agent status updates |
 | SVG Hierarchy v1 | P-MAS_init | 3,455 | `src/components/agent-hierarchy.tsx` | Canvas terrain + flow particles (visual effects reference) |

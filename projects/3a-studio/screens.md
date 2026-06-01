@@ -10,11 +10,11 @@
 | # | Экран | Путь | Статус | Источник |
 |---|-------|------|--------|----------|
 | 1 | **Dashboard** | /dashboard | Работает | KPI, sparklines, heatmap, timeline, live from DB |
-| 2 | **Flow Editor** | /editor | Работает | 18 node types, ReactFlow, live execution |
+| 2 | **Flow Editor** | /editor | Работает | 20 node types, ReactFlow, live execution |
 | 3 | **Templates** | /templates | Работает | 6 flow templates + prompt library |
 | 4 | **Agents** | /agents | Работает | CRUD, executions, EntityPicker |
 | 5 | **Agent Creator** | /agent-creator | Работает | Guided agent creation wizard |
-| 6 | **Hierarchy** | /hierarchy | Работает | Visual parent/child graph, 6 edge types |
+| 6 | **Hierarchy** | /hierarchy | Работает | Visual parent/child graph, 7 edge types |
 | 7 | **Pipelines** | /pipelines | Работает | Real flow execution, node-level drill-down |
 | 8 | **Workflows** | /workflows | Работает | Workflow management and monitoring |
 | 9 | **Prompt Studio** | /prompt-studio | Работает | Write + Formulas (11) + Frameworks (11) + Techniques (14) + Compare + Intent |

@@ -22,11 +22,11 @@ IDE для визуального построения и управления m
 | # | Экран | Путь | Описание |
 |---|-------|------|----------|
 | 1 | Dashboard | /dashboard | KPI, sparklines, heatmap, timeline, live from DB |
-| 2 | Flow Editor | /editor | 18 node types, ReactFlow, live execution |
+| 2 | Flow Editor | /editor | 20 node types, ReactFlow, live execution |
 | 3 | Templates | /templates | 6 flow templates + prompt library |
 | 4 | Agents | /agents | CRUD, executions, Skills/Standards EntityPicker |
 | 5 | Agent Creator | /agent-creator | Guided agent creation wizard |
-| 6 | Hierarchy | /hierarchy | Visual parent/child agent graph, 6 edge types |
+| 6 | Hierarchy | /hierarchy | Visual parent/child agent graph, 7 edge types |
 | 7 | Pipelines | /pipelines | Real flow execution, node-level drill-down |
 | 8 | Workflows | /workflows | Workflow management and monitoring |
 | 9 | Prompt Studio | /prompt-studio | Write + Formulas (11) + Frameworks (11) + Techniques (14) + Compare + Intent |
@@ -50,7 +50,7 @@ IDE для визуального построения и управления m
 - Standards Manager — управление стандартами кода
 - Skill Forge — создание/редактирование навыков
 - Prompt Studio — оценка и генерация промптов
-- Flow Editor — 18 node types, ReactFlow, topological sort execution
+- Flow Editor — 20 node types, ReactFlow, topological sort execution
 - Knowledge Base — загрузка и TF-IDF поиск документов
 - Audit Log — логирование действий
 - Diagnostics — contradiction/gap/circular/orphan detection
@@ -70,8 +70,8 @@ IDE для визуального построения и управления m
 
 | Донор | LOC | Статус | Что взять |
 |-------|-----|--------|-----------|
-| [3a-studio-mas](https://github.com/stsgs1980/3a-studio-mas) | 45,249 | SOURCE | Flow Editor (18 нод), Prompting System, LLM Client, Diagnostics, Pipeline Middleware, Dashboard, Auth, Monorepo packages |
-| [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) | 54,798 | ARCHIVED | Workflow execution engine, ReactFlow hierarchy v2, Workflow Pipeline UI, 6 edge types, Resilience layer, WebSocket service |
+| [3a-studio-mas](https://github.com/stsgs1980/3a-studio-mas) | 45,249 | SOURCE | Flow Editor (20 нод), Prompting System, LLM Client, Diagnostics, Pipeline Middleware, Dashboard, Auth, Monorepo packages |
+| [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) | 54,798 | ARCHIVED | Workflow execution engine, ReactFlow hierarchy v2, Workflow Pipeline UI, 7 edge types, Resilience layer, WebSocket service |
 | [MVP-Flow-Studio-Pro](https://github.com/stsgs1980/MVP-Flow-Studio-Pro) | 18,193 | ARCHIVED | 6 advanced nodes (Switch/Merge/Loop/Webhook/Variable/DataSource), 26 multi-agent templates, Template Gallery, i18n, topological sort |
 | [P-MAS-architector](https://github.com/stsgs1980/P-MAS-architector) | ~81,000 | ACTIVE | Orchestrator, prompt versioning, citation system, executor pipeline, middleware, diagnostics, comparison, 67 skills |
 | [prompting-v0.0](https://github.com/stsgs1980/prompting-v0.0) | 4,304 | PACKAGE | Pure TS prompting lib: 20 techniques, 11 frameworks, 6-dim scoring, 20 cognitive formulas, 12 orchestration patterns, resilience |
