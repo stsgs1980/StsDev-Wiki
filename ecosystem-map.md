@@ -43,7 +43,7 @@
 | Статус | Репо | Файлов | Коммитов | Описание (из README) |
 |--------|------|--------|----------|----------------------|
 | [ACTIVE] | [P-MAS-architector](https://github.com/stsgs1980/P-MAS-architector) | 942 | 164 | P-MAS v2: 26 AI-агентов, 8 ролей, 20 когнитивных формул, WebSocket, @stsgs/prompting |
-| [ACTIVE] | [AAA-studio](https://github.com/stsgs1980/AAA-studio) | ~500 | 210 | 3A Studio (активный репо): IDE для multi-agent систем, PostgreSQL, ReactFlow, 19 экранов, 37 Prisma моделей, 62 API routes |
+| [ACTIVE] | [AAA-studio](https://github.com/stsgs1980/AAA-studio) | ~500 | 213 | 3A Studio (активный репо): IDE для multi-agent систем, SQLite/PostgreSQL, ReactFlow, 19 экранов, 37 Prisma моделей, 62 API routes |
 | [FROZEN] | [3a-studio](https://github.com/stsgs1980/3a-studio) | ~350 | 143 | 3A Studio (заморожен 30.05.2026): 12 экранов, 12 Prisma моделей, 32 API routes. Активная разработка продолжена в AAA-studio |
 | [SOURCE] | [3a-studio-mas](https://github.com/stsgs1980/3a-studio-mas) | 662 | 1 | 3A Studio (канонический источник): 45K LOC, 26 моделей, 33 API routes, полный проект в одном коммите |
 | [ACTIVE] | [StsDev-Wiki](https://github.com/stsgs1980/StsDev-Wiki) | — | — | Этот репозиторий — база знаний экосистемы |
@@ -68,7 +68,7 @@
 | Репо | Коммитов | Стек | Описание (из README) |
 |------|----------|------|----------------------|
 | [P-MAS-architector](https://github.com/stsgs1980/P-MAS-architector) | 164 | Next.js 16, Prisma/SQLite, WebSocket, Z.ai SDK | P-MAS v2: 26 AI-агентов в 8 ролевых группах, 5 уровней иерархии, 20 когнитивных формул. Backend orchestration layer |
-| [AAA-studio](https://github.com/stsgs1980/AAA-studio) | 210 | Next.js 15/16, PostgreSQL (Neon), Prisma, ReactFlow, Zustand | 3A Studio (активный репо): 19 экранов, 37 Prisma моделей, 62 API routes. IDE для multi-agent систем |
+| [AAA-studio](https://github.com/stsgs1980/AAA-studio) | 213 | Next.js 15/16, SQLite/PostgreSQL (Neon), Prisma, ReactFlow, Zustand | 3A Studio (активный репо): 19 экранов, 37 Prisma моделей, 62 API routes. IDE для multi-agent систем |
 | [3a-studio-mas](https://github.com/stsgs1980/3a-studio-mas) | 1 | Next.js 16, Prisma/SQLite, ReactFlow, Zustand | 3A Studio (канонический источник): 45K LOC, 26 моделей, 33 API routes. Полный проект в одном коммите |
 
 **Связанные (FROZEN/ARCHIVED):**

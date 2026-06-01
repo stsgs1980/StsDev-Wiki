@@ -25,7 +25,7 @@
 
 ### [ACTIVE] Рабочие проекты
 * [P-MAS-architector](projects/p-mas-architector/README.md) — 942 файла, 164 коммита, 26 AI-агентов, @stsgs/prompting
-* [3A Studio (AAA-studio)](projects/3a-studio/README.md) — 210 коммитов, 19 экранов, 37 Prisma моделей, 62 API routes
+* [3A Studio (AAA-studio)](projects/3a-studio/README.md) — 212 коммитов, 19 экранов, 37 Prisma моделей, 62 API routes
   * [Master Plan](projects/3a-studio/master-plan.md)
   * [Требования](projects/3a-studio/requirements.md)
   * [Прогресс](projects/3a-studio/progress.md)

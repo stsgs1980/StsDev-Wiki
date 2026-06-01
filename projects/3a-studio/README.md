@@ -5,13 +5,13 @@
 - **Активный репо:** https://github.com/stsgs1980/AAA-studio (210 коммитов)
 - **Канонический источник:** https://github.com/stsgs1980/3a-studio-mas (45K LOC, полный проект)
 - **Замороженный репо:** https://github.com/stsgs1980/3a-studio (143 коммита, остановлен 30.05.2026)
-- **Стек:** Next.js 15/16, PostgreSQL (Neon), Prisma ORM, ReactFlow, Zustand, z-ai-web-dev-sdk
+- **Стек:** Next.js 15/16, SQLite (dev) / PostgreSQL Neon (Vercel), Prisma ORM, ReactFlow, Zustand, z-ai-web-dev-sdk
 
 ---
 
 ## Что это
 
-IDE для визуального построения и управления multi-agent системами. Позволяет создавать потоки агентов через drag-and-drop редактор, оценивать промпты, работать с базой знаний и стандартами — всё на единой PostgreSQL базе.
+IDE для визуального построения и управления multi-agent системами. Позволяет создавать потоки агентов через drag-and-drop редактор, оценивать промпты, работать с базой знаний и стандартами — всё на единой БД (SQLite локально, PostgreSQL Neon на Vercel).
 
 ### Ключевой принцип
 
@@ -84,7 +84,7 @@ IDE для визуального построения и управления m
 1. **Greenfield** — новое с нуля, не дорабатываем старое
 2. **Synthesis** — берём лучшее из каждого проекта
 3. **Monorepo** — пакетное разделение с первого дня
-4. **PostgreSQL-first** — единая БД вместо SQLite
+4. **SQLite/Neon-first** — единая БД (локально SQLite, Vercel — PostgreSQL Neon)
 5. **Desktop-ready** — Tauri обёртка как опцион
 
 ## Пакеты
