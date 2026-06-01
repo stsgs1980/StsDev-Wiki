@@ -24,7 +24,9 @@
 
 | Статус | Кол-во | Репозитории |
 |--------|--------|-------------|
-| [ACTIVE] | 7 | P-MAS-architector, 3A Studio, UI-Kit, Component-Browser, Z.Code.Guide, StsDev-Wiki, Stanislav-graur |
+| [ACTIVE] | 7 | P-MAS-architector, AAA-studio (3A Studio), UI-Kit, Component-Browser, Z.Code.Guide, StsDev-Wiki, Stanislav-graur |
+| [FROZEN] | 1 | 3a-studio (остановлен 30.05.2026, активный — AAA-studio) |
+| [SOURCE] | 1 | 3a-studio-mas (канонический источник, 45K LOC) |
 | [NEW] | 4 | Code-Realm, HH-Job-Copilot, CHROMEDNA, Wiki-Codex-v2 |
 | [REFERENCE] | 1 | Zai-agent-toolkit |
 | [LOCAL] | 1 | Flow-Studio-Pro |
@@ -42,14 +44,16 @@
 | Статус | Репо | Файлов | Коммитов | Описание (из README) |
 |--------|------|--------|----------|----------------------|
 | [ACTIVE] | [P-MAS-architector](https://github.com/stsgs1980/P-MAS-architector) | 942 | 164 | P-MAS v2: 26 AI-агентов, 8 ролей, 20 когнитивных формул, WebSocket, @stsgs/prompting |
-| [ACTIVE] | [3a-studio](https://github.com/stsgs1980/3a-studio) | ~50 | 143 | IDE для multi-agent систем, PostgreSQL, ReactFlow, 12 экранов |
+| [ACTIVE] | [AAA-studio](https://github.com/stsgs1980/AAA-studio) | ~500 | 209+ | 3A Studio (активный репо): IDE для multi-agent систем, PostgreSQL, ReactFlow, 19 экранов, 37 Prisma моделей, 62 API routes |
+| [FROZEN] | [3a-studio](https://github.com/stsgs1980/3a-studio) | ~350 | 143 | 3A Studio (заморожен 30.05.2026): 12 экранов, 12 Prisma моделей, 32 API routes. Активная разработка продолжена в AAA-studio |
+| [SOURCE] | [3a-studio-mas](https://github.com/stsgs1980/3a-studio-mas) | 662 | 1 | 3A Studio (канонический источник): 45K LOC, 26 моделей, 33 API routes, полный проект в одном коммите |
 | [ACTIVE] | [StsDev-Wiki](https://github.com/stsgs1980/StsDev-Wiki) | — | — | Этот репозиторий — база знаний экосистемы |
 | [ACTIVE] | [UI-Kit](https://github.com/stsgs1980/UI-Kit) | ~500 | 99 | @stsgs/ui: Layout Engine (51 рецепт), Theme Engine, Anti-monolith ESLint, CLI |
 | [ACTIVE] | [Component-Browser](https://github.com/stsgs1980/Component-Browser) | ~400 | 13 | 213 компонентов из 17 проектов, 23 категории, живой предпросмотр, AI-описания |
 | [ACTIVE] | [Z.Code.Guide](https://github.com/stsgs1980/Z.Code.Guide) | ~1200 | 101 | Интерактивный справочник Z Code: 11 секций, 10 инструментов, MCP-серверы, прайсинг |
 | [REFERENCE] | [Zai-agent-toolkit](https://github.com/stsgs1980/Zai-agent-toolkit) | ~150 | — | Стандарты + навыки + правила для AI-driven dev (read-only, v2.0.4) |
 | [ACTIVE] | [Stanislav-graur](https://github.com/stsgs1980/Stanislav-graur) 🔒 | — | — | Личный сайт (приватный) |
-| [ARCHIVED] | [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) | ~600 | 70 | Agent Hierarchy Dashboard v1 (архив на GitHub) |
+| [ARCHIVED] | [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) | ~600 | 70 | Agent Hierarchy Dashboard v1 + Workflow execution engine + ReactFlow hierarchy v2. Визуальный sibling P-MAS-architector (не предок!) |
 | [DELETED] | P-mas-studio | 1066 | 105 | Удалён автором (2026-05-30). См. [архив](projects/_archived/p-mas-studio/README.md) |
 | [EMPTY] | [Reverse-engineering](https://github.com/stsgs1980/Reverse-engineering) | 0 | 0 | Пустой репозиторий |
 | [EMPTY] | [Zai-agent-toolkit-by-PMAS](https://github.com/stsgs1980/Zai-agent-toolkit-by-PMAS) | 0 | 0 | Пустой репозиторий |
@@ -58,14 +62,19 @@
 
 ## По группам (тематика)
 
-### Ядро / Multi-Agent (2)
+### Ядро / Multi-Agent (3)
 
 Репозитории, формирующие основу multi-agent системы — визуализация агентов, их оркестрация и IDE для управления.
 
 | Репо | Коммитов | Стек | Описание (из README) |
 |------|----------|------|----------------------|
-| [P-MAS-architector](https://github.com/stsgs1980/P-MAS-architector) | 164 | Next.js 16, Prisma/SQLite, WebSocket, Z.ai SDK | P-MAS v2: 26 AI-агентов в 8 ролевых группах (Strategy → Learning), 5 уровней иерархии (L0–L4), 6 типов связей, 20 когнитивных формул (@stsgs/prompting), 3 режима layout |
-| [3a-studio](https://github.com/stsgs1980/3a-studio) | 143 | Bun, PostgreSQL, ReactFlow, Next.js | "Artificial. Agentic. Architecture." — IDE: Flow Editor (18 node types), Prompt Studio, Knowledge Base, Standards Manager, Skill Forge, Audit Log. 12 экранов. Заменяет 3 репо x 110 навыков одной БД |
+| [P-MAS-architector](https://github.com/stsgs1980/P-MAS-architector) | 164 | Next.js 16, Prisma/SQLite, WebSocket, Z.ai SDK | P-MAS v2: 26 AI-агентов в 8 ролевых группах, 5 уровней иерархии, 20 когнитивных формул. Backend orchestration layer |
+| [AAA-studio](https://github.com/stsgs1980/AAA-studio) | 209+ | Next.js 15/16, PostgreSQL (Neon), Prisma, ReactFlow, Zustand | 3A Studio (активный репо): 19 экранов, 37 Prisma моделей, 62 API routes. IDE для multi-agent систем |
+| [3a-studio-mas](https://github.com/stsgs1980/3a-studio-mas) | 1 | Next.js 16, Prisma/SQLite, ReactFlow, Zustand | 3A Studio (канонический источник): 45K LOC, 26 моделей, 33 API routes. Полный проект в одном коммите |
+
+**Связанные (FROZEN/ARCHIVED):**
+- [3a-studio](https://github.com/stsgs1980/3a-studio) — FROZEN (заморожен 30.05.2026, 143 коммита). Активная разработка продолжена в AAA-studio
+- [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) — ARCHIVED. Визуальный sibling P-MAS-architector (не предок!). Workflow execution + ReactFlow hierarchy
 
 ### UI / Дизайн-системы (14)
 
@@ -210,19 +219,17 @@
 
 | Из | Что | В | Для чего |
 |----|-----|---|----------|
-| P-MAS-architector | @stsgs/prompting (20 когнитивных формул) | 3A Studio | Prompt Studio |
+| 3a-studio-mas | Flow Editor (18 нод), Prompting System, LLM Client, Prisma Schema (26 моделей), Diagnostics, Pipeline Middleware | AAA-studio | Канонический источник — основной код 3A Studio |
+| P-MAS-architector | @stsgs/prompting, orchestrator, prompt versioning, citation, executor pipeline, 67 skills | AAA-studio | Backend orchestration layer |
+| P-MAS_init | Workflow execution engine, ReactFlow hierarchy v2, Workflow Pipeline UI, 6 edge types, Resilience layer | AAA-studio | Visual layer (sibling, не предок P-MAS-architector) |
+| MVP-Flow-Studio-Pro | 6 advanced nodes (Switch/Merge/Loop/Webhook/Variable/DataSource), 26 multi-agent templates, Template Gallery, i18n | AAA-studio | Расширенные ноды + шаблоны |
+| prompting-v0.0 | @stsgs/prompting: scorePrompt (6 dim), matchIntent, 20 techniques, 11 frameworks, resilience | AAA-studio | Pure TS prompting lib |
+| Flow-Studio-Pro | 5 unique nodes (Loop, Delay, Merge, SubAgent, Search), Execution Panel | AAA-studio | Дополнительные ноды flow editor |
 | P-MAS-architector | skills, standards, 26 агентов | Zai-agent-toolkit | Governance |
-| UI-Kit | @stsgs/ui: ESLint plugin, CLI, Layout Engine | 3A Studio | Anti-monolith + инструменты |
-| Zai-ui-kit | Dark-themed dashboard components | @stsgs/ui | Dashboard компоненты |
 | Component-Browser | 213 компонентов из 17 проектов | @stsgs/ui | Каталог для Wave 1-3 |
-| Flow-Studio-Pro | ReactFlow + Zustand + 18 node types | 3A Studio | Flow Editor |
-| MVP-Flow-Studio-Pro | 10 node types, EventBus, NodeExecutor | 3A Studio | Flow Editor backend (прототип) |
-| prompting-v0.0 | @stsgs/prompting: scorePrompt, matchIntent | 3A Studio | Prompt Studio |
 | zai-custom-skills | ui-kit-extract skill | @stsgs/ui | Извлечение компонентов |
 | Design-extractor-toolkit | Design tokens, CSS vars, components | UI-Kit Studio | Feed для @stsgs/ui |
-| Zai-agent-toolkit | 24 стандарта | 3A Studio | Качество кода (read-only) |
-| HH-Job-Copilot | HH.ru API + AI | — | SaaS для HR |
-| CHROMEDNA | Three.js + React Three Fiber | energy-helix-3d | 3D визуализация рынка |
+| Zai-agent-toolkit | 24 стандарта | AAA-studio | Качество кода (read-only) |
 | StsDev-Knowledge | 509 компонентов, 74 hooks | Component-Browser | Каталогизация |
 
 ---
@@ -232,6 +239,8 @@
 | Статус | Значение |
 |--------|----------|
 | [ACTIVE] | Рабочий код, активно развивается |
+| [FROZEN] | Заморожен, не развивается, но есть активный successor |
+| [SOURCE] | Канонический источник, загружен как есть |
 | [NEW] | Greenfield, начало разработки |
 | [REFERENCE] | Read-only, не модифицируем |
 | [LOCAL] | Локальный исходник |

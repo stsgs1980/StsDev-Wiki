@@ -25,10 +25,12 @@
 
 ### [ACTIVE] Рабочие проекты
 * [P-MAS-architector](projects/p-mas-architector/README.md) — 942 файла, 164 коммита, 26 AI-агентов, @stsgs/prompting
-* [3A Studio](projects/3a-studio/README.md) — 143 коммита, IDE для multi-agent систем
+* [3A Studio (AAA-studio)](projects/3a-studio/README.md) — 209+ коммитов, 19 экранов, 37 Prisma моделей, 62 API routes
   * [Master Plan](projects/3a-studio/master-plan.md)
   * [Требования](projects/3a-studio/requirements.md)
   * [Прогресс](projects/3a-studio/progress.md)
+  * [Экраны](projects/3a-studio/screens.md)
+  * [Карта заимствований](projects/3a-studio/borrowing-map.md)
   * Решения
     * [Название 3A Studio](projects/3a-studio/decisions/3a-studio-naming.md)
     * [Web, не Desktop](projects/3a-studio/decisions/desktop-vs-web.md)
@@ -36,6 +38,7 @@
     * [Monorepo с пакетами](projects/3a-studio/decisions/monorepo-vs-polyrepo.md)
     * [SQLite, не ChromaDB](projects/3a-studio/decisions/sqlite-vs-chromadb.md)
     * [Стратегия синтеза](projects/3a-studio/decisions/synthesis-strategy.md)
+* [3a-studio-mas](https://github.com/stsgs1980/3a-studio-mas) — канонический источник 3A Studio (45K LOC, 1 коммит)
 * [UI-Kit](projects/ui-kit/README.md) — @stsgs/ui, Layout Engine, Theme Engine, Anti-monolith ESLint
 * [Component-Browser](projects/component-browser/README.md) — 213 компонентов, 17 проектов, 23 категории
 * [Z.Code.Guide](projects/z-code-guide/README.md) — интерактивный справочник Z Code
@@ -53,8 +56,12 @@
 ### [ACTIVE] Личное
 * [Stanislav-graur](projects/personal-site/README.md) — личный сайт (приватный)
 
+### [FROZEN] Замороженные
+* [3a-studio](https://github.com/stsgs1980/3a-studio) — остановлен 30.05.2026 (143 коммита). Активная разработка продолжена в AAA-studio
+
 ### [ARCHIVED] Архив
 * [P-mas-studio](projects/_archived/p-mas-studio/README.md) — удалён с GitHub (2026-05-30)
+* [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) — visual sibling P-MAS-architector: workflow execution + ReactFlow hierarchy
 * [prompting-v0.0](projects/_archived/prompting-v0/README.md)
 * [MVP-Flow-Studio-Pro](projects/_archived/mvp-flow-studio-pro/README.md)
 

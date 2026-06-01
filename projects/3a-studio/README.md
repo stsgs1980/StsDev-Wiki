@@ -2,14 +2,14 @@
 
 **Artificial. Agentic. Architecture. — IDE для visual multi-agent systems**
 
-- **GitHub:** https://github.com/stsgs1980/3a-studio
-- **Коммиты:** 143
-- **Стек:** Bun, PostgreSQL, ReactFlow, Next.js
-- **Размер:** 699 KB
+- **Активный репо:** https://github.com/stsgs1980/AAA-studio (209+ коммитов)
+- **Канонический источник:** https://github.com/stsgs1980/3a-studio-mas (45K LOC, полный проект)
+- **Замороженный репо:** https://github.com/stsgs1980/3a-studio (143 коммита, остановлен 30.05.2026)
+- **Стек:** Next.js 15/16, PostgreSQL (Neon), Prisma ORM, ReactFlow, Zustand, z-ai-web-dev-sdk
 
 ---
 
-## Что это (из README)
+## Что это
 
 IDE для визуального построения и управления multi-agent системами. Позволяет создавать потоки агентов через drag-and-drop редактор, оценивать промпты, работать с базой знаний и стандартами — всё на единой PostgreSQL базе.
 
@@ -17,39 +17,65 @@ IDE для визуального построения и управления m
 
 Заменяет 3 репозитория x 110 навыков x ручная синхронизация → **одна база данных**.
 
-### 12 экранов
+### 19 экранов
 
-1. Dashboard — обзор системы
-2. Flow Editor — визуальный редактор потоков (React Flow, 18 node types)
-3. Template Gallery — шаблоны пайплайнов
-4. Agent Management — CRUD агентов
-5. Agent Hierarchy — граф иерархии агентов
-6. Pipelines — выполнение пайплайнов
-7. Prompt Studio — оценка и улучшение промптов
-8. Knowledge Base — загрузка документов и поиск
-9. Skill Forge — управление навыками агентов
-10. Standards Manager — управление стандартами
-11. Audit Log — логи действий
-12. Settings — настройки системы
+| # | Экран | Путь | Описание |
+|---|-------|------|----------|
+| 1 | Dashboard | /dashboard | KPI, sparklines, heatmap, timeline, live from DB |
+| 2 | Flow Editor | /editor | 18 node types, ReactFlow, live execution |
+| 3 | Templates | /templates | 6 flow templates + prompt library |
+| 4 | Agents | /agents | CRUD, executions, Skills/Standards EntityPicker |
+| 5 | Hierarchy | /hierarchy | Visual parent/child agent graph |
+| 6 | Pipelines | /pipelines | Real flow execution, node-level drill-down |
+| 7 | Prompt Studio | /prompt-studio | Write + Formulas + Frameworks + Compare + Intent |
+| 8 | Knowledge Base | /knowledge | Upload, TF-IDF semantic search |
+| 9 | Skill Forge | /skills-page | CRUD, code/tests, StandardsPicker, SKILL.md export |
+| 10 | Standards Manager | /standards | CRUD, rules editor, cross-ref validation |
+| 11 | Audit Log | /audit | JSON-highlighted details, filter by entity |
+| 12 | Settings | /settings | Multi-provider LLM, theme/language, key masking |
+| 13 | Approvals | /approvals | HITL approval panel |
+| 14 | Testing | /testing | Test runner, judge scoring |
+| 15 | Cost Monitor | /cost | Token/cost tracking |
+| 16 | Self-Correction | /self-correction | Auto-revision loop |
+| 17 | Analysis | /analysis | Multi-agent analysis sessions |
+| 18 | Comparison | /comparison | Agent diff, version diff, regression |
+| 19 | Wiki | /wiki | 14 статей встроенной документации |
+
+Дополнительно: Landing page (/), Auth (login/signup/verify/reset/forgot), i18n (EN/RU).
 
 ### Модули
 
 - Standards Manager — управление стандартами кода
 - Skill Forge — создание/редактирование навыков
 - Prompt Studio — оценка и генерация промптов
-- Flow Editor — 18 node types, ReactFlow
-- Knowledge Base — загрузка и поиск документов
+- Flow Editor — 18 node types, ReactFlow, topological sort execution
+- Knowledge Base — загрузка и TF-IDF поиск документов
 - Audit Log — логирование действий
+- Diagnostics — contradiction/gap/circular/orphan detection
+- Pipeline Middleware — circuit breaker, context eviction, token counting
 
-## Из чего собрано (синтез)
+## Репозитории проекта
 
-| Источник | Что взяли | Статус источника |
-|----------|-----------|-----------------|
-| P-MAS-architector | Компоненты, API routes, Prisma, packages/ui, CLI, ESLint, @stsgs/prompting | [ACTIVE] |
-| Flow-Studio-Pro | React Flow v12 паттерны, Zustand | [ACTIVE] |
-| MVP-Flow-Studio-Pro | EventBus, LLMProvider, Template Gallery | [ARCHIVED] |
-| prompting-v0.0 | 20 когнитивных формул | [PACKAGE] |
-| Zai-agent-toolkit | 24 стандарта, agent templates | [REFERENCE] |
+| Репо | Статус | LOC | Коммитов | Суть |
+|------|--------|-----|----------|------|
+| [AAA-studio](https://github.com/stsgs1980/AAA-studio) | **ACTIVE** | ~26,700 | 209+ | Активная разработка, 37 Prisma моделей, 62 API routes |
+| [3a-studio-mas](https://github.com/stsgs1980/3a-studio-mas) | SOURCE | 45,249 | 1 | Канонический полный проект (single commit), 26 моделей, 33 API routes |
+| [3a-studio](https://github.com/stsgs1980/3a-studio) | **FROZEN** | — | 143 | Остановлен 30.05.2026, 12 моделей, 32 API routes |
+
+**AAA-studio** и **3a-studio** имеют общий первый коммит `954904f`. AAA-studio = 3a-studio + 65 дополнительных коммитов. **3a-studio-mas** — полный проект-источник, загружен одним коммитом.
+
+## Из чего собрано (6 доноров)
+
+| Донор | LOC | Статус | Что взять |
+|-------|-----|--------|-----------|
+| [3a-studio-mas](https://github.com/stsgs1980/3a-studio-mas) | 45,249 | SOURCE | Flow Editor (18 нод), Prompting System, LLM Client, Diagnostics, Pipeline Middleware, Dashboard, Auth, Monorepo packages |
+| [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) | 54,798 | ARCHIVED | Workflow execution engine, ReactFlow hierarchy v2, Workflow Pipeline UI, 6 edge types, Resilience layer, WebSocket service |
+| [MVP-Flow-Studio-Pro](https://github.com/stsgs1980/MVP-Flow-Studio-Pro) | 18,193 | ARCHIVED | 6 advanced nodes (Switch/Merge/Loop/Webhook/Variable/DataSource), 26 multi-agent templates, Template Gallery, i18n, topological sort |
+| [P-MAS-architector](https://github.com/stsgs1980/P-MAS-architector) | ~81,000 | ACTIVE | Orchestrator, prompt versioning, citation system, executor pipeline, middleware, diagnostics, comparison, 67 skills |
+| [prompting-v0.0](https://github.com/stsgs1980/prompting-v0.0) | 4,304 | PACKAGE | Pure TS prompting lib: 20 techniques, 11 frameworks, 6-dim scoring, 20 cognitive formulas, 12 orchestration patterns, resilience |
+| [Flow-Studio-Pro](https://github.com/stsgs1980/Flow-Studio-Pro) | ~750 | ACTIVE | 5 unique nodes (Loop, Delay, Merge, SubAgent, Search), Execution Panel, demo flows |
+
+Подробная карта заимствований: [borrowing-map.md](borrowing-map.md)
 
 ## Принципы
 
@@ -63,20 +89,23 @@ IDE для визуального построения и управления m
 
 | Пакет | Назначение | Подробнее |
 |-------|-----------|-----------|
-| @stsgs/ui | Дизайн-система | [packages/ui](../../packages/ui.md) |
-| @stsgs/prompting | Библиотека оценок промптов | [packages/prompting](../../packages/prompting.md) |
-| @stsgs/shared | Общие типы, утилиты, константы | [packages/shared](../../packages/shared.md) |
-| eslint-plugin-3a | Кастомные ESLint правила | Часть 3A Studio |
+| @stsgs/ui | Дизайн-система (Midnight palette, ThemeProvider, cn) | [packages/ui](../../packages/ui.md) |
+| @stsgs/prompting | 6-criteria scoring, 10 formulas, 4 frameworks, intent detection | [packages/prompting](../../packages/prompting.md) |
+| @stsgs/shared | Core types: Agent, Skill, Standard, Flow, Knowledge, Prompt, Audit | [packages/shared](../../packages/shared.md) |
+| eslint-plugin-3a | 4 rules: max-lines(150), max-use-state(3), no-cross-layer, no-unicode-escapes | Часть 3A Studio |
 
 ## Документация проекта
 
 - [Master Plan](master-plan.md) — план разработки по фазам
 - [Требования](requirements.md) — специфические требования
 - [Прогресс](progress.md) — текущий статус
+- [Экраны](screens.md) — все экраны с маршрутами
+- [Карта заимствований](borrowing-map.md) — что брать из доноров
 - [Решения](decisions/) — ADRы по 3A Studio
 
 ## Связанные проекты
 
-- [P-MAS-architector](../p-mas-architector/README.md) — текущий код (источник компонентов и пакетов)
+- [P-MAS-architector](../p-mas-architector/README.md) — backend orchestration + 67 skills
+- [P-MAS_init](https://github.com/stsgs1980/P-MAS_init) — visual layer (sibling, не предок P-MAS-architector)
 - [Zai-agent-toolkit](../zai-agent-toolkit/README.md) — стандарты и навыки (read-only reference)
 - [Карта экосистемы](../../ecosystem-map.md) — все связи между проектами

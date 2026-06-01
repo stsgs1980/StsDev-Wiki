@@ -1,6 +1,6 @@
 # Decision: Название 3A Studio
 
-**Дата:** 2026-05-27
+**Дата:** 2026-05-27 (обновлено 2026-06-01)
 **Статус:** Принято
 
 ---
@@ -22,8 +22,19 @@
 **3A Studio** (Artificial. Agentic. Architecture.)
 
 - Домен: 3a-studio.dev / 3a.studio
-- Репозиторий: stsgs1980/3a-studio
 - Пакеты: @stsgs/ui, @stsgs/prompting, @stsgs/shared
+
+## Репозитории
+
+Проект 3A Studio существует в трёх репозиториях:
+
+| Репо | Статус | Суть |
+|------|--------|------|
+| [AAA-studio](https://github.com/stsgs1980/AAA-studio) | **ACTIVE** | Активная разработка (209+ коммитов, 37 Prisma моделей, 62 API routes) |
+| [3a-studio-mas](https://github.com/stsgs1980/3a-studio-mas) | **SOURCE** | Канонический полный проект (45K LOC, загружен одним коммитом) |
+| [3a-studio](https://github.com/stsgs1980/3a-studio) | **FROZEN** | Заморожен 30.05.2026 (143 коммита). Активная разработка продолжена в AAA-studio |
+
+**AAA-studio** и **3a-studio** имеют общий первый коммит `954904f`. AAA-studio = 3a-studio + 65 дополнительных коммитов. Название репозитория «AAA-studio» — это вариант написания «3A Studio» латиницей (AAA = тройное A = 3A).
 
 ## Почему
 
