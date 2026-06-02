@@ -29,6 +29,7 @@
   * [Master Plan](projects/3a-studio/master-plan.md)
   * [Требования](projects/3a-studio/requirements.md)
   * [Прогресс](projects/3a-studio/progress.md)
+  * [QA Test Results](projects/3a-studio/qa-test-results.md)
   * [Экраны](projects/3a-studio/screens.md)
   * [Карта заимствований](projects/3a-studio/borrowing-map.md)
   * Решения

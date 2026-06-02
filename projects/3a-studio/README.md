@@ -39,7 +39,7 @@ IDE для визуального построения и управления m
 | 16 | Testing | /testing | Test runner, judge scoring |
 | 17 | Quality Analyzer | /quality-analyzer | Quality analysis and scoring |
 | 18 | Self-Correction | /self-correction | Auto-revision loop |
-| 19 | Wiki | /wiki | 14 статей встроенной документации |
+| 19 | Wiki | /wiki | 15 статей встроенной документации |
 
 Дополнительно: Landing page (/), Auth (login/signup/verify/reset/forgot), i18n (EN/RU).
 
@@ -101,6 +101,7 @@ IDE для визуального построения и управления m
 - [Master Plan](master-plan.md) — план разработки по фазам
 - [Требования](requirements.md) — специфические требования
 - [Прогресс](progress.md) — текущий статус
+- [QA Test Results](qa-test-results.md) — результаты тестирования Quality Analyzer
 - [Экраны](screens.md) — все экраны с маршрутами
 - [Карта заимствований](borrowing-map.md) — что брать из доноров
 - [Решения](decisions/) — ADRы по 3A Studio

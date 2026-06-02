@@ -14,7 +14,7 @@
 | Skill Forge | 6 | Работает | CRUD + экспорт SKILL.md |
 | Standards Manager | 6 | Работает | CRUD + импорт .md |
 | Flow Editor | 30 | Работает | Canvas, ноды, execute, Zustand store |
-| Quality Analyzer | 10 | Работает | LLM-оценка, deep analysis |
+| Quality Analyzer | 10 | Работает | LLM deep analysis (4 рубрики), ZIP upload, Clear Results, 4/4 PASS на Vercel |
 | Agent Creator | 7 | Работает | 5-шаговый визард |
 | Prompt Studio | есть | Работает | Prompt evaluation |
 | Auth | 5 страниц | Работает | login/signup/reset/verify/forgot + JWT + middleware |
@@ -108,6 +108,36 @@ P1-4 (Commits) — независимо
 P2-1 (Decision Loop) — зависит от стабильного P0
 P2-3 (Валидаторы) — зависит от P0-2 (SkillFile)
 ```
+
+---
+
+## Сессия 2026-06-03
+
+### Что делали
+- QA Test: 4 метода ввода (GitHub URL, 2x ZIP, Folder) — все 4 PASS на Vercel
+- Добавлены: Clear Results кнопка, ZIP upload через JSZip, fix scenario pass-through
+- In-app Wiki: 14 → 15 страниц (новая "Quality Analyzer")
+- P-MAS Extraction: из 5 архитектурных документов извлечены паттерны для Enhanced QA
+- Обновлён TASK_STATE.json: Epic 1-3 COMPLETED, добавлены Epic 5 (Enhanced QA) + Epic 6 (Advanced QA)
+- StsDev-Wiki: синхронизированы результаты тестирования
+
+### Что изменилось
+- src/features/wiki/pages/quality-analyzer.tsx (new)
+- src/features/wiki/data/page-registry.ts, wiki-nav-data.ts (15-я страница)
+- TASK_STATE.json (qaTestResults, pMasExtraction секции)
+- WORKFLOW.md (QA Test Results таблица, P-MAS Extraction секция)
+- StsDev-Wiki: projects/3a-studio/qa-test-results.md (new), README.md, progress.md
+
+### Статус этапов
+- Epic 1 (Production Stability): COMPLETED
+- Epic 2 (QA — Connect to Prompting): COMPLETED (6 tasks)
+- Epic 3 (QA — Verify & Document): COMPLETED (5 tasks)
+- Epic 4 (Flow Assistant): PENDING
+- Epic 5 (Enhanced QA): PENDING (Verifier Layer, Anti-patterns, Grade A-F)
+- Epic 6 (Advanced QA): PENDING (9-metric engine, Radar chart, Skill Classification)
+
+### Следующий шаг
+- Epic 4.1: Fix Human-in-Loop handle bug
 
 ---
 
