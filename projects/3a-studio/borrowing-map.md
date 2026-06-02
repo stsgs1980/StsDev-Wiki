@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 3A Studio — Карта заимствований
 
 **Обновлено:** 2026-06-01
@@ -167,8 +166,6 @@
 8. Pure Prompting Lib (prompting-v0.0) → Prompt Studio Upgrade
 9. Additional Nodes (Flow-Studio-Pro) → Polish
 ```
-=======
 # Карта заимствований
 
 > TODO: заполнить
->>>>>>> 137758b (integrate verify-docs into wiki)
