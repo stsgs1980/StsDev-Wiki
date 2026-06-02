@@ -111,6 +111,25 @@ P2-3 (Валидаторы) — зависит от P0-2 (SkillFile)
 
 ---
 
+## Сессия 2026-06-03 (update 2)
+
+### Что изменилось
+- Стратегический поворот: QA evolves from static text analysis to agent-scanner approach
+- Epic 4 переписан: Agent-Scanner (агент с тулами: read_file, grep, compare) вместо Flow Assistant
+- Epic 5 = SonarMAS (9-metric engine, A-F grade, radar chart) — зависит от данных Epic 4
+- Key Decision: не строить wireframe отдельно, AAA-studio и есть wireframe
+- Key Decision: сначала реальный тулкит (110+ скиллов), потом roadmap
+
+### Статус этапов
+- Epic 1-3: COMPLETED
+- Epic 4 (Agent-Scanner): PENDING, next: 4.1 smoke test на zai-agent-toolkit
+- Epic 5 (SonarMAS): PENDING, depends on Epic 4 findings
+
+### Следующий шаг
+- 4.1: Smoke test — запустить текущий QA на zai-agent-toolkit (110+ skills)
+
+---
+
 ## Сессия 2026-06-03
 
 ### Что делали
