@@ -3,6 +3,7 @@
 ## Ядро (устав)
 * [Об авторе](about.md)
 * [Карта экосистемы](ecosystem-map.md)
+* [Vision & Goals](vision.md) — конкуренты, преимущества, milestones, принципы
 * [Правила](rules.md)
 * [Стандарты кода](standards.md)
 * [Протокол начала сессии](session-protocol.md)
@@ -83,3 +84,6 @@
 
 ## Инструменты
 * [verify-docs](tools/verify-docs/README.md) — data-driven проверка консистентности документации (числа в README vs код)
+
+## Обсуждения и мысли
+* [Все обсуждения](discussions/index.md) — скриншоты, тексты, заметки, идеи
