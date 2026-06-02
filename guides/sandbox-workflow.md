@@ -1,6 +1,6 @@
 # Стандарт работы в Z.ai песочнице
 
-**Дата:** 2026-05-30 | **Версия:** 4.0
+**Дата:** 2026-06-02 | **Версия:** 4.1
 **Для кого:** любой AI-агент в новой сессии
 **Статус:** универсальный стандарт (не привязан к конкретному проекту)
 
@@ -267,59 +267,105 @@ cp /tmp/<name>/path/to/file.tsx /home/z/my-project/src/components/
 
 ## Инфраструктура песочницы (.zscripts/)
 
-Sandbox управляет dev-сервером через скрипты в `.zscripts/`:
+Sandbox управляет dev-сервером через скрипты в `.zscripts/`.
 
-| Скрипт/Файл | Назначение | Когда вызывается |
-|-------------|-----------|-----------------|
-| `dev.sh` | Запуск dev-среды (install + db + сервер + mini-services) | После загрузки проекта |
-| `build.sh` | Production build (Next.js + mini-services) | Перед деплоем |
-| `start.sh` | Production startup (Caddy + собранное приложение) | Production mode |
-| `mini-services-*.sh` | Установка/запуск/watchdog для mini-services | Автоматически из dev.sh |
-| `dev.log` | Логи dev-сервера | Пишется dev.sh |
-| `dev.pid` | PID dev-сервера | Пишется dev.sh |
+**ВАЖНО:** `.zscripts/dev.sh` — КОНТЕЙНЕРНЫЙ стандартный шаблон. При запуске контейнера `/start.sh` проверяет наличие `.zscripts/dev.sh` и запускает его в фоне. Содержимое dev.sh **зависит от проекта** — автор должен кастомизировать его под свои нужды.
 
-### Что делает dev.sh (по порядку)
+### Стандартный шаблон dev.sh (простые проекты)
 
 ```
 1. bun install                        — установка зависимостей
 2. bun run db:push                    — Prisma schema -> DB (если prisma/ есть)
-3. bun run dev &                      — Next.js dev server на порту 3000
+3. bun run dev &                      — Next.js dev server (Turbopack) на порту 3000
 4. wait_for_service localhost:3000    — ждёт 200 OK
 5. Health check (curl)               — подтверждение: сервер жив
-6. start_mini_services               — запуск ws-service + watchdog
 ```
 
-### Watchdog
+Стандартный шаблон использует `bun run dev` (Turbopack). Это работает для простых проектов (< 10 файлов).
 
-После запуска dev.sh **mini-service watchdog** мониторит dev-сервер. Если процесс сервера умирает (краш, таймаут, OOM), watchdog может его перезапустить.
-Лог watchdog: `.zscripts/mini-service-watchdog.log`.
+### Кастомный dev.sh для сложных проектов (50+ файлов, много client components)
 
-Это НЕ гарантировано во всех случаях. Если сервер мёртв и не перезапустился автоматически за 30 секунд — запусти dev.sh вручную: `bash .zscripts/dev.sh`.
+Turbopack **крашится** на сложных проектах (26K+ LOC, не собирает часть роутов). dev.sh нужно переписать:
+
+```bash
+#!/bin/bash
+set -e
+cd /home/z/my-project
+LOG="/home/z/my-project/.zscripts/dev.log"
+echo "$(date) [DEV] Starting..." > "$LOG"
+
+bun install --frozen-lockfile 2>/dev/null || bun install >> "$LOG" 2>&1
+bun run db:generate 2>/dev/null || true
+bun run db:push 2>/dev/null || true
+
+npx next build >> "$LOG" 2>&1
+
+# Self-restart loop: если next start упадёт — перезапустить через 3s
+echo "$$" > /home/z/my-project/.zscripts/dev.pid
+while true; do
+  npx next start -p 3000 -H 0.0.0.0 >> "$LOG" 2>&1
+  EXIT_CODE=$?
+  echo "$(date) [DEV] Server exited ($EXIT_CODE), restarting..." >> "$LOG"
+  sleep 3
+done
+```
+
+Ключевые отличия:
+- `next build` (webpack) вместо `bun run dev` (Turbopack) — webpack собирает ВСЕ роуты
+- `next start` (production) — стабильно, 214MB RAM
+- **Self-restart loop** (`while true`) — при падении сервер перезапустится
+- PID в `dev.pid` для мониторинга
+
+### Watchdog: реальность
+
+**Стандартный sandbox НЕ предоставляет watchdog.** Файлы `mini-service-watchdog.log`, `build.sh`, `start.sh`, `mini-services-*.sh` — могут отсутствовать. Проверяй:
+```bash
+ls -la /home/z/my-project/.zscripts/
+```
+
+Если нужен watchdog — встрои self-restart loop прямо в dev.sh (см. выше).
 
 ### Что ожидает dev.sh
 
-- `package.json` со скриптом `"dev": "next dev -p 3000"`
-- `prisma/schema.prisma` (опционально — шаг 2 пропускается если нет prisma/)
-- `.env` с `DATABASE_URL` если используется PostgreSQL (опционально — SQLite работает без него)
+- `package.json` (стандартный скрипт `"dev"` или кастомный production-флоу)
+- `prisma/schema.prisma` (опционально)
+- `.env` с `DATABASE_URL` если используется PostgreSQL (опционально)
 
-### CRITICAL: Никогда не запускай dev-сервер вручную
+### Как запускать dev-сервер
+
+**Способ 1 (надёжный): через start.sh контейнера**
+
+При запуске контейнера `/start.sh` автоматически запускает `.zscripts/dev.sh` в фоне. Процесс привязан к дереву init (tini -> start.sh -> dev.sh) и **выживает** после смерти shell агента.
+
+**Перезапуск контейнера** — единственный надёжный способ перезапустить сервер.
+
+**Способ 2: вручную (ОГРАНИЧЕН)**
+
+AI-агент запускает команды через bash tool. Shell-процесс агента умирает между командами, унося дочерние процессы. dev.sh, запущенный вручную, **не переживёт** переход к следующей команде агента.
 
 ```bash
-# Всё это НЕПРАВИЛЬНО в песочнице:
-npm run dev          # НЕПРАВИЛЬНО — процесс умрёт
-bun run dev          # НЕПРАВИЛЬНО — процесс умрёт
-npx next dev         # НЕПРАВИЛЬНО — Turbopack крашится
-next dev             # НЕПРАВИЛЬНО — нет интеграции с песочницей
+# Эти варианты НЕПРАВИЛЬНЫЕ (процесс умрёт между командами):
+npm run dev / bun run dev / npx next dev / npx next start &
 
-# Единственный правильный способ:
+# Единственный правильный способ (но тоже ограничен lifetime'ом bash tool):
 bash /home/z/my-project/.zscripts/dev.sh
 ```
 
-Ручной запуск обходит управление процессами песочницы. Сервер либо крашнется (конфликт Turbopack), либо умрёт тихо через несколько минут (нет watchdog). Всегда используй dev.sh.
+**Способ 3: production mode для быстрой проверки (один вызов bash)**
+
+Билд + старт + проверка — всё в одном bash tool вызове:
+```bash
+cd /home/z/my-project && npx next build 2>&1 | tail -5 && \\
+npx next start -p 3000 -H 0.0.0.0 &
+sleep 3 && curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/
+```
+
 
 ### Сложный проект (50+ файлов): Production mode
 
-Если dev.sh стартует, но Turbopack падает:
+**Постоянное решение:** Переписать `.zscripts/dev.sh` под production mode с self-restart loop (см. пример выше). После перезапуска контейнера start.sh поднимет его.
+
+**Временное решение (один bash tool вызов):**
 
 ```bash
 cd /home/z/my-project
@@ -330,7 +376,10 @@ sleep 3
 curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/
 ```
 
+Ограничение: процесс умрёт между командами агента. Для постоянной работы — перезапуск контейнера.
+
 После каждого изменения кода нужен rebuild. Нет HMR, но стабильно.
+
 
 ---
 
@@ -529,7 +578,7 @@ DATABASE_URL=postgresql://user:pass@host:5432/dbname?sslmode=require
 | Сервер умирает при смене сессии | Shell-процесс умер со старым чатом | `bash .zscripts/dev.sh` |
 | `localhost` не отвечает в curl | Редкая проблема IPv6 resolution | Попробовать `127.0.0.1` (обычно оба работают) |
 | `bun run dev` быстро умирает | Нестабильность bun wrapper | Использовать `.zscripts/dev.sh` |
-| Сервер умирает через ~5 мин | Sandbox process timeout | Watchdog dev.sh обрабатывает это. Если нет — перезапустить вручную |
+| Сервер умирает через ~5 мин | Shell-процесс агента умер | Перезапуск контейнера (start.sh перезапустит dev.sh) |
 
 ---
 
@@ -601,8 +650,12 @@ bun run lint
 # === Синхронизация БД (Prisma) ===
 bun run db:push
 
-# === Production mode (для сложных проектов) ===
+# === Production mode (для сложных проектов, один вызов bash) ===
 npx next build 2>&1 | tail -10
 pkill -f 'next' 2>/dev/null; sleep 1
 NODE_OPTIONS="--max-old-space-size=4096" npx next start -p 3000 -H 0.0.0.0 </dev/null >/tmp/zdev.log 2>&1 & disown
+sleep 3; curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/
+
+# === Надёжный перезапуск: перезапустить контейнер ===
+# start.sh автоматически запустит .zscripts/dev.sh
 ```
