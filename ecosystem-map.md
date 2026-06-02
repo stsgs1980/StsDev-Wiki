@@ -1,6 +1,6 @@
 # Карта экосистемы
 
-**Все 54 репозитория — классификация по группам и связям**
+**Все 55 репозиториев — классификация по группам и связям**
 > Данные получены из GitHub API + README каждого репозитория (2026-05-30)
 
 ---
@@ -158,10 +158,11 @@
 | [zai-custom-skills](https://github.com/stsgs1980/zai-custom-skills) | — | Z.ai skills framework | Custom skills для Z.ai: ui-kit-extract v2.0 (извлечение React/Next.js компонентов в @stsgs/ui, 155+ компонентов, shadcn-compatible) |
 | [energy-helix-3d](https://github.com/stsgs1980/energy-helix-3d) | npm package | React Three Fiber, Three.js | 3D DNA Helix для energy market (см. Цвет / Визуальные инструменты) |
 
-### Утилиты / Тулкиты (4)
+### Утилиты / Тулкиты (5)
 
 | Репо | Коммитов | Стек | Описание (из README) |
 |------|----------|------|----------------------|
+| [verify](https://github.com/stsgs1980/verify) | — | TypeScript, Bun | **verify-docs**: data-driven проверка консистентности документации. Сверяет числа в README с реальным кодом. Плагины, cross-repo проверки, pre-push hook, CI. Интегрирован в StsDev-Wiki |
 | [CodeMan](https://github.com/stsgs1980/CodeMan) | 2 | Next.js 16, Prisma/SQLite, Socket.io, z-ai-sdk | "OPEN CODE — AI Terminal Assistant": IDE-style 3-панель (Explorer, Chat, Output), Catppuccin Mocha, WebSocket streaming, drag & drop файлов, командная палитта (/), режимы Chat/Code/Terminal/Debug |
 | [StsDev-Knowledge](https://github.com/stsgs1980/StsDev-Knowledge) | 9 | React, Python | База знаний: 1238 файлов, 509 React компонентов, 74 hooks, 213 Python функций. Извлечено из StsDev-Core и dev-analysis |
 | [Token-command-center](https://github.com/stsgs1980/Token-command-center) | — | React 18+, TypeScript, npm | @zai/token-command-center: переиспользуемая Command Center панель. Zero business logic, zero CSS deps, SectionConfig-driven |

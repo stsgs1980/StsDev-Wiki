@@ -79,3 +79,6 @@
 * [Все референсы](references/index.md)
 * [Техники памяти LLM](references/llm-memory-techniques.md)
 * [Rust Performance](references/rust-performance-optimization.md)
+
+## Инструменты
+* [verify-docs](tools/verify-docs/README.md) — data-driven проверка консистентности документации (числа в README vs код)

@@ -1,0 +1,72 @@
+{
+  "readme": "SUMMARY.md",
+  "checks": [
+    {
+      "name": "Project READMEs",
+      "source": "custom:project-readmes",
+      "readmePattern": null,
+      "infoOnly": true
+    },
+    {
+      "name": "Principles",
+      "source": "glob:principles/*.md",
+      "readmePattern": null,
+      "infoOnly": true
+    },
+    {
+      "name": "Guides",
+      "source": "glob:guides/*.md",
+      "readmePattern": null,
+      "infoOnly": true
+    },
+    {
+      "name": "References",
+      "source": "glob:references/*.md",
+      "readmePattern": null,
+      "infoOnly": true
+    },
+    {
+      "name": "Packages docs",
+      "source": "glob:packages/*.md",
+      "readmePattern": null,
+      "infoOnly": true
+    },
+    {
+      "name": "Agents docs",
+      "source": "glob:agents/*.md",
+      "readmePattern": null,
+      "infoOnly": true
+    },
+    {
+      "name": "Tools",
+      "source": "custom:tools-docs",
+      "readmePattern": null,
+      "infoOnly": true
+    },
+    {
+      "name": "SUMMARY.md links",
+      "source": "custom:summary-links",
+      "readmePattern": null,
+      "infoOnly": true
+    },
+    {
+      "name": "Dead links in SUMMARY",
+      "source": "custom:summary-dead-links",
+      "readmePattern": null,
+      "infoOnly": true
+    },
+    {
+      "name": "Total .md files",
+      "source": "glob:*.md",
+      "exclude": ["node_modules", ".git", "tools/verify-docs"],
+      "readmePattern": null,
+      "infoOnly": true
+    },
+    {
+      "name": "Git commits",
+      "source": "git:HEAD",
+      "readmePattern": null,
+      "infoOnly": true
+    }
+  ]
+}
