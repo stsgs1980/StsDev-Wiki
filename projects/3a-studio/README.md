@@ -29,7 +29,7 @@ IDE для визуального построения и управления m
 | 6 | Hierarchy | /hierarchy | Visual parent/child agent graph, 7 edge types |
 | 7 | Pipelines | /pipelines | Real flow execution, node-level drill-down |
 | 8 | Workflows | /workflows | Workflow management and monitoring |
-| 9 | Prompt Studio | /prompt-studio | Write + Formulas (10) + Frameworks (11) + Techniques (14) + Compare + Intent |
+| 9 | Prompt Studio | /prompt-studio | Write + Formulas (10) + Frameworks (11) + Techniques (17) + Compare + Intent |
 | 10 | Knowledge Base | /knowledge | Upload, TF-IDF semantic search |
 | 11 | Skill Forge | /skills-page | CRUD, code/tests, StandardsPicker, SKILL.md export |
 | 12 | Standards Manager | /standards | CRUD, rules editor, cross-ref validation |
@@ -92,7 +92,7 @@ IDE для визуального построения и управления m
 | Пакет | Назначение | Подробнее |
 |-------|-----------|-----------|
 | @stsgs/ui | Дизайн-система (Midnight palette, ThemeProvider, cn) | [packages/ui](../../packages/ui.md) |
-| @stsgs/prompting | 6-criteria scoring, 10 formulas, 11 frameworks, 14 techniques, intent detection, comparison | [packages/prompting](../../packages/prompting.md) |
+| @stsgs/prompting | 6-criteria scoring, 10 formulas, 11 frameworks, 17 techniques, intent detection, comparison | [packages/prompting](../../packages/prompting.md) |
 | @stsgs/shared | Core types: Agent, Skill, Standard, Flow, Knowledge, Prompt, Audit | [packages/shared](../../packages/shared.md) |
 | eslint-plugin-3a | 4 rules: max-lines(150), max-use-state(3), no-cross-layer, no-unicode-escapes | Часть 3A Studio |
 
